@@ -59,12 +59,22 @@ class LandingSeeder extends Seeder
                 'duration' => '12 Weeks'
             ],
         ];
-        foreach ($programs as $p) {
-            Program::updateOrCreate(['title' => $p['title']], [
-                'slug' => Str::slug($p['title']),
-                'description' => $p['desc'],
-                'price' => $p['price'],
-                'duration' => $p['duration'],
+        // 4. Testimonials
+        $testimonials = [
+            ['name' => 'Andrew Brown', 'handle' => '@andrewbrown', 'content' => 'I think @namtechhub will win the tech ecosystem wars. What leads me to believe this is beyond the product itself and how the team executes.'],
+            ['name' => 'Alex Finn', 'handle' => '@AlexFinnX', 'content' => 'Unreal. I just built an entire MVP in NAMTECH Digital Studio with 1 prompt and expert guidance.'],
+            ['name' => 'The Jack Forge', 'handle' => '@TheJackForge', 'content' => 'I\'ve been exclusively using NIDOS for the past 3 weeks. They are not paying me to say this. It\'s really good. Really really good.'],
+            ['name' => 'Alvaro Cintas', 'handle' => '@dr_cintas', 'content' => 'NAMTECH Academy is one of the best technical training grounds I have ever used. High quality and direct.'],
+            ['name' => 'The Bodega Man', 'handle' => '@TheBodegaMan1', 'content' => 'The reason I chose NAMTECH is because you guys are on a constant mission of streamlining, improving and generally making the experience better for your users.'],
+            ['name' => 'elvis', 'handle' => '@omarsar0', 'content' => 'NAMTECH makes innovation insanely fun and fast! Build faster, scale better.'],
+            ['name' => 'Catalin', 'handle' => '@catalinmpit', 'content' => 'One of the many cool features of the NIDOS platform is the Synergy Model that connects talent directly to jobs.'],
+            ['name' => 'Tom Blomfield', 'handle' => '@t_blom', 'content' => 'I\'ve been building a new thing with NAMTECH Studio and I spent the last hour in almost hysterical laughter because the responses are just so good.'],
+        ];
+
+        foreach ($testimonials as $t) {
+            \App\Models\Testimonial::updateOrCreate(['handle' => $t['handle']], [
+                'name' => $t['name'],
+                'content' => $t['content'],
                 'is_active' => true
             ]);
         }
