@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Program;
+use App\Models\Partner;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -10,6 +12,9 @@ class LandingController extends Controller
     public function index()
     {
         $programs = Program::where('is_active', true)->get();
-        return view('landing.index', compact('programs'));
+        $partners = Partner::where('is_active', true)->orderBy('order')->get();
+        $announcement = Announcement::where('is_active', true)->latest()->first();
+        
+        return view('landing.index', compact('programs', 'partners', 'announcement'));
     }
 }
