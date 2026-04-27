@@ -161,50 +161,45 @@
         </div>
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <div class="timeline">
-                    <div class="d-flex mb-5">
-                        <div class="flex-shrink-0 me-4">
-                            <div class="bg-success text-white rounded-pill px-3 py-1 fw-bold">2014</div>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold">The Beginning</h5>
-                            <p class="text-muted">Started as a small co-working space with a vision to support local entrepreneurs.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-5">
-                        <div class="flex-shrink-0 me-4">
-                            <div class="bg-success text-white rounded-pill px-3 py-1 fw-bold">2017</div>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold">First Incubation Program</h5>
-                            <p class="text-muted">Launched our flagship startup incubation program, supporting 20 companies in the first cohort.</p>
+                <div class="timeline-steps">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2014</div>
+                            <h5 class="fw-bold mb-2">The Beginning</h5>
+                            <p class="text-muted mb-0">Started as a small co-working space with a vision to support local entrepreneurs.</p>
                         </div>
                     </div>
-                    <div class="d-flex mb-5">
-                        <div class="flex-shrink-0 me-4">
-                            <div class="bg-success text-white rounded-pill px-3 py-1 fw-bold">2019</div>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold">Regional Expansion</h5>
-                            <p class="text-muted">Expanded operations to 5 countries, establishing partnerships with leading tech companies.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-5">
-                        <div class="flex-shrink-0 me-4">
-                            <div class="bg-success text-white rounded-pill px-3 py-1 fw-bold">2022</div>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold">Digital Academy Launch</h5>
-                            <p class="text-muted">Introduced online learning platform, reaching thousands of entrepreneurs globally.</p>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2017</div>
+                            <h5 class="fw-bold mb-2">First Incubation Program</h5>
+                            <p class="text-muted mb-0">Launched our flagship startup incubation program, supporting 20 companies in the first cohort.</p>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <div class="flex-shrink-0 me-4">
-                            <div class="bg-success text-white rounded-pill px-3 py-1 fw-bold">2024</div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2019</div>
+                            <h5 class="fw-bold mb-2">Regional Expansion</h5>
+                            <p class="text-muted mb-0">Expanded operations to 5 countries, establishing partnerships with leading tech companies.</p>
                         </div>
-                        <div>
-                            <h5 class="fw-bold">Industry Leader</h5>
-                            <p class="text-muted">Recognized as a top innovation hub in Africa, supporting 500+ startups and counting.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2022</div>
+                            <h5 class="fw-bold mb-2">Digital Academy Launch</h5>
+                            <p class="text-muted mb-0">Introduced online learning platform, reaching thousands of entrepreneurs globally.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024</div>
+                            <h5 class="fw-bold mb-2">Industry Leader</h5>
+                            <p class="text-muted mb-0">Recognized as a top innovation hub in Africa, supporting 500+ startups and counting.</p>
                         </div>
                     </div>
                 </div>
@@ -240,6 +235,53 @@
     }
     .tracking-wider {
         letter-spacing: 0.1em;
+    }
+    .timeline-steps {
+        position: relative;
+        padding-left: 40px;
+    }
+    .timeline-steps::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 14px;
+        width: 2px;
+        background: rgba(17, 24, 39, 0.15);
+    }
+    .timeline-item {
+        position: relative;
+        display: flex;
+        gap: 20px;
+        padding-bottom: 32px;
+    }
+    .timeline-item:last-child {
+        padding-bottom: 0;
+    }
+    .timeline-dot {
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        width: 16px;
+        height: 16px;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 3px solid #10b981;
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.12);
+    }
+    .timeline-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    .timeline-year {
+        display: inline-block;
+        font-weight: 800;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background: #10b981;
+        color: #ffffff;
+        margin-bottom: 12px;
+        letter-spacing: 0.02em;
     }
 </style>
 
