@@ -27,6 +27,10 @@ Route::group(['prefix' => 'pricing', 'as' => 'pricing.'], function () {
     Route::view('/compare', 'pricing.compare')->name('compare');
 });
 
+Route::group(['prefix' => 'enterprise', 'as' => 'enterprise.'], function () {
+    Route::view('/solutions', 'enterprise.solutions')->name('solutions');
+});
+
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
     Route::get('/latest', [BlogController::class, 'latest'])->name('latest');
     Route::get('/startup-stories', [BlogController::class, 'stories'])->name('stories');
