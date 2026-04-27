@@ -90,13 +90,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Blog</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/blog/latest"><strong>Latest Posts</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/blog/startup-stories"><strong>Startup Stories</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/blog/tutorials"><strong>Tech Tutorials</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/blog/insights"><strong>Industry Insights</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/blog/announcements"><strong>Hub Announcements</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.latest') }}"><strong>Latest Posts</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.stories') }}"><strong>Startup Stories</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.tutorials') }}"><strong>Tech Tutorials</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.insights') }}"><strong>Industry Insights</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.announcements') }}"><strong>Hub Announcements</strong></a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2 fw-bold" href="/blog/subscribe">Subscribe</a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2 fw-bold" href="#">Subscribe</a></li>
                     </ul>
                 </li>
 
