@@ -176,11 +176,17 @@ $posts = [
     .placeholder-white::placeholder {
         color: rgba(255, 255, 255, 0.6);
     }
-    .w-fit-content {
-        width: fit-content;
+    .object-fit-cover {
+        object-fit: cover;
     }
     .bg-light {
         background-color: #f8fafc !important;
+    }
+    .hover-zoom {
+        transition: transform 0.5s ease;
+    }
+    .hover-lift:hover .hover-zoom {
+        transform: scale(1.08);
     }
 </style>
 
