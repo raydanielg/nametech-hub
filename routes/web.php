@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+    Route::get('/latest', [BlogController::class, 'latest'])->name('latest');
+    Route::get('/startup-stories', [BlogController::class, 'stories'])->name('stories');
+    Route::get('/tutorials', [BlogController::class, 'tutorials'])->name('tutorials');
+    Route::get('/insights', [BlogController::class, 'insights'])->name('insights');
+    Route::get('/announcements', [BlogController::class, 'announcements'])->name('announcements');
+});
 
 Auth::routes();
 
