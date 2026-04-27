@@ -1,0 +1,261 @@
+NAMTECH-HUB SYSTEM FUNCTIONALITY WALKTHROUGH
+How the Entire System Looks & Works
+Document Version: 3.0 – End User Edition
+Purpose: To show exactly what users see and how everything functions
+Date: April 2026
+
+TABLE OF CONTENTS
+What Users See (UI Walkthrough by Role)
+
+How the System Functions (Behind the Scenes)
+
+Complete User Journeys (Step by Step)
+
+Cool Features & Smart Automations
+
+Notifications & Communication Flow
+
+Data Flow Diagram (Visual)
+
+System Reactions & Triggers
+
+PART 1: WHAT USERS SEE
+1.1 Landing Page (Public – Anyone Can See)
+A visitor who is not logged in sees:
+
+Section	What is Shown
+Hero Banner	"NAMTECH-HUB – Where Innovators Build the Future" with large background video of people coding, meeting, presenting
+What We Do	Two cards: Innovation Hub + Digital Innovation Studio
+Programs Preview	Launchpad, Scale, Academy – each with duration and price
+Success Stories	Photos and quotes from startups that graduated
+Upcoming Events	List of free workshops, demo days, hackathons
+Call to Action	"Join as Member" button	"Hire Studio" button	"Apply to Program" button
+Footer	Contact, social media, newsletter signup
+1.2 Dashboard View (After Login)
+A. Super Administrator Dashboard
+What the Super Admin sees when they log in:
+
+Panel	Content
+Top Bar	Date, notifications bell (red dot for alerts), profile picture
+Left Sidebar	Users, Hub, Studio, Finance, Reports, Settings
+Main Area – Stats Cards	Total members (478 online now), Total startups (34 active), Total studio clients (12), Revenue this month ($48,200)
+Chart Area	Revenue trend line (monthly), User growth bar chart
+Recent Activity Feed	"John joined Launchpad cohort 3", "Studio delivered FinTech app to Client X", "Invoice #102 paid"
+Alerts Panel	"Server backup completed", "3 pending user approvals", "Studio server at 78% capacity"
+B. Startup Founder Dashboard
+What a startup founder sees when they log in:
+
+Panel	Content
+Welcome Banner	"Welcome back, Sarah! Your milestone deadline is in 3 days"
+My Program Card	Shows: Launchpad Cohort 2 – Week 14/24 – 65% complete
+Milestone Tracker	Checklist with 5 items: [✓] Business model, [✓] MVP plan, [ ] Prototype, [ ] User testing, [ ] Demo deck
+Assigned Mentor	Photo, name, expertise, "Message Mentor" button
+Upcoming Sessions	"Mentor meeting: Friday 10 AM" – Join button (Zoom)
+Resource Library	Curated links: pitch deck templates, investor list, legal guides
+Community Feed	Other startups posting: "Looking for UI designer for collab"
+Quick Actions	"Request mentor", "Book desk", "Register for workshop"
+C. Studio Client Dashboard
+What a client (who hired the Studio) sees:
+
+Panel	Content
+Project Overview	Project name: "FinTech Payment App" – Status: In Development (60%)
+Timeline Gantt Chart	Visual bars showing: Research (done), Design (done), Development (in progress), Testing (pending), Launch (pending)
+Milestone Approval Panel	"Milestone 3: Backend API completed" – [Approve] [Request Changes] buttons
+Recent Deliverables	List: API documentation (PDF), Figma designs (link), Weekly report #4
+Team Assigned	Photos of 3 developers + 1 project manager – "Message Team" button
+Invoice Summary	Total contract: 
+45
+,
+000
+–
+P
+a
+i
+d
+:
+45,000–Paid:30,000 – Pending: $15,000 – [Pay Now]
+Support Ticket Panel	"Open a ticket" – recent tickets and statuses (Resolved, Pending)
+D. Developer/Designer Dashboard
+What a Studio developer sees:
+
+Panel	Content
+My Tasks Today	3 tasks: "Fix login bug (2 hrs)" – "Write API docs (1 hr)" – "Code review (30 min)"
+Sprint Board	Kanban columns: To Do (4), In Progress (2), Review (1), Done (5)
+Code Repository Link	Direct button: "Open GitHub repo" – branch name: "feature/payment-integration"
+Time Log	Timer: "Start working on task" – Logged hours this week: 28/40
+Team Chat	Slack/Discord embedded window
+E. Academy Student Dashboard
+What a student sees:
+
+Panel	Content
+My Courses	Card 1: "Full Stack Web Dev" – 45% complete – Resume button. Card 2: "UI/UX Fundamentals" – 80% complete
+Upcoming Live Class	"Today 3 PM: Building REST APIs" – Join button
+Assignments	"Todo App project – Due Friday" – Submit button
+Hackathon Card	"FinTech Hackathon – Register now! Prize: $2,000"
+Certificate Progress	"You have completed 2 out of 6 courses for Full Stack certificate"
+Job Board Preview	3 latest jobs: "Junior Dev at Bank X", "Intern at Startup Y"
+PART 2: HOW THE SYSTEM FUNCTIONS
+2.1 Behind-the-Scenes Flow – Every Major Action Triggers Something
+User Action	What System Does Automatically
+User signs up	→ Sends welcome email → Creates user record → Assigns default role (Guest) → Logs activity to audit trail
+Startup applies to Launchpad	→ Saves application → Notifies Programs Manager → Runs AI scoring → Adds to review queue
+Programs Manager approves startup	→ Changes role to "STARTUP" → Creates milestone checklist → Assigns mentor using matching algorithm → Sends acceptance email → Adds to cohort group → Opens access to resources
+Startup submits milestone	→ Stores submission with timestamp → Notifies mentor → Logs to progress report → Updates completion percentage
+Mentor approves milestone	→ Marks as complete → Unlocks next milestone → Updates dashboard display → Sends notification to startup
+Studio client requests a quote	→ Logs lead in CRM → Assigns sales rep → Sends auto-responder email → Creates timeline estimate
+Client approves milestone	→ Triggers invoice generation → Sends payment reminder → Updates project status → Notifies project manager
+Developer completes task	→ Moves task to "Done" → Logs hours automatically → Updates sprint progress → Triggers code review request
+System detects low server capacity	→ Auto-scales Kubernetes pods → Sends alert to admin → Logs to monitoring dashboard
+Academy student completes course	→ Generates certificate (PDF) → Updates student transcript → Sends congrats email → Adds to alumni database → Notifies job board of new graduate
+2.2 Smart Automations (Cool Features)
+Automation Name	What It Does	When It Triggers
+Mentor Matching AI	Automatically recommends best mentors based on startup industry, stage, and needs	When startup is accepted to program
+Invoice Reminder	Sends 3 reminders: 7 days before due, 3 days before, day of due + late fee warning	7 days before invoice due date
+Talent Pipeline Sync	Automatically adds Academy graduates to Studio junior developer pool for consideration	Immediately when student completes final course
+Idea Submission to Studio	Startup ideas with high AI score are sent to Studio Director for potential commercialization	When startup submits "Idea for Studio" form
+Revenue Split Engine	Automatically transfers 15% of Studio invoice to Hub subsidy fund	When Studio invoice is marked "Paid"
+Expiring Membership Alert	Sends 30, 14, 7, and 1 day notices before membership expires	Daily cron job at 6 AM
+Demo Day Pitch Tester	AI analyzes uploaded pitch deck and gives score + suggestions	When startup uploads pitch deck for review
+Client NPS Survey	Sends satisfaction survey automatically	7 days after project completion
+PART 3: COMPLETE USER JOURNEYS (Step by Step)
+Journey 1: A Student Joins Academy, Graduates, Gets Hired
+Step	User Action	System Response	What User Sees
+1	Student visits website	Shows Landing Page	"Join Academy" button
+2	Clicks "Join Academy"	Opens registration form	Form asking: name, email, interest area
+3	Submits form	Sends verification email, creates account	"Check your email to verify"
+4	Verifies email	Redirects to payment page	"Choose course – $299"
+5	Pays via Stripe	Enrolls student, opens dashboard	Dashboard with course content
+6	Watches videos, takes quizzes	Saves progress automatically	Green checkmarks on completed lessons
+7	Completes final project	Submits for peer review	"Project submitted" confirmation
+8	Peer review done	Grades calculated, certificate generated	PDF certificate to download
+9	System sees course completed	Adds student to talent pool, notifies Studio	Email: "You are now in our talent database"
+10	Studio needs junior dev	Searches talent pool, finds student	Studio director receives match notification
+11	Student invited for interview	Sends calendar link	Email: "Interview invitation"
+12	Student hired	Updates role to "DEV" in system	Dashboard changes to developer view
+Journey 2: A Startup Goes Through Full Incubation
+Step	User Action	System Response	What User Sees
+1	Startup founder applies to Launchpad	Saves to database, AI scores application	"Application received. We'll respond in 5 days."
+2	Programs Manager reviews	Approved status changed, cohort assigned	"Congratulations! You're accepted to Cohort 3"
+3	Founder completes onboarding	System creates milestone plan	6-month timeline with 12 milestones
+4	Mentor matched via AI	Sends intro email, opens chat	"Your mentor is John (expert in FinTech)"
+5	Founder attends weekly sessions	System logs attendance, updates progress	"You have attended 4/8 sessions"
+6	Submits MVP prototype	Notifies mentor for review	Status: "Pending review"
+7	Mentor approves milestone	Unlocks next milestone, increases progress to 50%	"Great job! Next: User testing"
+8	Completes all milestones	Marks program complete, issues graduation badge	"You graduated Launchpad! Apply for Scale now"
+9	Founder applies to Scale	AI runs growth metrics check	"Eligible: Yes (revenue $8k MRR)"
+10	Accepted to Scale	Gain access to investor network	Investor CRM, pitch coach, fundraising tools
+11	Raises $500k from investor	Updates fundraising tracker, notifies community	"Celebration announcement on homepage"
+Journey 3: A Client Hires the Studio for a Custom App
+Step	User Action	System Response	What User Sees
+1	Client clicks "Hire Studio"	Opens lead form	Form: name, company, project description
+2	Submits form	Creates lead in CRM, assigns sales rep	"We'll contact you within 24 hours"
+3	Sales rep sends proposal	Generates PDF proposal, sends via email	Proposal with timeline, cost, team
+4	Client signs contract	Creates project in system, assigns team	Dashboard created, welcome email
+5	Project Manager adds milestones	Sprints created in Jira (integrated)	Gantt chart visible to client
+6	Developers start work	Daily commits to GitHub	Client sees "Development: 15% complete"
+7	Milestone 1 completed	Notification sent to client	"Milestone 1 ready for approval"
+8	Client approves	Triggers invoice for milestone payment	"Invoice #101: $10,000 due in 14 days"
+9	Client pays	Revenue split engine transfers 15% to Hub	Receipt generated, project continues
+10	All milestones approved	Project marked complete, final delivery	"Project completed! Please take survey"
+11	Client takes NPS survey	Score stored, testimonial requested	"Thank you for your feedback"
+PART 4: COOL FEATURES EXPLAINED
+Feature 1: AI Mentor Matching
+Question	Answer
+What does it do?	Automatically finds the best mentor for each startup based on industry, stage, and specific needs
+How does it work?	Uses collaborative filtering (like Netflix recommendations) – compares startup profile with successful past matches
+What user sees?	When startup is accepted, they see: "Your mentor: Jane Doe – FinTech Expert – Match score: 94%"
+Behind the scenes	System analyzes: industry, funding stage, team size, requested expertise areas → finds mentors with highest compatibility
+Feature 2: Live Revenue Split Engine
+Question	Answer
+What does it do?	Automatically transfers a percentage of Studio income to Hub operations fund
+How does it work?	When Studio invoice is marked "Paid" in Stripe, webhook triggers API call to transfer 15% to Hub account
+What user sees?	Hub Director sees revenue increase in Hub dashboard; Studio Director sees normal transaction
+Behind the scenes	Stripe webhook → API validation → Transfer to Hub sub-account → Log transaction → Update both dashboards
+Feature 3: Smart Milestone Tracker
+Question	Answer
+What does it do?	Tracks startup progress and automatically suggests next steps
+How does it work?	If milestone is late by 7 days, system sends alert to both startup and mentor
+What user sees?	Startup sees: "⚠️ Your business model canvas is 5 days overdue" with red warning
+Behind the scenes	Daily cron job checks due dates → Compares with submissions → Sends email/SMS alerts
+Feature 4: Talent Pool Auto-Sync
+Question	Answer
+What does it do?	Automatically adds Academy graduates to Studio's talent database for hiring
+How does it work?	When student completes last course, system creates developer profile and pushes to Studio's "Available Talent" list
+What user sees?	Student gets email: "You've been added to our talent pool. Studio may contact you for work."
+Behind the scenes	Course completion event → Triggers talent pipeline API → Creates/updates user role → Notifies Studio Director
+Feature 5: Demo Day Pitch Scorer
+Question	Answer
+What does it do?	Analyzes uploaded pitch deck and gives AI-generated score and feedback
+How does it work?	NLP analyzes slide content: problem statement, solution, market size, traction, team, financials
+What user sees?	"Your pitch scored 78/100. Missing: clear financial projection (slide 12). Suggested fix: add 3-year forecast"
+Behind the scenes	PDF upload → Text extraction → NLP analysis against 15 criteria → Score calculation → Feedback generation
+Feature 6: Automated Check-in/Check-out
+Question	Answer
+What does it do?	Tracks who is using the physical hub space
+How does it work?	User scans QR code at entrance using mobile app or receives RFID badge
+What user sees?	"Welcome to NAMTECH-HUB. Desk 23 assigned. Your guest wifi password: HUB2026"
+Behind the scenes	QR scan → API call → Log entry time → Assign available desk → Send push notification → Update occupancy dashboard
+PART 5: NOTIFICATIONS & COMMUNICATION FLOW
+What Triggers What Notification
+Trigger	Who Gets Notified	How	Message Example
+New user registers	Admin	Email, In-app	"New user: john@example.com needs approval"
+Milestone due in 3 days	Startup	Email, SMS, In-app	"Your prototype milestone is due Friday"
+Mentor assigned	Startup + Mentor	Email, In-app	"You've been matched with mentor Sarah"
+Invoice paid	Client + Finance	Email	"Payment received for invoice #102"
+Project milestone ready	Client	Email, In-app	"Milestone 3 is ready for your approval"
+Course completed	Student	Email, Certificate	"Congratulations! Download your certificate"
+New job posted	All Academy students	Email digest, In-app	"New job: Senior Developer at Tech Corp"
+Server issue	Admin only	SMS, Slack, Email	"ALERT: API response time > 2 seconds"
+Demo Day approaching	All startups	Email, In-app	"Demo Day in 7 days. Upload your deck by Friday"
+Membership expiring	Member	30/14/7/1 day emails	"Your membership expires in 30 days – renew now"
+PART 6: SYSTEM REACTIONS & TRIGGERS (Technical but Visual)
+How the System Reacts to Events – Visual Flow
+text
+[User clicks "Apply to Launchpad"]
+           │
+           ▼
+[System saves application to database]
+           │
+           ▼
+[System runs AI scoring algorithm] ───→ [Score saved to application record]
+           │
+           ▼
+[System notifies Programs Manager via email + dashboard alert]
+           │
+           ▼
+[Programs Manager logs in, reviews, clicks "Approve"]
+           │
+           ▼
+[System triggers 5 actions simultaneously]
+     ┌─────┼─────┬─────┬─────┐
+     ▼     ▼     ▼     ▼     ▼
+[Send   [Create [Assign [Update [Log to
+ email]  cohort] mentor] stats]  audit]
+     │     │     │     │     │
+     ▼     ▼     ▼     ▼     ▼
+[Startup [Startup [Mentor [Admin [Audit
+ gets     sees    gets    sees    trail
+ "Accepted" in    "New    +1      saved]
+ email]   cohort] mentee" startup]
+PART 7: SUMMARY – WHAT MAKES THIS SYSTEM POWERFUL
+Feature	Why It's Powerful
+One login, multiple roles	A person can be Student + Startup Founder + Studio Client with one account – roles switch seamlessly
+Real-time sync between Hub and Studio	When Academy graduates, Studio sees talent instantly. When Studio earns revenue, Hub gets funds automatically.
+AI-augmented decision making	Mentor matching, pitch scoring, applicant triage – all automated and smart
+Self-sustaining revenue loop	System doesn't just track money – it actively moves it from Studio to Hub for sustainability
+Mobile-first design	Works perfectly on phone – students can learn, founders can track milestones, clients can approve from anywhere
+Scalable to 5,000+ users	Kubernetes auto-scaling means system grows with your community
+Beautiful, intuitive UI	No training required – users understand immediately what to click
+FINAL NOTE
+This entire system is ready to be built.
+
+Every screen, every click, every automation, every notification has been designed.
+
+The user sees clean, simple, beautiful interfaces.
+
+The system functions with powerful automations and smart logic behind the scenes.
+
+This is NAMTECH-HUB Digital Operating System (NIDOS) – where innovation is not just managed, it is accelerated.
+
+Document Prepared By: NAMTECH-HUB Technical Team
+Status: Ready for development
