@@ -27,6 +27,7 @@
         "webpackbar": "^7.0.0"
     },
     "dependencies": {
+        "@heroicons/react": "^2.2.0",
         "animate.css": "^4.1.1",
         "aos": "^2.3.4"
     }
