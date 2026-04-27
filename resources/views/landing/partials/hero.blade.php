@@ -1,4 +1,4 @@
-<section class="hero-section position-relative overflow-hidden d-flex align-items-center py-5 py-lg-10" style="min-height: 85vh; background: #f9fafb;">
+<section class="hero-section position-relative overflow-hidden d-flex align-items-center py-5 py-lg-10" style="min-height: 85vh; background: #ffffff;">
     <!-- Animated Network Background -->
     <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 1;">
         <div id="hero-particles" class="w-100 h-100"></div>
@@ -10,7 +10,7 @@
                 <!-- Dynamic Announcement Badge -->
                 @if($announcement)
                 <div class="d-inline-flex align-items-center bg-white rounded-pill px-3 py-1 shadow-sm border mb-5 animate-fade-in" style="z-index: 20; position: relative;">
-                    <span class="badge bg-primary rounded-pill me-2 px-3 py-1" style="background-color: #1e40af !important;">{{ $announcement->badge_text }}</span>
+                    <span class="badge bg-success rounded-pill me-2 px-3 py-1" style="background-color: #10b981 !important;">{{ $announcement->badge_text }}</span>
                     <a href="{{ $announcement->url }}" class="text-dark text-decoration-none small fw-medium d-flex align-items-center">
                         {{ $announcement->content }} 
                         @if($announcement->link_text)
@@ -32,7 +32,7 @@
                 
                 <!-- Hero Actions -->
                 <div class="d-flex flex-wrap justify-content-center gap-3 animate-fade-up" style="animation-delay: 0.2s; position: relative; z-index: 20;">
-                    <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow-sm border-0 d-flex align-items-center gap-2" style="background-color: #1e40af;">
+                    <a href="{{ route('register') }}" class="btn btn-success btn-lg px-4 py-3 fw-bold shadow-sm border-0 d-flex align-items-center gap-2" style="background-color: #10b981;">
                         Learn more <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
                     </a>
                     <button class="btn btn-outline-dark btn-lg px-4 py-3 fw-bold bg-white d-flex align-items-center gap-2 border-opacity-10 btn-watch-video">
@@ -51,10 +51,10 @@
         border: 1px solid rgba(0,0,0,0.1);
     }
     .btn-watch-video:hover {
-        background-color: #1e40af !important;
+        background-color: #10b981 !important;
         color: white !important;
-        border-color: #1e40af !important;
-        box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.2);
+        border-color: #10b981 !important;
+        box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
         transform: translateY(-2px);
     }
     .btn-watch-video:hover .video-icon {
@@ -79,14 +79,14 @@
     particlesJS('hero-particles', {
         "particles": {
             "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#1e40af" },
+            "color": { "value": "#10b981" },
             "shape": { "type": "circle" },
             "opacity": { "value": 0.3, "random": true },
             "size": { "value": 2, "random": true },
             "line_linked": {
                 "enable": true,
                 "distance": 150,
-                "color": "#1e40af",
+                "color": "#10b981",
                 "opacity": 0.15,
                 "width": 1
             },
