@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
+Route::group(['prefix' => 'pricing', 'as' => 'pricing.'], function () {
+    Route::view('/membership', 'pricing.membership')->name('membership');
+    Route::view('/launchpad', 'pricing.launchpad')->name('launchpad');
+    Route::view('/scale', 'pricing.scale')->name('scale');
+    Route::view('/academy', 'pricing.academy')->name('academy');
+    Route::view('/studio', 'pricing.studio')->name('studio');
+    Route::view('/compare', 'pricing.compare')->name('compare');
+});
+
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
     Route::get('/latest', [BlogController::class, 'latest'])->name('latest');
     Route::get('/startup-stories', [BlogController::class, 'stories'])->name('stories');
