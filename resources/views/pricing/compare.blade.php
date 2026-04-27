@@ -98,6 +98,77 @@
 
                     <hr class="my-4">
 
+                    <h2 class="h5 fw-bold mb-3">ENTERPRISE PLANS</h2>
+                    <div class="text-muted mb-3">Custom Enterprise Pricing (No Public Pricing)</div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <h3 class="h6 fw-bold mb-3">Enterprises get custom quotes based on:</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Factor</th>
+                                            <th>Consideration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Number of employees trained</td><td>Volume discount</td></tr>
+                                        <tr><td>Number of hubs accessed</td><td>Multi-location pricing</td></tr>
+                                        <tr><td>Custom software development</td><td>Scope & timeline</td></tr>
+                                        <tr><td>Innovation-as-a-Service</td><td>Dedicated team size</td></tr>
+                                        <tr><td>Duration of contract</td><td>1, 2, or 3 years</td></tr>
+                                        <tr><td>Level of support required</td><td>Basic, Premium, 24/7</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <h3 class="h6 fw-bold mb-3">Typical Enterprise Package Ranges</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Package</th>
+                                            <th>Annual Investment</th>
+                                            <th>Includes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Corporate Training</td><td>$15,000–50,000</td><td>Upskilling programs for 20-100 employees</td></tr>
+                                        <tr><td>Innovation-as-a-Service</td><td>$60,000–180,000</td><td>Dedicated innovation team, startup scouting, internal incubator</td></tr>
+                                        <tr><td>Strategic Partnership</td><td>$30,000–100,000</td><td>Sponsorship + talent pipeline + co-innovation</td></tr>
+                                        <tr><td>Digital Transformation</td><td>$100,000–500,000+</td><td>Custom software + consulting + change management</td></tr>
+                                        <tr><td>White-Label Academy</td><td>$50,000–150,000</td><td>Custom-branded LMS for your company</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h3 class="h6 fw-bold mb-3 mt-4">Enterprise Benefits</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Benefit</th>
+                                            <th>Included</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Dedicated account manager</td><td>✅ Yes</td></tr>
+                                        <tr><td>Custom reporting dashboard</td><td>✅ Yes</td></tr>
+                                        <tr><td>Priority support (24/7)</td><td>✅ Yes (Premium plans)</td></tr>
+                                        <tr><td>On-site training available</td><td>✅ Yes (additional fee)</td></tr>
+                                        <tr><td>API access for integration</td><td>✅ Yes</td></tr>
+                                        <tr><td>Discount for multi-year contract</td><td>Up to 20% off</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
                     <h2 class="h5 fw-bold mb-3">PRICING FAQ (Quick Answers)</h2>
                     <div class="table-responsive">
                         <table class="table">
