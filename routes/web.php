@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,15 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
     Route::get('/tutorials', [BlogController::class, 'tutorials'])->name('tutorials');
     Route::get('/insights', [BlogController::class, 'insights'])->name('insights');
     Route::get('/announcements', [BlogController::class, 'announcements'])->name('announcements');
+});
+
+Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
+    Route::get('/about', [CompanyController::class, 'about'])->name('about');
+    Route::get('/leadership', [CompanyController::class, 'leadership'])->name('leadership');
+    Route::get('/partners', [CompanyController::class, 'partners'])->name('partners');
+    Route::get('/careers', [CompanyController::class, 'careers'])->name('careers');
+    Route::get('/contact', [CompanyController::class, 'contact'])->name('contact');
+    Route::get('/become-partner', [CompanyController::class, 'becomePartner'])->name('become-partner');
 });
 
 Auth::routes();
