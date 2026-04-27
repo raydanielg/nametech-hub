@@ -168,6 +168,15 @@ $posts = [
     .hover-bg-light:hover {
         background-color: #f8fafc;
     }
+    .hover-underline:hover {
+        text-decoration: underline !important;
+    }
+    .hover-scale {
+        transition: transform 0.3s ease;
+    }
+    .hover-scale:hover {
+        transform: scale(1.05);
+    }
     .breadcrumb-item + .breadcrumb-item::before {
         content: "›";
         font-size: 1.2rem;
