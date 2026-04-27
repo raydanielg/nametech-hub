@@ -32,6 +32,7 @@
                                 <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-1 small fw-bold mb-3 w-fit-content" style="width: fit-content;">Featured</span>
                                 <h2 class="card-title fw-bold mb-3">The Future of Innovation in Africa</h2>
                                 <p class="card-text text-muted flex-grow-1">How technology is reshaping the startup landscape across the continent and what it means for the next generation of founders.</p>
+                                <a href="{{ route('blog.show', ['blog' => 'the-future-of-innovation-in-africa']) }}" class="btn btn-success rounded-pill px-4 py-2 fw-bold mt-3 align-self-start hover-scale">Read Full Article →</a>
                                 <div class="d-flex align-items-center mt-4">
                                     <div class="rounded-circle bg-light d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-success"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -69,7 +70,7 @@ $posts = [
                                 <span class="text-success fw-bold small text-uppercase tracking-wider mb-2 d-block">{{ $category }}</span>
                                 <h4 class="card-title fw-bold mb-3">{{ $post['title'] }}</h4>
                                 <p class="card-text text-muted small">{{ $post['desc'] }}</p>
-                                <a href="#" class="btn btn-link text-success p-0 fw-bold text-decoration-none mt-3">Read More →</a>
+                                <a href="{{ route('blog.show', ['blog' => Str::slug($post['title'])]) }}" class="btn btn-link text-success p-0 fw-bold text-decoration-none mt-3 hover-underline">Read More →</a>
                             </div>
                         </div>
                     </div>
