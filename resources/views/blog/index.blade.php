@@ -17,14 +17,14 @@
                 </nav>
 
                 <h1 class="display-4 fw-bold text-dark mb-4">{{ $title }}</h1>
-                <p class="lead text-muted mb-5">Discover the latest stories, tutorials, and insights from the NAMTECH-HUB community.</p>
+                <p class="lead text-muted mb-5">Discover the latest stories, tutorials, and insights from our innovation community.</p>
 
                 <!-- Featured Post -->
                 <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
                     <div class="row g-0">
                         <div class="col-md-6">
-                            <div style="height: 100%; min-height: 250px; background: #e5e7eb; display: flex; align-items: center; justify-content: center;">
-                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-muted"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                            <div style="height: 100%; min-height: 250px; background: #e5e7eb;">
+                                <img src="{{ asset('sampelsimaes/close-up-man-repairing-computer-chips_23-2150881003.jpg') }}" alt="Featured Post" class="w-100 h-100 object-fit-cover">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -37,7 +37,7 @@
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-success"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                                     </div>
                                     <div class="small">
-                                        <div class="fw-bold text-dark">NAMTECH Team</div>
+                                        <div class="fw-bold text-dark">Editorial Team</div>
                                         <div class="text-muted">Oct 24, 2023 · 8 min read</div>
                                     </div>
                                 </div>
@@ -46,23 +46,34 @@
                     </div>
                 </div>
 
+@php
+$posts = [
+    ['img' => 'close-up-man-repairing-computer-chips.jpg', 'title' => 'Building a Scalable Business Model', 'desc' => 'Learn the key principles of creating a business that can grow sustainably in today\'s competitive market.'],
+    ['img' => 'man-wearing-vr-headset-outdoor-futuristic-technology_53876-105391.jpg', 'title' => 'The Future of VR Technology', 'desc' => 'Exploring how virtual reality is transforming industries from education to entertainment.'],
+    ['img' => 'photovoltaics-factory-engineer-using-vr-tech-build-models_482257-125969.jpg', 'title' => 'Green Tech Innovation', 'desc' => 'How renewable energy and smart manufacturing are shaping our sustainable future.'],
+    ['img' => 'solar-panels-factory-engineer-using-vr-headset-improve-solar-energy_482257-125987.jpg', 'title' => 'Solar Energy Breakthroughs', 'desc' => 'Latest advances in solar technology and their impact on clean energy adoption.'],
+    ['img' => 'technology-innovation-simulation-gadget-concept_53876-121153.jpg', 'title' => 'Smart Gadgets Revolution', 'desc' => 'A deep dive into the latest IoT devices and their everyday applications.'],
+    ['img' => 'close-up-man-repairing-computer-chips_23-2150881003.jpg', 'title' => 'Hardware Repair Essentials', 'desc' => 'Professional tips for maintaining and repairing modern computing devices.']
+];
+@endphp
+
                 <!-- Blog Posts Grid -->
                 <div class="row g-4">
-                    @for ($i = 1; $i <= 6; $i++)
+                    @foreach ($posts as $post)
                     <div class="col-md-6">
                         <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 hover-lift">
-                            <div style="height: 200px; background: #f3f4f6; display: flex; align-items: center; justify-content: center;">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-muted opacity-50"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                            <div style="height: 220px; overflow: hidden;">
+                                <img src="{{ asset('sampelsimaes/' . $post['img']) }}" alt="{{ $post['title'] }}" class="w-100 h-100 object-fit-cover hover-zoom">
                             </div>
                             <div class="card-body p-4">
                                 <span class="text-success fw-bold small text-uppercase tracking-wider mb-2 d-block">{{ $category }}</span>
-                                <h4 class="card-title fw-bold mb-3">Building a Scalable Business Model</h4>
-                                <p class="card-text text-muted small">Learn the key principles of creating a business that can grow sustainably in today's competitive market.</p>
+                                <h4 class="card-title fw-bold mb-3">{{ $post['title'] }}</h4>
+                                <p class="card-text text-muted small">{{ $post['desc'] }}</p>
                                 <a href="#" class="btn btn-link text-success p-0 fw-bold text-decoration-none mt-3">Read More →</a>
                             </div>
                         </div>
                     </div>
-                    @endfor
+                    @endforeach
                 </div>
 
                 <!-- Pagination -->
@@ -121,16 +132,20 @@
                     <div class="card border-0 shadow-sm rounded-4 p-4">
                         <h5 class="fw-bold mb-3">Recent Posts</h5>
                         <div class="d-flex mb-3">
-                            <div class="rounded-3 bg-light me-3" style="width: 60px; height: 60px; min-width: 60px;"></div>
+                            <div class="rounded-3 overflow-hidden me-3" style="width: 60px; height: 60px; min-width: 60px;">
+                                <img src="{{ asset('sampelsimaes/technology-innovation-simulation-gadget-concept_53876-121153.jpg') }}" alt="Recent" class="w-100 h-100 object-fit-cover">
+                            </div>
                             <div>
-                                <a href="#" class="text-decoration-none text-dark fw-bold small d-block mb-1">Top 10 Tools for Startups in 2024</a>
+                                <a href="#" class="text-decoration-none text-dark fw-bold small d-block mb-1">Top 10 Tools for Startups</a>
                                 <span class="text-muted extra-small" style="font-size: 0.7rem;">Oct 20, 2023</span>
                             </div>
                         </div>
                         <div class="d-flex">
-                            <div class="rounded-3 bg-light me-3" style="width: 60px; height: 60px; min-width: 60px;"></div>
+                            <div class="rounded-3 overflow-hidden me-3" style="width: 60px; height: 60px; min-width: 60px;">
+                                <img src="{{ asset('sampelsimaes/man-wearing-vr-headset-outdoor-futuristic-technology_53876-105391.jpg') }}" alt="Recent" class="w-100 h-100 object-fit-cover">
+                            </div>
                             <div>
-                                <a href="#" class="text-decoration-none text-dark fw-bold small d-block mb-1">Mastering React Hooks</a>
+                                <a href="#" class="text-decoration-none text-dark fw-bold small d-block mb-1">VR in Modern Business</a>
                                 <span class="text-muted extra-small" style="font-size: 0.7rem;">Oct 18, 2023</span>
                             </div>
                         </div>
