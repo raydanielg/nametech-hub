@@ -142,13 +142,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Company</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3 dropdown-menu-end">
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/company/about"><strong>About Us</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/company/leadership"><strong>Leadership Team</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/company/partners"><strong>Our Partners</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/company/careers"><strong>Careers</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/company/contact"><strong>Contact Us</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.about') }}"><strong>About Us</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.leadership') }}"><strong>Leadership Team</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.partners') }}"><strong>Our Partners</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.careers') }}"><strong>Careers</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.contact') }}"><strong>Contact Us</strong></a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2 fw-bold" href="/company/become-partner">Become a Partner</a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2 fw-bold" href="{{ route('company.become-partner') }}">Become a Partner</a></li>
                     </ul>
                 </li>
             </ul>
