@@ -9,33 +9,8 @@
     
     @include('landing.partials.how-it-works')
     
-    <!-- Placeholder for Success Stories -->
-    <section class="success-stories py-5 py-lg-10 bg-white">
-        <div class="container text-center">
-            <h2 class="display-5 fw-bold mb-5">Success Stories</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="p-4 border rounded-4 bg-light">
-                        <h4 class="fw-bold">FinTech App</h4>
-                        <p class="text-muted">Scaled from 0 to 10k users via Launchpad.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 border rounded-4 bg-light">
-                        <h4 class="fw-bold">HealthTech</h4>
-                        <p class="text-muted">Developed proprietary AI diagnostic tools in Studio.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 border rounded-4 bg-light">
-                        <h4 class="fw-bold">EduConnect</h4>
-                        <p class="text-muted">Founded by top Academy graduates.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    @include('landing\partials\testimonials')
+    
     @include('landing.partials.footer')
 
     <!-- Floating Buttons -->
