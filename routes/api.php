@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,21 @@ Route::get('/search', function (Request $request) {
 
     return response()->json(['results' => array_values($results)]);
 });
+
+// Products API Routes
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{slug}', [ProductController::class, 'show']);
+Route::get('/products/category/{category}', [ProductController::class, 'byCategory']);
+Route::get('/products/search', [ProductController::class, 'search']);
+Route::get('/products/comparison', [ProductController::class, 'comparison']);
+Route::get('/products/pricing-calculator', [ProductController::class, 'pricingCalculator']);
+Route::get('/products/faqs/{slug?}', [ProductController::class, 'faqs']);
+
+// Academy Courses
+Route::get('/academy/courses', [ProductController::class, 'academyCourses']);
+
+// Digital Studio Projects
+Route::get('/digital-studio/projects', [ProductController::class, 'digitalStudioProjects']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
