@@ -1,4 +1,4 @@
-<footer class="footer-section bg-dark text-white">
+<footer class="footer-section bg-dark text-white animate__animated animate__fadeInUp">
     {{-- Main Footer Content - 6 Columns --}}
     <div class="container py-5 py-lg-6">
         <div class="row g-4 g-lg-5">
@@ -6,10 +6,10 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <h6 class="text-uppercase fw-bold small mb-3 mb-lg-4 tracking-wider">Brand</h6>
                 <ul class="list-unstyled d-flex flex-column gap-2 text-white-50 small">
-                    <li><a href="{{ route('landing') }}" class="text-reset text-decoration-none hover-text-white">Home</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Social Media</a></li>
-                    <li><a href="{{ route('company.contact') }}" class="text-reset text-decoration-none hover-text-white">Contact</a></li>
-                    <li><a href="#newsletter" class="text-reset text-decoration-none hover-text-white">Newsletter</a></li>
+                    <li><a href="{{ route('landing') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">Home</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Social Media</a></li>
+                    <li><a href="{{ route('company.contact') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">Contact</a></li>
+                    <li><a href="#newsletter" class="text-reset text-decoration-none hover-text-white footer-menu-link">Newsletter</a></li>
                 </ul>
             </div>
 
@@ -17,11 +17,11 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <h6 class="text-uppercase fw-bold small mb-3 mb-lg-4 tracking-wider">Products</h6>
                 <ul class="list-unstyled d-flex flex-column gap-2 text-white-50 small">
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Academy</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Launchpad</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Scale</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Studio</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">SaaS</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Academy</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Launchpad</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Scale</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Studio</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">SaaS</a></li>
                 </ul>
             </div>
 
@@ -29,11 +29,11 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <h6 class="text-uppercase fw-bold small mb-3 mb-lg-4 tracking-wider">Resources</h6>
                 <ul class="list-unstyled d-flex flex-column gap-2 text-white-50 small">
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Library</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Toolkit</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Webinars</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Events</a></li>
-                    <li><a href="{{ route('blog.latest') }}" class="text-reset text-decoration-none hover-text-white">Blog</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Library</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Toolkit</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Webinars</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Events</a></li>
+                    <li><a href="{{ route('blog.latest') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">Blog</a></li>
                 </ul>
             </div>
 
@@ -41,11 +41,11 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <h6 class="text-uppercase fw-bold small mb-3 mb-lg-4 tracking-wider">Company</h6>
                 <ul class="list-unstyled d-flex flex-column gap-2 text-white-50 small">
-                    <li><a href="{{ route('company.about') }}" class="text-reset text-decoration-none hover-text-white">About Us</a></li>
-                    <li><a href="{{ route('company.leadership') }}" class="text-reset text-decoration-none hover-text-white">Leadership</a></li>
-                    <li><a href="{{ route('company.careers') }}" class="text-reset text-decoration-none hover-text-white">Careers</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Press</a></li>
-                    <li><a href="{{ route('company.partners') }}" class="text-reset text-decoration-none hover-text-white">Partners</a></li>
+                    <li><a href="{{ route('company.about') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">About Us</a></li>
+                    <li><a href="{{ route('company.leadership') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">Leadership</a></li>
+                    <li><a href="{{ route('company.careers') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">Careers</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Press</a></li>
+                    <li><a href="{{ route('company.partners') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">Partners</a></li>
                 </ul>
             </div>
 
@@ -53,11 +53,11 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <h6 class="text-uppercase fw-bold small mb-3 mb-lg-4 tracking-wider">Support</h6>
                 <ul class="list-unstyled d-flex flex-column gap-2 text-white-50 small">
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Help Center</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">FAQ</a></li>
-                    <li><a href="{{ route('company.contact') }}" class="text-reset text-decoration-none hover-text-white">Contact Form</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Ticket</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Status</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Help Center</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">FAQ</a></li>
+                    <li><a href="{{ route('company.contact') }}" class="text-reset text-decoration-none hover-text-white footer-menu-link">Contact Form</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Ticket</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Status</a></li>
                 </ul>
             </div>
 
@@ -65,11 +65,11 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <h6 class="text-uppercase fw-bold small mb-3 mb-lg-4 tracking-wider">Legal</h6>
                 <ul class="list-unstyled d-flex flex-column gap-2 text-white-50 small">
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Terms</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Privacy</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Cookies</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">Disclaimer</a></li>
-                    <li><a href="#" class="text-reset text-decoration-none hover-text-white">GDPR</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Terms</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Privacy</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Cookies</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">Disclaimer</a></li>
+                    <li><a href="#" class="text-reset text-decoration-none hover-text-white footer-menu-link">GDPR</a></li>
                 </ul>
             </div>
         </div>
@@ -136,7 +136,7 @@
 
                 {{-- Built With --}}
                 <div class="col-md-6 col-lg-3 text-lg-end">
-                    <span class="text-white-50 small">Built with <span class="text-danger">♥</span> in Africa</span>
+                    <span class="text-white-50 small">Powered by NAMTECH-HUB</span>
                 </div>
             </div>
         </div>
@@ -147,6 +147,15 @@
     .hover-text-white:hover { 
         color: white !important; 
         transition: color 0.2s ease; 
+    }
+    .footer-menu-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .footer-menu-link::before {
+        content: ">";
+        color: rgba(255, 255, 255, 0.35);
     }
     .footer-newsletter .form-control:focus {
         background-color: #212529;
