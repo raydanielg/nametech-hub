@@ -61,15 +61,15 @@
 
                 <!-- ENTERPRISE -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Enterprise</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Enterprise <span class="badge bg-success bg-opacity-10 text-success ms-1" style="font-size: 0.65rem;">VZR</span></a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/training"><strong>Corporate Training</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/digital-transformation"><strong>Digital Transformation</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/innovation-as-service"><strong>Innovation as a Service</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/startup-partnership"><strong>Startup Partnership</strong></a></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/case-studies"><strong>Case Studies</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#training"><strong>Corporate Training</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#digital-transformation"><strong>Digital Transformation</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#innovation-as-service"><strong>Innovation as a Service</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#startup-partnership"><strong>Startup Partnership</strong></a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#case-studies"><strong>Case Studies</strong></a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item py-2 px-3 rounded-2 text-success fw-bold" href="/enterprise/demo">Request a Demo</a></li>
+                        <li><a class="dropdown-item py-2 px-3 rounded-2 text-success fw-bold" href="/enterprise/solutions#request-demo">Request a Demo</a></li>
                     </ul>
                 </li>
 
@@ -204,17 +204,18 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#m-enterprise">
-                        Enterprise
+                        Enterprise <span class="badge bg-success bg-opacity-10 text-success ms-2" style="font-size: 0.65rem;">VZR</span>
                     </button>
                 </h2>
                 <div id="m-enterprise" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
                     <div class="accordion-body p-0">
                         <ul class="list-group list-group-flush small">
-                            <a href="/enterprise/training" class="list-group-item list-group-item-action py-3 px-4">• Corporate Training</a>
-                            <a href="/enterprise/digital-transformation" class="list-group-item list-group-item-action py-3 px-4">• Digital Transformation</a>
-                            <a href="/enterprise/innovation-as-service" class="list-group-item list-group-item-action py-3 px-4">• Innovation as a Service</a>
-                            <a href="/enterprise/startup-partnership" class="list-group-item list-group-item-action py-3 px-4">• Startup Partnership</a>
-                            <a href="/enterprise/case-studies" class="list-group-item list-group-item-action py-3 px-4">• Case Studies</a>
+                            <a href="/enterprise/solutions#training" class="list-group-item list-group-item-action py-3 px-4">• Corporate Training</a>
+                            <a href="/enterprise/solutions#digital-transformation" class="list-group-item list-group-item-action py-3 px-4">• Digital Transformation</a>
+                            <a href="/enterprise/solutions#innovation-as-service" class="list-group-item list-group-item-action py-3 px-4">• Innovation as a Service</a>
+                            <a href="/enterprise/solutions#startup-partnership" class="list-group-item list-group-item-action py-3 px-4">• Startup Partnership</a>
+                            <a href="/enterprise/solutions#case-studies" class="list-group-item list-group-item-action py-3 px-4">• Case Studies</a>
+                            <a href="/enterprise/solutions#request-demo" class="list-group-item list-group-item-action py-3 px-4 fw-bold text-success">• Request a Demo</a>
                         </ul>
                     </div>
                 </div>
