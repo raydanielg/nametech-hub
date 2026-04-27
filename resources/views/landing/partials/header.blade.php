@@ -61,7 +61,7 @@
 
                 <!-- ENTERPRISE -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Enterprise <span class="badge bg-success bg-opacity-10 text-success ms-1" style="font-size: 0.65rem;">VZR</span></a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Enterprise </a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#training"><strong>Corporate Training</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#digital-transformation"><strong>Digital Transformation</strong></a></li>
