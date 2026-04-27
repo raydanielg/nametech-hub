@@ -24,6 +24,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
     Route::get('/tutorials', [BlogController::class, 'tutorials'])->name('tutorials');
     Route::get('/insights', [BlogController::class, 'insights'])->name('insights');
     Route::get('/announcements', [BlogController::class, 'announcements'])->name('announcements');
+    Route::get('/{blog:slug}', [BlogController::class, 'show'])->name('show');
 });
 
 Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
