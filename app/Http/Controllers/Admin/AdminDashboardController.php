@@ -85,8 +85,25 @@ class AdminDashboardController extends Controller
     }
 
     // HUB MANAGEMENT
-    public function memberships() { return view('admin.hub.memberships'); }
-    public function members() { return view('admin.hub.members'); }
+    public function memberships() 
+    { 
+        $memberships = \App\Models\Membership::with('user')->latest()->paginate(10);
+        $stats = [
+            'total' => \App\Models\Membership::count(),
+            'active' => \App\Models\Membership::where('status', 'active')->count(),
+            'expiring_soon' => \App\Models\Membership::where('end_date', '<=', now()->addDays(30))->where('status', 'active')->count(),
+        ];
+        return view('admin.hub.memberships', compact('memberships', 'stats')); 
+    }
+    
+    public function members() 
+    { 
+        $members = User::whereHas('roles', function($q) {
+            $q->whereIn('name', ['hub_director', 'mentor', 'startup_founder', 'student']);
+        })->with('roles')->latest()->paginate(10);
+        return view('admin.hub.members', compact('members')); 
+    }
+    
     public function coworking() { return view('admin.hub.coworking'); }
     public function meetingRooms() { return view('admin.hub.meeting-rooms'); }
     public function hubSettings() { return view('admin.hub.settings'); }
