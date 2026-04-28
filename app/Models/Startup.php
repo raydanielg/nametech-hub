@@ -17,6 +17,7 @@ class Startup extends Model
         'name',
         'slug',
         'description',
+        'founder_id',
         'primary_contact_user_id',
         'cohort_id',
         'industry',

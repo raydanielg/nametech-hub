@@ -28,6 +28,7 @@ class StartupSeeder extends Seeder
                 'name' => 'TechNova Solutions',
                 'slug' => Str::slug('TechNova Solutions'),
                 'description' => 'AI-powered supply chain optimization for African retailers.',
+                'founder_id' => $founder->id,
                 'primary_contact_user_id' => $founder->id,
                 'cohort_id' => $cohort->id ?? null,
                 'industry' => 'Fintech',
