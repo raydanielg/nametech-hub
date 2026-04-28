@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -48,21 +50,71 @@ class AdminDashboardController extends Controller
 
     public function health(): JsonResponse
     {
+        $payload = $this->buildSystemHealthPayload();
+
+        return response()->json($payload);
+    }
+
+    public function systemStatusData(): JsonResponse
+    {
+        return response()->json($this->buildSystemHealthPayload());
+    }
+
+    private function buildSystemHealthPayload(): array
+    {
         $checks = [
             'database' => true,
+            'cache' => true,
+            'storage' => true,
         ];
 
         try {
-            User::query()->limit(1)->count();
+            DB::select('select 1');
         } catch (\Throwable $e) {
             $checks['database'] = false;
         }
 
-        return response()->json([
-            'status' => $checks['database'] ? 'ok' : 'degraded',
+        try {
+            $key = 'healthcheck:' . uniqid('', true);
+            Cache::put($key, 'ok', 10);
+            $checks['cache'] = Cache::get($key) === 'ok';
+        } catch (\Throwable $e) {
+            $checks['cache'] = false;
+        }
+
+        try {
+            $checks['storage'] = is_writable(storage_path());
+        } catch (\Throwable $e) {
+            $checks['storage'] = false;
+        }
+
+        $status = collect($checks)->every(fn ($v) => $v === true) ? 'ok' : 'degraded';
+
+        $diskFree = null;
+        $diskTotal = null;
+        try {
+            $diskFree = @disk_free_space(base_path());
+            $diskTotal = @disk_total_space(base_path());
+        } catch (\Throwable $e) {
+        }
+
+        return [
+            'status' => $status,
             'checks' => $checks,
+            'meta' => [
+                'app_env' => (string) config('app.env'),
+                'app_debug' => (bool) config('app.debug'),
+                'php_version' => PHP_VERSION,
+                'laravel_version' => app()->version(),
+                'cache_driver' => (string) config('cache.default'),
+                'queue_connection' => (string) config('queue.default'),
+                'mail_driver' => (string) config('mail.default'),
+                'memory_usage_mb' => round(memory_get_usage(true) / 1024 / 1024, 1),
+                'disk_free_gb' => $diskFree ? round($diskFree / 1024 / 1024 / 1024, 2) : null,
+                'disk_total_gb' => $diskTotal ? round($diskTotal / 1024 / 1024 / 1024, 2) : null,
+            ],
             'generated_at' => now()->toIso8601String(),
-        ]);
+        ];
     }
 
     private function buildDashboardStats(): array

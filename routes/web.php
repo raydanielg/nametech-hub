@@ -161,6 +161,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/system/audit-logs', [App\Http\Controllers\Admin\AdminDashboardController::class, 'auditLogs'])->name('system.audit-logs');
         Route::get('/system/backup', [App\Http\Controllers\Admin\AdminDashboardController::class, 'backup'])->name('system.backup');
         Route::get('/system/status', [App\Http\Controllers\Admin\AdminDashboardController::class, 'systemStatus'])->name('system.status');
+        Route::get('/system/status/data', [App\Http\Controllers\Admin\AdminDashboardController::class, 'systemStatusData'])->name('system.status.data');
     });
 
     // Hub Director Routes
