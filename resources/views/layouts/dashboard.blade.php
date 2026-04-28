@@ -43,23 +43,26 @@
             </div>
             
             <div class="flex items-center space-x-6">
-                <button class="text-gray-400 hover:text-emerald-600 transition relative">
+                <!-- Notifications -->
+                <button class="text-gray-400 hover:text-emerald-600 transition relative p-2 hover:bg-emerald-50 rounded-xl">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 01-6 0v-1m6 0H9"></path></svg>
-                    <span class="absolute top-0 right-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 border-2 border-white"></span>
+                    <span class="absolute top-2 right-2 block h-2.5 w-2.5 rounded-full bg-emerald-500 border-2 border-white"></span>
                 </button>
                 
+                <!-- User Profile Dropdown -->
                 <div class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="flex items-center space-x-3 focus:outline-none group p-1 rounded-full hover:bg-gray-50 transition-colors">
+                    <button @click="open = !open" class="flex items-center space-x-3 focus:outline-none group p-1.5 hover:bg-gray-50 rounded-2xl transition-all border border-transparent hover:border-gray-100">
                         <div class="text-right hidden sm:block">
-                            <p class="text-sm font-black text-gray-900 leading-none">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
-                            <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter mt-1">{{ str_replace('_', ' ', auth()->user()->roles->first()->name ?? 'User') }}</p>
+                            <p class="text-sm font-black text-gray-900 leading-none">Namtech Admin</p>
+                            <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter mt-1">Super Administrator</p>
                         </div>
                         <div class="relative">
-                            <img class="w-10 h-10 p-0.5 rounded-full ring-2 ring-emerald-500 group-hover:ring-emerald-600 transition-all object-cover" 
-                                 src="{{ auth()->user()->profile_picture_url ?? 'https://ui-avatars.com/api/?name='.auth()->user()->first_name.'+'.auth()->user()->last_name.'&background=10b981&color=fff&bold=true' }}" 
-                                 alt="{{ auth()->user()->first_name }}">
+                            <img class="w-10 h-10 p-0.5 rounded-full ring-2 ring-emerald-500 group-hover:ring-emerald-600 transition-all object-cover shadow-sm" 
+                                 src="https://ui-avatars.com/api/?name=Namtech+Admin&background=10b981&color=fff&bold=true" 
+                                 alt="Namtech Admin">
                             <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full shadow-sm"></div>
                         </div>
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-emerald-600 transition-transform duration-200" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
 
                     <!-- Dropdown -->
@@ -71,7 +74,8 @@
                          x-transition:leave="transition ease-in duration-75"
                          x-transition:leave-start="transform opacity-100 scale-100"
                          x-transition:leave-end="transform opacity-0 scale-95"
-                         class="absolute right-0 mt-3 w-64 bg-white rounded-[1.5rem] shadow-2xl border border-gray-100 py-3 z-50 overflow-hidden">
+                         class="absolute right-0 mt-3 w-64 bg-white rounded-[1.5rem] shadow-2xl border border-gray-100 py-3 z-50 overflow-hidden"
+                         style="display: none;">
                         
                         <div class="px-6 py-4 bg-gray-50/50 border-b border-gray-100 mb-2">
                             <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Signed in as</p>
