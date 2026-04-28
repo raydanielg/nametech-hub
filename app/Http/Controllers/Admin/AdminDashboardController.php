@@ -851,7 +851,240 @@ class AdminDashboardController extends Controller
         return view('admin.academy.certificates'); 
     }
 
-    public function academySettings() { return view('admin.academy.settings'); }
+    // ACADEMY COURSES
+    public function academyEditCourse($id)
+    {
+        $course = \App\Models\AcademyCourse::findOrFail($id);
+        return view('admin.academy.edit-course', compact('course'));
+    }
+    
+    public function academyUpdateCourse(Request $request, $id)
+    {
+        $course = \App\Models\AcademyCourse::findOrFail($id);
+        
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'duration' => 'required|string',
+            'price' => 'nullable|numeric|min:0',
+            'status' => 'required|in:active,inactive,draft',
+            'level' => 'required|in:beginner,intermediate,advanced',
+            'category' => 'nullable|string|max:255',
+            'instructor' => 'nullable|string|max:255',
+        ]);
+
+        $course->update($validated);
+
+        return redirect()->route('admin.academy.courses')->with('success', 'Course updated successfully.');
+    }
+    
+    public function academyDestroyCourse($id)
+    {
+        $course = \App\Models\AcademyCourse::findOrFail($id);
+        $course->delete();
+        
+        return redirect()->route('admin.academy.courses')->with('success', 'Course deleted successfully.');
+    }
+
+    // ACADEMY STUDENTS
+    public function academyAddStudent() 
+    { 
+        $courses = \App\Models\AcademyCourse::where('status', 'active')->get();
+        return view('admin.academy.add-student', compact('courses')); 
+    }
+    
+    public function academyStoreStudent(Request $request)
+    {
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'nullable|string|max:20',
+            'password' => 'required|string|min:8',
+            'courses' => 'nullable|array',
+            'courses.*' => 'exists:academy_courses,id',
+        ]);
+
+        $user = User::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'password' => \Illuminate\Support\Facades\Hash::make($validated['password']),
+            'status' => 'active',
+            'email_verified' => true,
+        ]);
+
+        $user->assignRole('student');
+
+        // Enroll in selected courses
+        if (!empty($validated['courses'])) {
+            foreach ($validated['courses'] as $courseId) {
+                \App\Models\Enrollment::create([
+                    'user_id' => $user->id,
+                    'academy_course_id' => $courseId,
+                    'status' => 'active',
+                    'enrolled_at' => now(),
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.academy.students')->with('success', 'Student added successfully.');
+    }
+    
+    public function academyEditStudent($id)
+    {
+        $student = User::whereHas('roles', function($q) {
+            $q->where('name', 'student');
+        })->with('enrollments.academyCourse')->findOrFail($id);
+        
+        return view('admin.academy.edit-student', compact('student'));
+    }
+    
+    public function academyUpdateStudent(Request $request, $id)
+    {
+        $student = User::findOrFail($id);
+        
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'phone' => 'nullable|string|max:20',
+            'status' => 'required|in:active,inactive,suspended',
+        ]);
+
+        $student->update($validated);
+
+        return redirect()->route('admin.academy.students')->with('success', 'Student updated successfully.');
+    }
+    
+    public function academyDestroyStudent($id)
+    {
+        $student = User::findOrFail($id);
+        $student->delete();
+        
+        return redirect()->route('admin.academy.students')->with('success', 'Student deleted successfully.');
+    }
+
+    // ACADEMY ENROLLMENTS
+    public function academyStoreEnrollment(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'academy_course_id' => 'required|exists:academy_courses,id',
+            'status' => 'required|in:active,completed,dropped,suspended',
+        ]);
+
+        // Check if already enrolled
+        $existing = \App\Models\Enrollment::where('user_id', $validated['user_id'])
+            ->where('academy_course_id', $validated['academy_course_id'])
+            ->first();
+
+        if ($existing) {
+            return back()->with('error', 'Student is already enrolled in this course.');
+        }
+
+        \App\Models\Enrollment::create([
+            'user_id' => $validated['user_id'],
+            'academy_course_id' => $validated['academy_course_id'],
+            'status' => $validated['status'],
+            'enrolled_at' => now(),
+        ]);
+
+        return redirect()->route('admin.academy.enrollments')->with('success', 'Enrollment created successfully.');
+    }
+    
+    public function academyUpdateEnrollment(Request $request, $id)
+    {
+        $enrollment = \App\Models\Enrollment::findOrFail($id);
+        
+        $validated = $request->validate([
+            'status' => 'required|in:active,completed,dropped,suspended',
+            'progress' => 'nullable|integer|min:0|max:100',
+            'completed_at' => 'nullable|date',
+        ]);
+
+        $enrollment->update($validated);
+
+        return redirect()->route('admin.academy.enrollments')->with('success', 'Enrollment updated successfully.');
+    }
+    
+    public function academyDestroyEnrollment($id)
+    {
+        $enrollment = \App\Models\Enrollment::findOrFail($id);
+        $enrollment->delete();
+        
+        return redirect()->route('admin.academy.enrollments')->with('success', 'Enrollment deleted successfully.');
+    }
+
+    // ACADEMY CERTIFICATES
+    public function academyStoreCertificate(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'academy_course_id' => 'required|exists:academy_courses,id',
+            'certificate_number' => 'required|string|max:255|unique:certificates',
+            'issued_at' => 'required|date',
+            'status' => 'required|in:issued,revoked,expired',
+        ]);
+
+        \App\Models\Certificate::create($validated);
+
+        return redirect()->route('admin.academy.certificates')->with('success', 'Certificate issued successfully.');
+    }
+    
+    public function academyDownloadCertificate($id)
+    {
+        $certificate = \App\Models\Certificate::with(['user', 'academyCourse'])->findOrFail($id);
+        
+        // Generate PDF certificate (simplified logic)
+        return response()->download(storage_path("certificates/{$certificate->certificate_number}.pdf"));
+    }
+    
+    public function academyDestroyCertificate($id)
+    {
+        $certificate = \App\Models\Certificate::findOrFail($id);
+        $certificate->delete();
+        
+        return redirect()->route('admin.academy.certificates')->with('success', 'Certificate deleted successfully.');
+    }
+
+    // ACADEMY SETTINGS
+    public function academySettings() 
+    { 
+        $settings = [
+            'academy_name' => Setting::get('academy_name', 'Namtech Academy'),
+            'academy_email' => Setting::get('academy_email', 'academy@namtech-hub.com'),
+            'academy_phone' => Setting::get('academy_phone', '+255 712 345 678'),
+            'academy_address' => Setting::get('academy_address', 'Dar es Salaam, Tanzania'),
+            'default_course_price' => Setting::get('academy_default_course_price', 99),
+            'certificate_template' => Setting::get('academy_certificate_template', 'default'),
+            'auto_certificate' => Setting::get('academy_auto_certificate', false),
+            'enrollment_approval' => Setting::get('academy_enrollment_approval', false),
+        ];
+        return view('admin.academy.settings', compact('settings')); 
+    }
+    
+    public function academyStoreSettings(Request $request)
+    {
+        $validated = $request->validate([
+            'academy_name' => 'required|string|max:255',
+            'academy_email' => 'required|email',
+            'academy_phone' => 'required|string|max:20',
+            'academy_address' => 'required|string',
+            'default_course_price' => 'required|numeric|min:0',
+            'certificate_template' => 'required|string|max:255',
+            'auto_certificate' => 'nullable|boolean',
+            'enrollment_approval' => 'nullable|boolean',
+        ]);
+
+        foreach ($validated as $key => $value) {
+            Setting::set($key, $value);
+        }
+
+        return redirect()->route('admin.academy.settings')->with('success', 'Academy settings updated successfully.');
+    }
 
     // FINANCE
     public function financeInvoices() 

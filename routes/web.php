@@ -143,10 +143,29 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/academy/courses', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyCourses'])->name('academy.courses');
         Route::get('/academy/courses/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyAddCourse'])->name('academy.courses.add');
         Route::post('/academy/courses/store', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStoreCourse'])->name('academy.courses.store');
+        Route::get('/academy/courses/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyEditCourse'])->name('academy.courses.edit');
+        Route::put('/academy/courses/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyUpdateCourse'])->name('academy.courses.update');
+        Route::delete('/academy/courses/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyDestroyCourse'])->name('academy.courses.destroy');
+        
         Route::get('/academy/students', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStudents'])->name('academy.students');
+        Route::get('/academy/students/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyAddStudent'])->name('academy.students.add');
+        Route::post('/academy/students', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStoreStudent'])->name('academy.students.store');
+        Route::get('/academy/students/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyEditStudent'])->name('academy.students.edit');
+        Route::put('/academy/students/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyUpdateStudent'])->name('academy.students.update');
+        Route::delete('/academy/students/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyDestroyStudent'])->name('academy.students.destroy');
+        
         Route::get('/academy/enrollments', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyEnrollments'])->name('academy.enrollments');
+        Route::post('/academy/enrollments', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStoreEnrollment'])->name('academy.enrollments.store');
+        Route::put('/academy/enrollments/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyUpdateEnrollment'])->name('academy.enrollments.update');
+        Route::delete('/academy/enrollments/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyDestroyEnrollment'])->name('academy.enrollments.destroy');
+        
         Route::get('/academy/certificates', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyCertificates'])->name('academy.certificates');
+        Route::post('/academy/certificates', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStoreCertificate'])->name('academy.certificates.store');
+        Route::post('/academy/certificates/{id}/download', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyDownloadCertificate'])->name('academy.certificates.download');
+        Route::delete('/academy/certificates/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyDestroyCertificate'])->name('academy.certificates.destroy');
+        
         Route::get('/academy/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academySettings'])->name('academy.settings');
+        Route::post('/academy/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStoreSettings'])->name('academy.settings.store');
 
         // Finance
         Route::get('/finance/invoices', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeInvoices'])->name('finance.invoices');
