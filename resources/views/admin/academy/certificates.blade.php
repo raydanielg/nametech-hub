@@ -11,12 +11,19 @@
             <p class="text-sm text-gray-500 font-medium mt-1">Manage and issue completion certificates for courses</p>
         </div>
         <div class="flex gap-3">
-            <button class="px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-bold hover:bg-gray-800 transition-colors flex items-center gap-2">
+            <button onclick="document.getElementById('issueCertificateModal').classList.remove('hidden')" class="px-5 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-bold hover:bg-emerald-700 transition-colors flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                 Issue Certificate
             </button>
         </div>
     </div>
+
+    @if(session('success'))
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center space-x-3">
+            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span class="text-emerald-700 font-medium">{{ session('success') }}</span>
+        </div>
+    @endif
 
     <!-- Stats Row -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
