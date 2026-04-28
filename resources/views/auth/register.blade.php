@@ -64,7 +64,7 @@
                     <div class="form-check">
                         <input class="form-check-input mt-1" type="checkbox" name="terms" id="terms" required>
                         <label class="form-check-label text-muted small" for="terms">
-                            I agree to the <a href="#" class="text-muted text-decoration-underline">Terms of Service</a> and <a href="#" class="text-muted text-decoration-underline">Privacy Policy</a>
+                            I agree to the <a href="{{ route('terms') }}" target="_blank" class="text-muted text-decoration-underline">Terms of Service</a> and <a href="{{ route('privacy') }}" target="_blank" class="text-muted text-decoration-underline">Privacy Policy</a>
                         </label>
                     </div>
                 </div>

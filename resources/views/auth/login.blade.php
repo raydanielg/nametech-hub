@@ -82,6 +82,12 @@
                         Don't have an account? <a href="{{ route('register') }}" class="text-primary text-decoration-none fw-semibold">Sign up</a>
                     </p>
                 </form>
+
+                <div class="text-center mt-4 pt-3 border-top">
+                    <p class="small text-muted mb-2">
+                        By signing in, you agree to our <a href="{{ route('terms') }}" target="_blank" class="text-decoration-underline">Terms</a> and <a href="{{ route('privacy') }}" target="_blank" class="text-decoration-underline">Privacy Policy</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
