@@ -499,8 +499,303 @@ class AdminDashboardController extends Controller
         return view('admin.studio.developers', compact('developers')); 
     }
     
-    public function studioRepos() { return view('admin.studio.repos'); }
-    public function studioSettings() { return view('admin.studio.settings'); }
+    // STUDIO PROJECTS
+    public function addStudioProject() 
+    { 
+        $clients = \App\Models\StudioClient::all();
+        $developers = User::whereHas('roles', function($q) { $q->where('name', 'developer'); })->get();
+        return view('admin.studio.projects-add', compact('clients', 'developers')); 
+    }
+    
+    public function storeStudioProject(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'client_id' => 'required|exists:studio_clients,id',
+            'developers' => 'nullable|array',
+            'developers.*' => 'exists:users,id',
+            'status' => 'required|in:planning,active,completed,paused,cancelled',
+            'priority' => 'required|in:low,medium,high,urgent',
+            'budget' => 'nullable|numeric',
+            'deadline' => 'nullable|date',
+            'start_date' => 'nullable|date',
+        ]);
+
+        $project = \App\Models\StudioProject::create($validated);
+        
+        if (!empty($validated['developers'])) {
+            $project->developers()->attach($validated['developers']);
+        }
+
+        return redirect()->route('admin.studio.projects')->with('success', 'Project created successfully.');
+    }
+    
+    public function editStudioProject($id)
+    {
+        $project = \App\Models\StudioProject::with(['client', 'developers'])->findOrFail($id);
+        $clients = \App\Models\StudioClient::all();
+        $developers = User::whereHas('roles', function($q) { $q->where('name', 'developer'); })->get();
+        return view('admin.studio.projects-edit', compact('project', 'clients', 'developers'));
+    }
+    
+    public function updateStudioProject(Request $request, $id)
+    {
+        $project = \App\Models\StudioProject::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'client_id' => 'required|exists:studio_clients,id',
+            'developers' => 'nullable|array',
+            'developers.*' => 'exists:users,id',
+            'status' => 'required|in:planning,active,completed,paused,cancelled',
+            'priority' => 'required|in:low,medium,high,urgent',
+            'budget' => 'nullable|numeric',
+            'deadline' => 'nullable|date',
+            'start_date' => 'nullable|date',
+        ]);
+
+        $project->update($validated);
+        $project->developers()->sync($validated['developers'] ?? []);
+
+        return redirect()->route('admin.studio.projects')->with('success', 'Project updated successfully.');
+    }
+    
+    public function destroyStudioProject($id)
+    {
+        $project = \App\Models\StudioProject::findOrFail($id);
+        $project->delete();
+        
+        return redirect()->route('admin.studio.projects')->with('success', 'Project deleted successfully.');
+    }
+
+    // STUDIO CLIENTS
+    public function addStudioClient() 
+    { 
+        return view('admin.studio.clients-add'); 
+    }
+    
+    public function storeStudioClient(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:studio_clients,email',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'nullable|string|max:255',
+            'address' => 'nullable|string',
+            'website' => 'nullable|url',
+            'contact_person' => 'required|string|max:255',
+            'status' => 'required|in:active,inactive,prospect',
+        ]);
+
+        \App\Models\StudioClient::create($validated);
+
+        return redirect()->route('admin.studio.clients')->with('success', 'Client added successfully.');
+    }
+    
+    public function editStudioClient($id)
+    {
+        $client = \App\Models\StudioClient::findOrFail($id);
+        return view('admin.studio.clients-edit', compact('client'));
+    }
+    
+    public function updateStudioClient(Request $request, $id)
+    {
+        $client = \App\Models\StudioClient::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:studio_clients,email,' . $id,
+            'phone' => 'nullable|string|max:20',
+            'company' => 'nullable|string|max:255',
+            'address' => 'nullable|string',
+            'website' => 'nullable|url',
+            'contact_person' => 'required|string|max:255',
+            'status' => 'required|in:active,inactive,prospect',
+        ]);
+
+        $client->update($validated);
+
+        return redirect()->route('admin.studio.clients')->with('success', 'Client updated successfully.');
+    }
+    
+    public function destroyStudioClient($id)
+    {
+        $client = \App\Models\StudioClient::findOrFail($id);
+        $client->delete();
+        
+        return redirect()->route('admin.studio.clients')->with('success', 'Client deleted successfully.');
+    }
+
+    // STUDIO DEVELOPERS
+    public function addStudioDeveloper() 
+    { 
+        $users = User::whereDoesntHave('roles', function($q) { 
+            $q->where('name', 'developer'); 
+        })->get();
+        return view('admin.studio.developers-add', compact('users')); 
+    }
+    
+    public function storeStudioDeveloper(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id|unique:studio_developers,user_id',
+            'skills' => 'nullable|array',
+            'skills.*' => 'string',
+            'hourly_rate' => 'nullable|numeric',
+            'availability' => 'required|in:full_time,part_time,contract,freelance',
+            'experience_years' => 'nullable|integer|min:0',
+        ]);
+
+        $user = User::findOrFail($validated['user_id']);
+        $user->assignRole('developer');
+        
+        \App\Models\StudioDeveloper::create($validated);
+
+        return redirect()->route('admin.studio.developers')->with('success', 'Developer added successfully.');
+    }
+    
+    public function editStudioDeveloper($id)
+    {
+        $developer = \App\Models\StudioDeveloper::with('user')->findOrFail($id);
+        return view('admin.studio.developers-edit', compact('developer'));
+    }
+    
+    public function updateStudioDeveloper(Request $request, $id)
+    {
+        $developer = \App\Models\StudioDeveloper::findOrFail($id);
+        
+        $validated = $request->validate([
+            'skills' => 'nullable|array',
+            'skills.*' => 'string',
+            'hourly_rate' => 'nullable|numeric',
+            'availability' => 'required|in:full_time,part_time,contract,freelance',
+            'experience_years' => 'nullable|integer|min:0',
+        ]);
+
+        $developer->update($validated);
+
+        return redirect()->route('admin.studio.developers')->with('success', 'Developer updated successfully.');
+    }
+    
+    public function destroyStudioDeveloper($id)
+    {
+        $developer = \App\Models\StudioDeveloper::findOrFail($id);
+        $developer->user->removeRole('developer');
+        $developer->delete();
+        
+        return redirect()->route('admin.studio.developers')->with('success', 'Developer removed successfully.');
+    }
+
+    // STUDIO REPOSITORIES
+    public function studioRepos() 
+    { 
+        $repos = \App\Models\StudioRepository::with(['project', 'developers'])->latest()->paginate(10);
+        return view('admin.studio.repos', compact('repos')); 
+    }
+    
+    public function addStudioRepo() 
+    { 
+        $projects = \App\Models\StudioProject::all();
+        $developers = User::whereHas('roles', function($q) { $q->where('name', 'developer'); })->get();
+        return view('admin.studio.repos-add', compact('projects', 'developers')); 
+    }
+    
+    public function storeStudioRepo(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'project_id' => 'nullable|exists:studio_projects,id',
+            'developers' => 'nullable|array',
+            'developers.*' => 'exists:users,id',
+            'repository_url' => 'required|url',
+            'branch' => 'required|string|max:255',
+            'language' => 'nullable|string|max:100',
+            'status' => 'required|in:active,archived,deprecated',
+        ]);
+
+        $repo = \App\Models\StudioRepository::create($validated);
+        
+        if (!empty($validated['developers'])) {
+            $repo->developers()->attach($validated['developers']);
+        }
+
+        return redirect()->route('admin.studio.repos')->with('success', 'Repository added successfully.');
+    }
+    
+    public function editStudioRepo($id)
+    {
+        $repo = \App\Models\StudioRepository::with(['project', 'developers'])->findOrFail($id);
+        $projects = \App\Models\StudioProject::all();
+        $developers = User::whereHas('roles', function($q) { $q->where('name', 'developer'); })->get();
+        return view('admin.studio.repos-edit', compact('repo', 'projects', 'developers'));
+    }
+    
+    public function updateStudioRepo(Request $request, $id)
+    {
+        $repo = \App\Models\StudioRepository::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'project_id' => 'nullable|exists:studio_projects,id',
+            'developers' => 'nullable|array',
+            'developers.*' => 'exists:users,id',
+            'repository_url' => 'required|url',
+            'branch' => 'required|string|max:255',
+            'language' => 'nullable|string|max:100',
+            'status' => 'required|in:active,archived,deprecated',
+        ]);
+
+        $repo->update($validated);
+        $repo->developers()->sync($validated['developers'] ?? []);
+
+        return redirect()->route('admin.studio.repos')->with('success', 'Repository updated successfully.');
+    }
+    
+    public function destroyStudioRepo($id)
+    {
+        $repo = \App\Models\StudioRepository::findOrFail($id);
+        $repo->delete();
+        
+        return redirect()->route('admin.studio.repos')->with('success', 'Repository deleted successfully.');
+    }
+
+    // STUDIO SETTINGS
+    public function studioSettings() 
+    { 
+        $settings = [
+            'studio_name' => Setting::get('studio_name', 'Namtech Studio'),
+            'studio_email' => Setting::get('studio_email', 'studio@namtech-hub.com'),
+            'studio_phone' => Setting::get('studio_phone', '+255 712 345 678'),
+            'studio_address' => Setting::get('studio_address', 'Dar es Salaam, Tanzania'),
+            'default_hourly_rate' => Setting::get('studio_default_hourly_rate', 50),
+            'working_hours' => Setting::get('studio_working_hours', '9:00 - 17:00'),
+            'timezone' => Setting::get('studio_timezone', 'Africa/Dar_es_Salaam'),
+        ];
+        return view('admin.studio.settings', compact('settings')); 
+    }
+    
+    public function storeStudioSettings(Request $request)
+    {
+        $validated = $request->validate([
+            'studio_name' => 'required|string|max:255',
+            'studio_email' => 'required|email',
+            'studio_phone' => 'required|string|max:20',
+            'studio_address' => 'required|string',
+            'default_hourly_rate' => 'required|numeric|min:0',
+            'working_hours' => 'required|string',
+            'timezone' => 'required|string',
+        ]);
+
+        foreach ($validated as $key => $value) {
+            Setting::set($key, $value);
+        }
+
+        return redirect()->route('admin.studio.settings')->with('success', 'Studio settings updated successfully.');
+    }
 
     // ACADEMY
     public function academyCourses() 
