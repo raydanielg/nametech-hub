@@ -194,11 +194,59 @@ class AdminDashboardController extends Controller
     public function studioSettings() { return view('admin.studio.settings'); }
 
     // ACADEMY
-    public function academyCourses() { return view('admin.academy.courses'); }
+    public function academyCourses() 
+    { 
+        $courses = \App\Models\AcademyCourse::withCount('enrollments')->latest()->paginate(10);
+        $stats = [
+            'total_courses' => \App\Models\AcademyCourse::count(),
+            'active_courses' => \App\Models\AcademyCourse::where('status', 'active')->count(),
+            'total_enrollments' => \App\Models\Enrollment::count(),
+        ];
+        return view('admin.academy.courses', compact('courses', 'stats')); 
+    }
+
     public function academyAddCourse() { return view('admin.academy.create-course'); }
-    public function academyStudents() { return view('admin.academy.students'); }
-    public function academyEnrollments() { return view('admin.academy.enrollments'); }
-    public function academyCertificates() { return view('admin.academy.certificates'); }
+
+    public function academyStoreCourse(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'duration' => 'required|string',
+        ]);
+
+        \App\Models\AcademyCourse::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'title' => $request->title,
+            'slug' => \Illuminate\Support\Str::slug($request->title),
+            'description' => $request->description,
+            'duration' => $request->duration,
+            'status' => 'active',
+        ]);
+
+        return redirect()->route('admin.academy.courses')->with('success', 'Course created successfully.');
+    }
+
+    public function academyStudents() 
+    { 
+        $students = User::whereHas('roles', function($q) {
+            $q->where('name', 'student');
+        })->withCount('enrollments')->latest()->paginate(10);
+        return view('admin.academy.students', compact('students')); 
+    }
+
+    public function academyEnrollments() 
+    { 
+        $enrollments = \App\Models\Enrollment::with(['user', 'academyCourse'])->latest()->paginate(10);
+        return view('admin.academy.enrollments', compact('enrollments')); 
+    }
+
+    public function academyCertificates() 
+    { 
+        // Logic kwa ajili ya vyeti (tunaweza kuongeza kama kuna model ya certificates au kutumia enrollments status)
+        return view('admin.academy.certificates'); 
+    }
+
     public function academySettings() { return view('admin.academy.settings'); }
 
     // FINANCE
