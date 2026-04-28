@@ -80,15 +80,18 @@
         ];
     @endphp
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+    <!-- Simple KPI Row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
         @foreach ($kpis as $kpi)
-            <div class="bg-white/60 backdrop-blur-sm p-4 rounded-[1.5rem] border border-gray-100/50 shadow-sm hover:shadow-md hover:bg-white/70 transition-all duration-200 flex items-center space-x-4">
-                <div class="w-12 h-12 {{ $kpi['iconBg'] }} rounded-2xl flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6 {{ $kpi['iconText'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $kpi['icon'] !!}</svg>
-                </div>
-                <div class="min-w-0 flex-1">
-                    <div class="text-xl font-bold text-gray-700 leading-none truncate">{{ $kpi['value'] }}</div>
-                    <div class="text-[11px] text-gray-400 font-medium mt-1 truncate">{{ $kpi['label'] }}</div>
+            <div class="bg-white p-5 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="flex flex-col items-center text-center space-y-3">
+                    <div class="w-14 h-14 {{ $kpi['iconBg'] }} rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
+                        <svg class="w-7 h-7 {{ $kpi['iconText'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $kpi['icon'] !!}</svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">{{ $kpi['label'] }}</p>
+                        <h4 class="text-xl font-black text-gray-900 mt-1">{{ $kpi['value'] }}</h4>
+                    </div>
                 </div>
             </div>
         @endforeach
