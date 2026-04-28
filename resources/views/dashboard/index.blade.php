@@ -21,51 +21,54 @@
         <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-emerald-50 rounded-full opacity-30"></div>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                </div>
-                <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">+12%</span>
-            </div>
-            <p class="text-gray-400 text-sm font-bold uppercase tracking-wider">Total Users</p>
-            <h3 class="text-2xl font-black text-gray-900 mt-1">1,240</h3>
-        </div>
+    <!-- Simple KPI Row (Horizontal Flex) -->
+    <div class="flex flex-wrap lg:flex-nowrap gap-4 mb-8">
+        @php
+            $kpis = [
+                [
+                    'label' => 'Total Users',
+                    'value' => '1,240',
+                    'iconBg' => 'bg-blue-100',
+                    'iconText' => 'text-blue-600',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />',
+                ],
+                [
+                    'label' => 'Active Startups',
+                    'value' => '48',
+                    'iconBg' => 'bg-emerald-100',
+                    'iconText' => 'text-emerald-600',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />',
+                ],
+                [
+                    'label' => 'Monthly Revenue',
+                    'value' => 'TSh 0.00',
+                    'iconBg' => 'bg-amber-100',
+                    'iconText' => 'text-amber-600',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />',
+                ],
+                [
+                    'label' => 'Engagement Rate',
+                    'value' => '84%',
+                    'iconBg' => 'bg-purple-100',
+                    'iconText' => 'text-purple-600',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />',
+                ],
+            ];
+        @endphp
 
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        @foreach ($kpis as $kpi)
+            <div class="bg-[#E9E9EB] p-4 rounded-[1.25rem] shadow-sm hover:shadow-md transition-all duration-300 group border border-transparent hover:border-white flex-1 min-w-[180px]">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 {{ $kpi['iconBg'] }} rounded-lg flex items-center justify-center shrink-0 shadow-sm">
+                        <svg class="w-5 h-5 {{ $kpi['iconText'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $kpi['icon'] !!}</svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h4 class="text-base font-bold text-gray-900 leading-tight truncate">{{ $kpi['value'] }}</h4>
+                        <p class="text-[9px] font-medium text-gray-500 truncate mt-0.5">{{ $kpi['label'] }}</p>
+                    </div>
                 </div>
-                <span class="text-emerald-500 text-xs font-bold bg-emerald-50 px-2 py-1 rounded-lg">Active</span>
             </div>
-            <p class="text-gray-400 text-sm font-bold uppercase tracking-wider">Active Startups</p>
-            <h3 class="text-2xl font-black text-gray-900 mt-1">48</h3>
-        </div>
-
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"></path></svg>
-                </div>
-                <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">TSh 0.00</span>
-            </div>
-            <p class="text-gray-400 text-sm font-bold uppercase tracking-wider">Monthly Revenue</p>
-            <h3 class="text-2xl font-black text-gray-900 mt-1">0</h3>
-        </div>
-
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                </div>
-                <span class="text-gray-500 text-xs font-bold bg-gray-50 px-2 py-1 rounded-lg">Real-time</span>
-            </div>
-            <p class="text-gray-400 text-sm font-bold uppercase tracking-wider">Engagement Rate</p>
-            <h3 class="text-2xl font-black text-gray-900 mt-1">84%</h3>
-        </div>
+        @endforeach
     </div>
 
     <!-- Recent Activity & Chart placeholder -->
