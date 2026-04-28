@@ -9,10 +9,10 @@
         <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden">
             <div class="relative z-10">
                 <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Total Hub Members</p>
-                <h3 class="text-3xl font-black text-gray-900">842</h3>
+                <h3 class="text-3xl font-black text-gray-900">{{ $stats['total_members'] }}</h3>
                 <div class="mt-4 flex items-center text-green-500 text-xs font-bold">
                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    +24 This Month
+                    Community Active
                 </div>
             </div>
             <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-pink-50 rounded-full opacity-50"></div>
@@ -21,10 +21,10 @@
         <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden">
             <div class="relative z-10">
                 <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Upcoming Events</p>
-                <h3 class="text-3xl font-black text-gray-900">12</h3>
+                <h3 class="text-3xl font-black text-gray-900">{{ $stats['upcoming_events'] }}</h3>
                 <div class="mt-4 flex items-center text-blue-500 text-xs font-bold">
                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    Next: Demo Day (May 5)
+                    Events This Month
                 </div>
             </div>
             <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-blue-50 rounded-full opacity-50"></div>
@@ -32,11 +32,11 @@
 
         <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden">
             <div class="relative z-10">
-                <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Mentor Sessions</p>
-                <h3 class="text-3xl font-black text-gray-900">45</h3>
+                <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Active Startups</p>
+                <h3 class="text-3xl font-black text-gray-900">{{ $stats['active_startups'] }}</h3>
                 <div class="mt-4 flex items-center text-purple-500 text-xs font-bold">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    8 Booked for Today
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    In Programs
                 </div>
             </div>
             <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-purple-50 rounded-full opacity-50"></div>
