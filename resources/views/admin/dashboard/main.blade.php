@@ -2,6 +2,10 @@
 
 @section('dashboard-title', 'System Overview')
 
+@push('styles')
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+@endpush
+
 @section('dashboard-content')
 <div class="space-y-6 fade-in">
     <!-- Quick Stats Grid (2 Rows of 5) -->
@@ -102,84 +106,13 @@
         <!-- Activity Trend Chart -->
         <div class="lg:col-span-2 bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300">
             <h3 class="text-base font-bold text-gray-800 mb-6">Activity Trend (Last 14 Days)</h3>
-            <div class="h-64 relative">
-                <!-- Grid Lines -->
-                <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
-                    <div class="border-b border-gray-300 w-full h-0"></div>
-                    <div class="border-b border-gray-300 w-full h-0"></div>
-                    <div class="border-b border-gray-300 w-full h-0"></div>
-                    <div class="border-b border-gray-300 w-full h-0"></div>
-                    <div class="border-b border-gray-300 w-full h-0"></div>
-                    <div class="border-b border-gray-300 w-full h-0"></div>
-                </div>
-                
-                <!-- SVG Area Chart -->
-                <svg class="w-full h-full relative z-10" viewBox="0 0 400 100" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3" />
-                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Main Area -->
-                    <path d="M0,80 Q30,20 60,60 T120,40 T180,70 T240,20 T300,50 T360,30 T400,80 L400,100 L0,100 Z" fill="url(#blueGradient)" />
-                    <!-- Main Line -->
-                    <path d="M0,80 Q30,20 60,60 T120,40 T180,70 T240,20 T300,50 T360,30 T400,80" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <!-- Dots -->
-                    <circle cx="60" cy="60" r="3" fill="#3b82f6" stroke="white" stroke-width="1.5" />
-                    <circle cx="120" cy="40" r="3" fill="#3b82f6" stroke="white" stroke-width="1.5" />
-                    <circle cx="240" cy="20" r="3" fill="#3b82f6" stroke="white" stroke-width="1.5" />
-                    
-                    <!-- Green Baseline (Payments) -->
-                    <line x1="0" y1="80" x2="400" y2="80" stroke="#10b981" stroke-width="2" />
-                </svg>
-
-                <!-- X-Axis Labels -->
-                <div class="absolute -bottom-8 w-full flex justify-between px-2 overflow-x-auto">
-                    @for($i = 14; $i >= 0; $i -= 2)
-                        <span class="text-[9px] text-gray-500 font-bold rotate-45">{{ now()->subDays($i)->format('Y-m-d') }}</span>
-                    @endfor
-                </div>
-            </div>
-
-            <!-- Custom Legend -->
-            <div class="mt-12 flex flex-wrap justify-center gap-4">
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-1 bg-blue-500 rounded-full"></div>
-                    <span class="text-[10px] font-bold text-gray-600 uppercase">Users</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-1 bg-emerald-500 rounded-full"></div>
-                    <span class="text-[10px] font-bold text-gray-600 uppercase">Payments</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-1 bg-amber-500 rounded-full"></div>
-                    <span class="text-[10px] font-bold text-gray-600 uppercase">Investor Txns</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-1 bg-purple-500 rounded-full"></div>
-                    <span class="text-[10px] font-bold text-gray-600 uppercase">Academy</span>
-                </div>
-            </div>
+            <div id="activityChart" class="h-64"></div>
         </div>
 
         <!-- Distribution Circle -->
         <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 flex flex-col items-center">
             <h3 class="text-base font-bold text-gray-800 self-start mb-6">Distribution</h3>
-            <div class="relative w-56 h-56 flex items-center justify-center mt-4">
-                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                    <path class="text-gray-300" stroke-width="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                </svg>
-                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <div class="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center border-4 border-[#E9E9EB]">
-                        <span class="text-[11px] font-bold text-gray-400 uppercase">No data</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 flex items-center space-x-2">
-                <div class="w-8 h-3 bg-gray-300 rounded-full"></div>
-                <span class="text-[10px] font-bold text-gray-400 uppercase">No data</span>
-            </div>
+            <div id="distributionChart" class="w-full h-64"></div>
         </div>
     </div>
 
@@ -232,9 +165,104 @@
 </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Activity Chart
+        const activityOptions = {
+            series: [{
+                name: 'Users',
+                data: [0, 4, 0, 1, 5, 3, 2, 6, 11, 4, 7, 6, 5, 0]
+            }, {
+                name: 'Payments',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }],
+            chart: {
+                height: 280,
+                type: 'area',
+                toolbar: { show: false },
+                background: 'transparent'
+            },
+            colors: ['#3b82f6', '#10b981', '#f59e0b', '#a855f7'],
+            dataLabels: { enabled: false },
+            stroke: {
+                curve: 'smooth',
+                width: 3
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shadeIntensity: 1,
+                    opacityFrom: 0.4,
+                    opacityTo: 0,
+                    stops: [0, 90, 100]
+                }
+            },
+            xaxis: {
+                categories: @json(collect(range(13, 0))->map(fn($i) => now()->subDays($i)->format('Y-m-d'))->toArray()),
+                labels: {
+                    rotate: -45,
+                    style: { fontSize: '10px', fontWeight: 600 }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: { fontSize: '10px', fontWeight: 600 }
+                }
+            },
+            grid: {
+                borderColor: '#ccc',
+                strokeDashArray: 0,
+            },
+            legend: {
+                position: 'bottom',
+                fontSize: '10px',
+                fontWeight: 600,
+                markers: { radius: 12 }
+            }
+        };
+
+        const activityChart = new ApexCharts(document.querySelector("#activityChart"), activityOptions);
+        activityChart.render();
+
+        // Distribution Chart
+        const distributionOptions = {
+            series: [44, 55, 41, 17],
+            chart: {
+                type: 'donut',
+                height: 300
+            },
+            labels: ['Users', 'Payments', 'Investors', 'Others'],
+            colors: ['#3b82f6', '#10b981', '#f59e0b', '#a855f7'],
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '75%',
+                        labels: {
+                            show: true,
+                            name: { show: true },
+                            value: { show: true, fontSize: '20px', fontWeight: 900 },
+                            total: {
+                                show: true,
+                                label: 'Total',
+                                formatter: function (w) {
+                                    return w.globals.seriesTotals.reduce((a, b) => a + b, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            legend: { position: 'bottom' },
+            dataLabels: { enabled: false }
+        };
+
+        const distributionChart = new ApexCharts(document.querySelector("#distributionChart"), distributionOptions);
+        distributionChart.render();
+    });
+
     (function () {
         const feed = document.getElementById('activity-feed');
         const updatedAt = document.getElementById('activity-updated-at');
+        // ... (rest of the activity refresh script)
 
         function escapeHtml(text) {
             const div = document.createElement('div');
