@@ -69,8 +69,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Super Admin Routes
     Route::middleware(['has.role:super_admin'])->prefix('admin')->as('admin.')->group(function () {
-        // Dashboard
-        Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard.main');
+        // DASHBOARD
+        Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
         Route::get('/dashboard/stats', [App\Http\Controllers\Admin\AdminDashboardController::class, 'stats'])->name('dashboard.stats');
         Route::get('/dashboard/activity', [App\Http\Controllers\Admin\AdminDashboardController::class, 'activity'])->name('dashboard.activity');
         Route::get('/dashboard/health', [App\Http\Controllers\Admin\AdminDashboardController::class, 'health'])->name('dashboard.health');
