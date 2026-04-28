@@ -97,80 +97,136 @@
         @endforeach
     </div>
 
-    <!-- Charts Row -->
+    <!-- Charts & Activity Row -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Activity Trend Chart Container -->
-        <div class="lg:col-span-2 bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-gray-100 shadow-sm">
-            <h3 class="text-sm font-black text-gray-800 mb-4">Activity Trend (Last 14 Days)</h3>
-            <div class="h-64 flex items-end space-x-2 relative border-b border-gray-100">
-                <!-- Simple SVG Chart Representation -->
-                <svg class="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
+        <!-- Activity Trend Chart -->
+        <div class="lg:col-span-2 bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300">
+            <h3 class="text-base font-bold text-gray-800 mb-6">Activity Trend (Last 14 Days)</h3>
+            <div class="h-64 relative">
+                <!-- Grid Lines -->
+                <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+                    <div class="border-b border-gray-300 w-full h-0"></div>
+                    <div class="border-b border-gray-300 w-full h-0"></div>
+                    <div class="border-b border-gray-300 w-full h-0"></div>
+                    <div class="border-b border-gray-300 w-full h-0"></div>
+                    <div class="border-b border-gray-300 w-full h-0"></div>
+                    <div class="border-b border-gray-300 w-full h-0"></div>
+                </div>
+                
+                <!-- SVG Area Chart -->
+                <svg class="w-full h-full relative z-10" viewBox="0 0 400 100" preserveAspectRatio="none">
                     <defs>
-                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.2" />
-                            <stop offset="100%" style="stop-color:#10b981;stop-opacity:0" />
+                        <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0" />
                         </linearGradient>
                     </defs>
-                    <path d="M0,80 Q50,20 100,60 T200,30 T300,70 T400,10" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
-                    <path d="M0,80 Q50,20 100,60 T200,30 T300,70 T400,10 L400,100 L0,100 Z" fill="url(#chartGradient)" />
-                    <circle cx="100" cy="60" r="4" fill="#10b981" stroke="white" stroke-width="2" />
-                    <circle cx="200" cy="30" r="4" fill="#10b981" stroke="white" stroke-width="2" />
-                    <circle cx="300" cy="70" r="4" fill="#10b981" stroke="white" stroke-width="2" />
+                    <!-- Main Area -->
+                    <path d="M0,80 Q30,20 60,60 T120,40 T180,70 T240,20 T300,50 T360,30 T400,80 L400,100 L0,100 Z" fill="url(#blueGradient)" />
+                    <!-- Main Line -->
+                    <path d="M0,80 Q30,20 60,60 T120,40 T180,70 T240,20 T300,50 T360,30 T400,80" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Dots -->
+                    <circle cx="60" cy="60" r="3" fill="#3b82f6" stroke="white" stroke-width="1.5" />
+                    <circle cx="120" cy="40" r="3" fill="#3b82f6" stroke="white" stroke-width="1.5" />
+                    <circle cx="240" cy="20" r="3" fill="#3b82f6" stroke="white" stroke-width="1.5" />
+                    
+                    <!-- Green Baseline (Payments) -->
+                    <line x1="0" y1="80" x2="400" y2="80" stroke="#10b981" stroke-width="2" />
                 </svg>
+
                 <!-- X-Axis Labels -->
-                <div class="absolute -bottom-6 w-full flex justify-between px-2">
-                    <span class="text-[8px] text-gray-400 font-bold uppercase">{{ now()->subDays(14)->format('Y-m-d') }}</span>
-                    <span class="text-[8px] text-gray-400 font-bold uppercase">{{ now()->subDays(7)->format('Y-m-d') }}</span>
-                    <span class="text-[8px] text-gray-400 font-bold uppercase">{{ now()->format('Y-m-d') }}</span>
+                <div class="absolute -bottom-8 w-full flex justify-between px-2 overflow-x-auto">
+                    @for($i = 14; $i >= 0; $i -= 2)
+                        <span class="text-[9px] text-gray-500 font-bold rotate-45">{{ now()->subDays($i)->format('Y-m-d') }}</span>
+                    @endfor
                 </div>
             </div>
-            <!-- Legend -->
-            <div class="mt-8 flex justify-center space-x-4">
+
+            <!-- Custom Legend -->
+            <div class="mt-12 flex flex-wrap justify-center gap-4">
                 <div class="flex items-center space-x-2">
-                    <div class="w-3 h-1 bg-emerald-500 rounded-full"></div>
-                    <span class="text-[10px] text-gray-400 font-bold uppercase">System Activity</span>
+                    <div class="w-8 h-1 bg-blue-500 rounded-full"></div>
+                    <span class="text-[10px] font-bold text-gray-600 uppercase">Users</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-1 bg-emerald-500 rounded-full"></div>
+                    <span class="text-[10px] font-bold text-gray-600 uppercase">Payments</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-1 bg-amber-500 rounded-full"></div>
+                    <span class="text-[10px] font-bold text-gray-600 uppercase">Investor Txns</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-1 bg-purple-500 rounded-full"></div>
+                    <span class="text-[10px] font-bold text-gray-600 uppercase">Academy</span>
                 </div>
             </div>
         </div>
 
-        <!-- Distribution Circle Container -->
-        <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-between">
-            <h3 class="text-sm font-black text-gray-800 self-start mb-4">Distribution</h3>
-            <div class="relative w-48 h-48">
+        <!-- Distribution Circle -->
+        <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 flex flex-col items-center">
+            <h3 class="text-base font-bold text-gray-800 self-start mb-6">Distribution</h3>
+            <div class="relative w-56 h-56 flex items-center justify-center mt-4">
                 <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                    <path class="text-gray-100" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path class="text-emerald-500" stroke-width="3" stroke-dasharray="75, 100" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="text-gray-300" stroke-width="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <span class="text-2xl font-black text-gray-900">75%</span>
-                    <span class="text-[8px] text-gray-400 font-bold uppercase">Target</span>
+                    <div class="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center border-4 border-[#E9E9EB]">
+                        <span class="text-[11px] font-bold text-gray-400 uppercase">No data</span>
+                    </div>
                 </div>
             </div>
-            <div class="flex items-center space-x-2">
-                <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                <span class="text-[10px] text-gray-400 font-bold uppercase">Active Goals</span>
+            <div class="mt-8 flex items-center space-x-2">
+                <div class="w-8 h-3 bg-gray-300 rounded-full"></div>
+                <span class="text-[10px] font-bold text-gray-400 uppercase">No data</span>
             </div>
         </div>
     </div>
 
-    <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-gray-100 shadow-sm">
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="text-sm font-black text-gray-800">Recent Activity</h3>
-            <div class="text-[10px] font-bold text-gray-400 uppercase" id="activity-updated-at">Updating…</div>
+    <!-- Bottom Tables Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-8">
+        <!-- Recent Payments -->
+        <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 min-h-[300px]">
+            <h3 class="text-base font-bold text-gray-800 mb-6">Recent Payments</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-300/50">
+                            <th class="pb-4">Date</th>
+                            <th class="pb-4">Ref</th>
+                            <th class="pb-4">Description</th>
+                            <th class="pb-4 text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="py-20 text-center text-xs font-bold text-gray-400">No payments.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <div class="divide-y divide-gray-100" id="activity-feed">
-            @forelse(($activity ?? []) as $item)
-                <div class="py-3 flex items-start justify-between gap-4">
-                    <div class="min-w-0">
-                        <div class="text-sm font-bold text-gray-800 truncate">{{ $item['title'] ?? 'Activity' }}</div>
-                        <div class="text-xs text-gray-500 truncate">{{ $item['description'] ?? '' }}</div>
-                    </div>
-                    <div class="shrink-0 text-[11px] font-medium text-gray-400">{{ $item['time'] ?? '' }}</div>
-                </div>
-            @empty
-                <div class="py-10 text-center text-sm text-gray-400 font-medium">No activity yet</div>
-            @endforelse
+        <!-- Recent Investor Transactions -->
+        <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 min-h-[300px]">
+            <h3 class="text-base font-bold text-gray-800 mb-6">Recent Investor Transactions</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-300/50">
+                            <th class="pb-4">Date</th>
+                            <th class="pb-4">Investor</th>
+                            <th class="pb-4">Type</th>
+                            <th class="pb-4 text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="py-20 text-center text-xs font-bold text-gray-400">No transactions.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
