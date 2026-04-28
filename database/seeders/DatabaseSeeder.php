@@ -14,16 +14,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            RoleSeeder::class,
+            AdminUserSeeder::class,
+            UserSeeder::class, // Hii ijumuishe Startup Founders, Mentors, Investors
             ProgramSeeder::class,
+            StartupSeeder::class,
+            MentorSeeder::class,
+            InvestorSeeder::class,
+            AcademyCourseSeeder::class,
+            DigitalStudioProjectSeeder::class,
+            MembershipSeeder::class,
+            EventSeeder::class,
             BlogSeeder::class,
             ProductSeeder::class,
             ProductPlanSeeder::class,
             ProductFeatureSeeder::class,
             ProductAddonSeeder::class,
             ProductFaqSeeder::class,
-            AcademyCourseSeeder::class,
-            DigitalStudioProjectSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
     }
 }
