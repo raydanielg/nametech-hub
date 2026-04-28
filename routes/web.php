@@ -49,6 +49,10 @@ Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
     Route::get('/become-partner', [CompanyController::class, 'becomePartner'])->name('become-partner');
 });
 
+// Legal Pages
+Route::view('/terms-of-service', 'legal.terms')->name('terms');
+Route::view('/privacy-policy', 'legal.privacy')->name('privacy');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
