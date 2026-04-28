@@ -4,6 +4,12 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use App\Models\User;
+use App\Models\Startup;
+use App\Models\MentorAssignment;
+use App\Models\MentorSession;
+use Illuminate\Support\Str;
+
 class MentorSeeder extends Seeder
 {
     /**
@@ -13,34 +19,39 @@ class MentorSeeder extends Seeder
      */
     public function run()
     {
-        $mentor = \App\Models\User::where('email', 'mentor@example.com')->first();
-        $startup = \App\Models\Startup::first();
+        $mentor = User::where('email', 'mentor@example.com')->first();
+        $startup = Startup::first();
 
         if ($mentor && $startup) {
-            \App\Models\MentorshipSession::create([
-                'id' => \Illuminate\Support\Str::uuid(),
+            // Create Assignment first
+            $assignment = MentorAssignment::create([
+                'id' => Str::uuid(),
                 'mentor_id' => $mentor->id,
                 'startup_id' => $startup->id,
-                'mentee_id' => $startup->founder_id,
-                'title' => 'Go-to-Market Strategy Review',
-                'description' => 'Reviewing the initial GTM strategy and identifying key channels.',
-                'start_time' => now()->addDays(1)->setTime(10, 0),
-                'duration' => 60,
-                'status' => 'pending',
-                'meeting_link' => 'https://zoom.us/j/123456789',
+                'status' => 'active',
+                'started_at' => now(),
             ]);
 
-            \App\Models\MentorshipSession::create([
-                'id' => \Illuminate\Support\Str::uuid(),
-                'mentor_id' => $mentor->id,
-                'startup_id' => $startup->id,
-                'mentee_id' => $startup->founder_id,
-                'title' => 'Product Roadmap Planning',
-                'description' => 'Detailed planning for the next 3 months of product development.',
-                'start_time' => now()->subDays(2)->setTime(14, 0),
-                'duration' => 90,
+            // Create Sessions using the assignment_id
+            MentorSession::create([
+                'id' => Str::uuid(),
+                'assignment_id' => $assignment->id,
+                'scheduled_at' => now()->addDays(1)->setTime(10, 0),
+                'duration_minutes' => 60,
+                'status' => 'scheduled',
+                'meeting_link' => 'https://zoom.us/j/123456789',
+                'notes' => 'Go-to-Market Strategy Review',
+            ]);
+
+            MentorSession::create([
+                'id' => Str::uuid(),
+                'assignment_id' => $assignment->id,
+                'scheduled_at' => now()->subDays(2)->setTime(14, 0),
+                'duration_minutes' => 90,
                 'status' => 'completed',
-                'summary' => 'Product roadmap finalized for Q3.',
+                'notes' => 'Product Roadmap Planning',
+                'feedback_from_startup' => 'Excellent session, roadmap finalized for Q3.',
+                'rating_from_startup' => 5,
             ]);
         }
     }
