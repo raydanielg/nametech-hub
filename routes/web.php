@@ -106,6 +106,7 @@ Route::middleware(['auth'])->group(function () {
         // Academy
         Route::get('/academy/courses', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyCourses'])->name('academy.courses');
         Route::get('/academy/courses/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyAddCourse'])->name('academy.courses.add');
+        Route::post('/academy/courses/store', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStoreCourse'])->name('academy.courses.store');
         Route::get('/academy/students', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyStudents'])->name('academy.students');
         Route::get('/academy/enrollments', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyEnrollments'])->name('academy.enrollments');
         Route::get('/academy/certificates', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyCertificates'])->name('academy.certificates');
