@@ -7,20 +7,20 @@
     <!-- Welcome Section -->
     <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
         <div class="relative z-10 space-y-2">
-            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Karibu tena, <span class="text-pink-600">{{ $user->first_name }}!</span></h1>
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Karibu tena, <span class="text-emerald-600">{{ $user->first_name }}!</span></h1>
             <p class="text-gray-500 font-medium">Hapa ndipo unapoongoza na kufuatilia maendeleo ya {{ config('app.name') }}.</p>
             <div class="pt-4 flex items-center space-x-4">
-                <span class="px-4 py-2 bg-pink-50 text-pink-600 rounded-full text-xs font-bold uppercase tracking-widest">{{ str_replace('_', ' ', $role) }}</span>
+                <span class="px-4 py-2 bg-emerald-50 text-emerald-600 rounded-full text-xs font-bold uppercase tracking-widest">{{ str_replace('_', ' ', $role) }}</span>
                 <span class="text-gray-300">|</span>
                 <span class="text-sm text-gray-400 font-medium">{{ now()->format('l, d M Y') }}</span>
             </div>
         </div>
         <div class="mt-6 md:mt-0 relative z-10">
-            <button class="bg-pink-600 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-pink-200 hover:bg-pink-700 transition transform hover:-translate-y-1">Quick Action</button>
+            <button class="bg-emerald-600 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition transform hover:-translate-y-1">Quick Action</button>
         </div>
         <!-- Decorative elements -->
-        <div class="absolute -right-20 -top-20 w-64 h-64 bg-pink-50 rounded-full opacity-50"></div>
-        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-pink-50 rounded-full opacity-30"></div>
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-50 rounded-full opacity-50"></div>
+        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-emerald-50 rounded-full opacity-30"></div>
     </div>
 
     <!-- Stats Grid -->
@@ -38,10 +38,10 @@
 
         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
-                <span class="text-pink-500 text-xs font-bold bg-pink-50 px-2 py-1 rounded-lg">Active</span>
+                <span class="text-emerald-500 text-xs font-bold bg-emerald-50 px-2 py-1 rounded-lg">Active</span>
             </div>
             <p class="text-gray-400 text-sm font-bold uppercase tracking-wider">Active Startups</p>
             <h3 class="text-2xl font-black text-gray-900 mt-1">48</h3>
@@ -89,7 +89,7 @@
             <h3 class="text-xl font-black text-gray-900 mb-8">Recent Notifications</h3>
             <div class="space-y-6">
                 <div class="flex items-start space-x-4">
-                    <div class="w-2 h-2 mt-2 rounded-full bg-pink-500 shrink-0 shadow-lg shadow-pink-200"></div>
+                    <div class="w-2 h-2 mt-2 rounded-full bg-emerald-500 shrink-0 shadow-lg shadow-emerald-200"></div>
                     <div>
                         <p class="text-sm font-bold text-gray-800">New Startup Application</p>
                         <p class="text-xs text-gray-400 mt-1">2 minutes ago • Launchpad Program</p>
@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <button class="w-full mt-8 py-3 rounded-2xl text-sm font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 transition">View All Notifications</button>
+            <button class="w-full mt-8 py-3 rounded-2xl text-sm font-bold text-emerald-600 bg-emerald-50 hover:bg-emerald-100 transition">View All Notifications</button>
         </div>
     </div>
 </div>
