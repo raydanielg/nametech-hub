@@ -10,7 +10,7 @@
                     <span class="text-xl">N</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-lg font-black text-gray-900 leading-none">NAMTECH</span>
+                    <span class="text-lg font-black text-gray-900 leading-none uppercase tracking-tighter">NAMTECH</span>
                     <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mt-0.5">Innovation Hub</span>
                 </div>
             </div>
@@ -23,9 +23,9 @@
         <div class="p-4 border-t border-gray-100">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="flex items-center space-x-3 text-gray-500 hover:text-red-600 w-full transition duration-150">
+                <button type="submit" class="flex items-center space-x-3 text-gray-500 hover:text-red-600 w-full p-2 rounded-xl transition duration-150">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                    <span class="font-medium text-sm">Sign Out</span>
+                    <span class="font-bold text-sm uppercase tracking-tight">Sign Out</span>
                 </button>
             </form>
         </div>
