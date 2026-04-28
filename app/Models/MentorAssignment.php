@@ -16,13 +16,15 @@ class MentorAssignment extends Model
         'id',
         'mentor_id',
         'startup_id',
+        'program_type',
         'status',
-        'started_at',
-        'ended_at',
+        'start_date',
+        'end_date',
+        'notes',
     ];
 
     protected $casts = [
-        'started_at' => 'date',
-        'ended_at' => 'date',
+        'start_date' => 'date',
+        'end_date' => 'date',
     ];
 }
