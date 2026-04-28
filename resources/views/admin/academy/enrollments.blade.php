@@ -10,7 +10,18 @@
             <h3 class="text-2xl font-black text-gray-900">Enrollments</h3>
             <p class="text-sm text-gray-500 font-medium mt-1">Track student enrollment status across all courses</p>
         </div>
+        <button onclick="document.getElementById('addEnrollmentModal').classList.remove('hidden')" class="px-5 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-bold hover:bg-emerald-700 transition-colors flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Add Enrollment
+        </button>
     </div>
+
+    @if(session('success'))
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center space-x-3">
+            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span class="text-emerald-700 font-medium">{{ session('success') }}</span>
+        </div>
+    @endif
 
     <!-- Enrollments Table -->
     <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
