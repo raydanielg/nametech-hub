@@ -181,4 +181,22 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/sessions', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'sessions'])->name('sessions');
         Route::get('/investors', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'investors'])->name('investors');
     });
+
+    // Mentor Routes
+    Route::middleware(['has.role:mentor'])->prefix('mentor')->as('mentor.')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\Mentor\MentorDashboardController::class, 'index'])->name('dashboard.main');
+        Route::get('/mentees', [App\Http\Controllers\Mentor\MentorDashboardController::class, 'mentees'])->name('mentees');
+        Route::get('/sessions', [App\Http\Controllers\Mentor\MentorDashboardController::class, 'sessions'])->name('sessions');
+        Route::get('/resources', [App\Http\Controllers\Mentor\MentorDashboardController::class, 'resources'])->name('resources');
+    });
+
+    // Investor Routes
+    Route::middleware(['has.role:investor'])->prefix('investor')->as('investor.')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\Investor\InvestorDashboardController::class, 'index'])->name('dashboard.main');
+    });
+
+    // Student Routes
+    Route::middleware(['has.role:student'])->prefix('student')->as('student.')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\Student\StudentDashboardController::class, 'index'])->name('dashboard.main');
+    });
 });
