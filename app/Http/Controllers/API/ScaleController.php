@@ -3,62 +3,38 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Program;
+use App\Models\ProgramApplication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class ScaleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $programs = Program::where('type', 'Scale')->latest()->paginate(20);
+        return response()->json(['status' => 'success', 'data' => $programs]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function apply(Request $request)
     {
-        //
-    }
+        $validator = Validator::make($request->all(), [
+            'program_id' => 'required|exists:programs,id',
+            'startup_name' => 'required|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        if ($validator->fails()) return response()->json(['errors' => $validator->errors()], 422);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $application = ProgramApplication::create([
+            'id' => (string) Str::uuid(),
+            'user_id' => auth()->id(),
+            'program_id' => $request->program_id,
+            'startup_name' => $request->startup_name,
+            'status' => 'pending',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json(['status' => 'success', 'data' => $application], 201);
     }
 }
+

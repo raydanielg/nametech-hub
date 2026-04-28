@@ -3,62 +3,39 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Startup;
+use App\Models\StudioProject;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $stats = [
+            'total_users' => User::count(),
+            'total_startups' => Startup::count(),
+            'active_projects' => StudioProject::where('status', 'active')->count(),
+            'total_revenue' => Invoice::where('status', 'paid')->sum('total_amount'),
+        ];
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $stats
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function recentActivity()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // For now, returning basic recent records
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'recent_users' => User::latest()->take(5)->get(),
+                'recent_startups' => Startup::latest()->take(5)->get(),
+            ]
+        ]);
     }
 }
+

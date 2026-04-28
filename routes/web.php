@@ -53,7 +53,14 @@ Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
 Route::view('/terms-of-service', 'legal.terms')->name('terms');
 Route::view('/privacy-policy', 'legal.privacy')->name('privacy');
 
+use App\Http\Controllers\Auth\VerificationController;
+
 Auth::routes();
+
+// OTP Verification Routes
+Route::get('/verify-email', [VerificationController::class, 'showVerifyForm'])->name('verify.otp');
+Route::post('/verify-email', [VerificationController::class, 'verify'])->name('verify.otp.submit');
+Route::get('/verify-email/resend', [VerificationController::class, 'resend'])->name('verify.otp.resend');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
