@@ -4,16 +4,11 @@
 <div class="flex h-screen bg-gray-100 font-sans">
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-xl hidden md:flex flex-col border-r border-gray-200">
-        <div class="p-6 flex items-center justify-between border-b border-gray-100">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-emerald-200">
-                    <span class="text-xl">N</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-lg font-black text-gray-900 leading-none uppercase tracking-tighter">NAMTECH</span>
-                    <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mt-0.5">Innovation Hub</span>
-                </div>
-            </div>
+        <div class="p-6">
+            <a href="{{ route('dashboard') }}" class="block">
+                <div class="text-lg font-black text-gray-900 leading-none tracking-tight">Namtech-hub</div>
+                <div class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mt-1">Innovation Hub</div>
+            </a>
         </div>
         
         <nav class="flex-1 overflow-y-auto py-4 px-4 space-y-1">
