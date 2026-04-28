@@ -193,6 +193,8 @@ Route::middleware(['auth'])->group(function () {
     // Investor Routes
     Route::middleware(['has.role:investor'])->prefix('investor')->as('investor.')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Investor\InvestorDashboardController::class, 'index'])->name('dashboard.main');
+        Route::get('/pipeline', [App\Http\Controllers\Investor\InvestorDashboardController::class, 'pipeline'])->name('pipeline');
+        Route::get('/portfolio', [App\Http\Controllers\Investor\InvestorDashboardController::class, 'portfolio'])->name('portfolio');
     });
 
     // Student Routes
