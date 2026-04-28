@@ -44,11 +44,35 @@
         </a>
     </div>
     @include('dashboard.partials.menus.startup-founder')
-@elseif($role === 'developer')
-    @include('dashboard.partials.menus.developer')
-@elseif($role === 'designer')
-    @include('dashboard.partials.menus.designer')
+@elseif($role === 'mentor')
+    <!-- Main Link for Mentor -->
+    <div class="mb-4">
+        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-2">Main</p>
+        <a href="{{ route('mentor.dashboard.main') }}" class="flex items-center space-x-3 p-2 rounded-xl transition duration-150 {{ request()->routeIs('mentor.dashboard.main') ? 'bg-pink-600 text-white shadow-lg' : 'text-gray-500 hover:bg-pink-50 hover:text-pink-600' }}">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            <span class="font-semibold text-sm">Dashboard</span>
+        </a>
+    </div>
+    @include('dashboard.partials.menus.mentor')
+@elseif($role === 'investor')
+    <!-- Main Link for Investor -->
+    <div class="mb-4">
+        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-2">Main</p>
+        <a href="{{ route('investor.dashboard.main') }}" class="flex items-center space-x-3 p-2 rounded-xl transition duration-150 {{ request()->routeIs('investor.dashboard.main') ? 'bg-pink-600 text-white shadow-lg' : 'text-gray-500 hover:bg-pink-50 hover:text-pink-600' }}">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            <span class="font-semibold text-sm">Dashboard</span>
+        </a>
+    </div>
+    @include('dashboard.partials.menus.investor')
 @elseif($role === 'student')
+    <!-- Main Link for Student -->
+    <div class="mb-4">
+        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-2">Main</p>
+        <a href="{{ route('student.dashboard.main') }}" class="flex items-center space-x-3 p-2 rounded-xl transition duration-150 {{ request()->routeIs('student.dashboard.main') ? 'bg-pink-600 text-white shadow-lg' : 'text-gray-500 hover:bg-pink-50 hover:text-pink-600' }}">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            <span class="font-semibold text-sm">Dashboard</span>
+        </a>
+    </div>
     @include('dashboard.partials.menus.student')
 @elseif($role === 'client')
     @include('dashboard.partials.menus.client')
