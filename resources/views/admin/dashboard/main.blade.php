@@ -81,16 +81,16 @@
     @endphp
 
     <!-- Simple KPI Row -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         @foreach ($kpis as $kpi)
             <div class="bg-[#E9E9EB] p-4 rounded-[1.25rem] shadow-sm hover:shadow-md transition-all duration-300 group border border-transparent hover:border-white">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 {{ $kpi['iconBg'] }} rounded-lg flex items-center justify-center shrink-0 shadow-sm">
                         <svg class="w-5 h-5 {{ $kpi['iconText'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $kpi['icon'] !!}</svg>
                     </div>
-                    <div class="min-w-0">
-                        <h4 class="text-lg font-bold text-gray-900 leading-tight truncate">{{ $kpi['value'] }}</h4>
-                        <p class="text-[10px] font-medium text-gray-500 truncate mt-0.5">{{ $kpi['label'] }}</p>
+                    <div class="min-w-0 flex-1">
+                        <h4 class="text-base font-bold text-gray-900 leading-tight truncate">{{ $kpi['value'] }}</h4>
+                        <p class="text-[9px] font-medium text-gray-500 truncate mt-0.5">{{ $kpi['label'] }}</p>
                     </div>
                 </div>
             </div>
