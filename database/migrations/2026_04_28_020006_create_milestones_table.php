@@ -11,7 +11,7 @@ class CreateMilestonesTable extends Migration
         Schema::create('milestones', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('startup_id')->constrained('startups')->onDelete('cascade');
-            $table->foreignUuid('cohort_id')->constrained('cohorts')->onDelete('cascade');
+            $table->foreignUuid('cohort_id')->nullable()->constrained('cohorts')->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
             $table->date('due_date');
