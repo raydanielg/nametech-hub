@@ -162,6 +162,10 @@ Route::middleware(['auth'])->group(function () {
     // Studio Director Routes
     Route::middleware(['has.role:studio_director'])->prefix('studio')->as('studio.')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\StudioDirector\StudioDashboardController::class, 'index'])->name('dashboard.main');
+        Route::get('/projects', [App\Http\Controllers\StudioDirector\StudioDashboardController::class, 'projects'])->name('projects');
+        Route::get('/team', [App\Http\Controllers\StudioDirector\StudioDashboardController::class, 'teamWorkload'])->name('team');
+        Route::get('/clients', [App\Http\Controllers\StudioDirector\StudioDashboardController::class, 'clients'])->name('clients');
+        Route::get('/invoices', [App\Http\Controllers\StudioDirector\StudioDashboardController::class, 'invoices'])->name('invoices');
     });
 
     // Startup Founder Routes
