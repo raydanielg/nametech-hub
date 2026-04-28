@@ -4,6 +4,12 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use App\Models\User;
+use App\Models\Cohort;
+use App\Models\Startup;
+use App\Models\Milestone;
+use Illuminate\Support\Str;
+
 class StartupSeeder extends Seeder
 {
     /**
@@ -13,12 +19,12 @@ class StartupSeeder extends Seeder
      */
     public function run()
     {
-        $founder = \App\Models\User::where('email', 'founder@example.com')->first();
-        $cohort = \App\Models\ProgramCohort::first();
+        $founder = User::where('email', 'founder@example.com')->first();
+        $cohort = Cohort::first();
 
         if ($founder) {
-            $startup = \App\Models\Startup::create([
-                'id' => \Illuminate\Support\Str::uuid(),
+            $startup = Startup::create([
+                'id' => Str::uuid(),
                 'name' => 'TechNova Solutions',
                 'description' => 'AI-powered supply chain optimization for African retailers.',
                 'founder_id' => $founder->id,
@@ -30,8 +36,8 @@ class StartupSeeder extends Seeder
                 'funding_status' => 'Pre-seed',
             ]);
 
-            \App\Models\Milestone::create([
-                'id' => \Illuminate\Support\Str::uuid(),
+            Milestone::create([
+                'id' => Str::uuid(),
                 'startup_id' => $startup->id,
                 'title' => 'MVP Launch',
                 'description' => 'Complete the initial version of the product and launch to first 10 beta users.',
@@ -39,8 +45,8 @@ class StartupSeeder extends Seeder
                 'status' => 'pending',
             ]);
 
-            \App\Models\Milestone::create([
-                'id' => \Illuminate\Support\Str::uuid(),
+            Milestone::create([
+                'id' => Str::uuid(),
                 'startup_id' => $startup->id,
                 'title' => 'Business Model Canvas',
                 'description' => 'Finalize the BMC and validate with mentors.',
