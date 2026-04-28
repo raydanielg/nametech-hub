@@ -4,14 +4,6 @@
 @include('landing.partials.header')
 
 <style>
-    /* Ensure navbar is exactly like landing page */
-    .navbar {
-        background-color: #fff !important;
-        border-bottom: 1px solid #dee2e6 !important;
-        position: sticky !important;
-        top: 0;
-        z-index: 1020;
-    }
     .prose h1, .prose h2, .prose h3 {
         color: #111;
     }
