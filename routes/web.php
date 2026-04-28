@@ -149,4 +149,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/system/backup', [App\Http\Controllers\Admin\AdminDashboardController::class, 'backup'])->name('system.backup');
         Route::get('/system/status', [App\Http\Controllers\Admin\AdminDashboardController::class, 'systemStatus'])->name('system.status');
     });
+
+    // Hub Director Routes
+    Route::middleware(['has.role:hub_director'])->prefix('hub')->as('hub.')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\HubDirector\HubDashboardController::class, 'index'])->name('dashboard.main');
+    });
+
+    // Studio Director Routes
+    Route::middleware(['has.role:studio_director'])->prefix('studio')->as('studio.')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\StudioDirector\StudioDashboardController::class, 'index'])->name('dashboard.main');
+    });
+
+    // Startup Founder Routes
+    Route::middleware(['has.role:startup_founder'])->prefix('founder')->as('founder.')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'index'])->name('dashboard.main');
+    });
 });
