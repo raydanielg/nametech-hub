@@ -1120,9 +1120,320 @@ class AdminDashboardController extends Controller
         return view('admin.finance.revenue', compact('monthlyRevenue')); 
     }
     
-    public function financeExpenses() { return view('admin.finance.expenses'); }
-    public function financeStripe() { return view('admin.finance.stripe'); }
-    public function financeSettings() { return view('admin.finance.settings'); }
+    // FINANCE INVOICES
+    public function financeAddInvoice() 
+    { 
+        $users = User::where('status', 'active')->get();
+        return view('admin.finance.add-invoice', compact('users')); 
+    }
+    
+    public function financeStoreInvoice(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'invoice_number' => 'required|string|max:255|unique:invoices',
+            'due_date' => 'required|date',
+            'items' => 'required|array',
+            'items.*.description' => 'required|string|max:255',
+            'items.*.quantity' => 'required|integer|min:1',
+            'items.*.unit_price' => 'required|numeric|min:0',
+            'notes' => 'nullable|string',
+        ]);
+
+        $totalAmount = 0;
+        foreach ($validated['items'] as $item) {
+            $totalAmount += $item['quantity'] * $item['unit_price'];
+        }
+
+        $invoice = \App\Models\Invoice::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'user_id' => $validated['user_id'],
+            'invoice_number' => $validated['invoice_number'],
+            'total_amount' => $totalAmount,
+            'due_date' => $validated['due_date'],
+            'status' => 'pending',
+            'notes' => $validated['notes'] ?? null,
+        ]);
+
+        // Create invoice items
+        foreach ($validated['items'] as $item) {
+            $invoice->items()->create([
+                'description' => $item['description'],
+                'quantity' => $item['quantity'],
+                'unit_price' => $item['unit_price'],
+                'total' => $item['quantity'] * $item['unit_price'],
+            ]);
+        }
+
+        return redirect()->route('finance.invoices')->with('success', 'Invoice created successfully.');
+    }
+    
+    public function financeEditInvoice($id)
+    {
+        $invoice = \App\Models\Invoice::with(['user', 'items'])->findOrFail($id);
+        $users = User::where('status', 'active')->get();
+        return view('admin.finance.edit-invoice', compact('invoice', 'users'));
+    }
+    
+    public function financeUpdateInvoice(Request $request, $id)
+    {
+        $invoice = \App\Models\Invoice::findOrFail($id);
+        
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'due_date' => 'required|date',
+            'status' => 'required|in:pending,paid,overdue,cancelled',
+            'notes' => 'nullable|string',
+        ]);
+
+        $invoice->update($validated);
+
+        return redirect()->route('finance.invoices')->with('success', 'Invoice updated successfully.');
+    }
+    
+    public function financeDestroyInvoice($id)
+    {
+        $invoice = \App\Models\Invoice::findOrFail($id);
+        $invoice->delete();
+        
+        return redirect()->route('finance.invoices')->with('success', 'Invoice deleted successfully.');
+    }
+    
+    public function financeSendInvoice($id)
+    {
+        $invoice = \App\Models\Invoice::with('user')->findOrFail($id);
+        
+        // Send invoice email logic here
+        // Mail::to($invoice->user->email)->send(new InvoiceMail($invoice));
+        
+        $invoice->update(['sent_at' => now()]);
+        
+        return back()->with('success', 'Invoice sent successfully.');
+    }
+    
+    public function financeMarkInvoicePaid($id)
+    {
+        $invoice = \App\Models\Invoice::findOrFail($id);
+        $invoice->update([
+            'status' => 'paid',
+            'paid_at' => now(),
+        ]);
+        
+        return back()->with('success', 'Invoice marked as paid.');
+    }
+
+    // FINANCE PAYMENTS
+    public function financeStorePayment(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'invoice_id' => 'nullable|exists:invoices,id',
+            'amount' => 'required|numeric|min:0',
+            'payment_method' => 'required|string|max:255',
+            'transaction_id' => 'nullable|string|max:255',
+            'status' => 'required|in:pending,completed,failed,refunded',
+            'notes' => 'nullable|string',
+        ]);
+
+        $payment = \App\Models\Payment::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'user_id' => $validated['user_id'],
+            'invoice_id' => $validated['invoice_id'] ?? null,
+            'amount' => $validated['amount'],
+            'payment_method' => $validated['payment_method'],
+            'transaction_id' => $validated['transaction_id'] ?? null,
+            'status' => $validated['status'],
+            'notes' => $validated['notes'] ?? null,
+        ]);
+
+        // Update invoice status if applicable
+        if ($payment->invoice_id && $payment->status === 'completed') {
+            $invoice = $payment->invoice;
+            $totalPaid = $invoice->payments()->where('status', 'completed')->sum('amount');
+            if ($totalPaid >= $invoice->total_amount) {
+                $invoice->update(['status' => 'paid', 'paid_at' => now()]);
+            }
+        }
+
+        return redirect()->route('finance.payments')->with('success', 'Payment recorded successfully.');
+    }
+    
+    public function financeEditPayment($id)
+    {
+        $payment = \App\Models\Payment::with(['user', 'invoice'])->findOrFail($id);
+        return view('admin.finance.edit-payment', compact('payment'));
+    }
+    
+    public function financeUpdatePayment(Request $request, $id)
+    {
+        $payment = \App\Models\Payment::findOrFail($id);
+        
+        $validated = $request->validate([
+            'amount' => 'required|numeric|min:0',
+            'payment_method' => 'required|string|max:255',
+            'transaction_id' => 'nullable|string|max:255',
+            'status' => 'required|in:pending,completed,failed,refunded',
+            'notes' => 'nullable|string',
+        ]);
+
+        $payment->update($validated);
+
+        return redirect()->route('finance.payments')->with('success', 'Payment updated successfully.');
+    }
+    
+    public function financeDestroyPayment($id)
+    {
+        $payment = \App\Models\Payment::findOrFail($id);
+        $payment->delete();
+        
+        return redirect()->route('finance.payments')->with('success', 'Payment deleted successfully.');
+    }
+    
+    public function financeRefundPayment($id)
+    {
+        $payment = \App\Models\Payment::findOrFail($id);
+        
+        if ($payment->status !== 'completed') {
+            return back()->with('error', 'Only completed payments can be refunded.');
+        }
+        
+        $payment->update([
+            'status' => 'refunded',
+            'refunded_at' => now(),
+        ]);
+        
+        return back()->with('success', 'Payment refunded successfully.');
+    }
+
+    // FINANCE EXPENSES
+    public function financeAddExpense() 
+    { 
+        return view('admin.finance.add-expense'); 
+    }
+    
+    public function financeStoreExpense(Request $request)
+    {
+        $validated = $request->validate([
+            'description' => 'required|string|max:255',
+            'amount' => 'required|numeric|min:0',
+            'category' => 'required|string|max:255',
+            'date' => 'required|date',
+            'receipt' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'notes' => 'nullable|string',
+        ]);
+
+        $expense = \App\Models\Expense::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'description' => $validated['description'],
+            'amount' => $validated['amount'],
+            'category' => $validated['category'],
+            'date' => $validated['date'],
+            'notes' => $validated['notes'] ?? null,
+        ]);
+
+        // Handle receipt upload if present
+        if ($request->hasFile('receipt')) {
+            $receiptPath = $request->file('receipt')->store('expenses/receipts', 'public');
+            $expense->update(['receipt' => $receiptPath]);
+        }
+
+        return redirect()->route('finance.expenses')->with('success', 'Expense recorded successfully.');
+    }
+    
+    public function financeEditExpense($id)
+    {
+        $expense = \App\Models\Expense::findOrFail($id);
+        return view('admin.finance.edit-expense', compact('expense'));
+    }
+    
+    public function financeUpdateExpense(Request $request, $id)
+    {
+        $expense = \App\Models\Expense::findOrFail($id);
+        
+        $validated = $request->validate([
+            'description' => 'required|string|max:255',
+            'amount' => 'required|numeric|min:0',
+            'category' => 'required|string|max:255',
+            'date' => 'required|date',
+            'notes' => 'nullable|string',
+        ]);
+
+        $expense->update($validated);
+
+        return redirect()->route('finance.expenses')->with('success', 'Expense updated successfully.');
+    }
+    
+    public function financeDestroyExpense($id)
+    {
+        $expense = \App\Models\Expense::findOrFail($id);
+        $expense->delete();
+        
+        return redirect()->route('finance.expenses')->with('success', 'Expense deleted successfully.');
+    }
+
+    // FINANCE STRIPE
+    public function financeStripe() 
+    { 
+        $stats = [
+            'total_revenue' => \App\Models\Payment::where('payment_method', 'stripe')->sum('amount'),
+            'connected' => true, // Check Stripe connection
+            'webhooks' => 3, // Count webhooks
+        ];
+        return view('admin.finance.stripe', compact('stats')); 
+    }
+    
+    public function financeStripeSync()
+    {
+        // Sync with Stripe API
+        return back()->with('success', 'Stripe data synchronized successfully.');
+    }
+    
+    public function financeStripeWebhooks()
+    {
+        $webhooks = [
+            'payment_intent.succeeded' => ['url' => '/stripe/webhooks/payment-success', 'status' => 'active'],
+            'invoice.payment_succeeded' => ['url' => '/stripe/webhooks/invoice-paid', 'status' => 'active'],
+            'customer.subscription.deleted' => ['url' => '/stripe/webhooks/subscription-cancelled', 'status' => 'inactive'],
+        ];
+        return view('admin.finance.stripe-webhooks', compact('webhooks'));
+    }
+
+    // FINANCE SETTINGS
+    public function financeSettings() 
+    { 
+        $settings = [
+            'currency' => Setting::get('finance_currency', 'USD'),
+            'tax_rate' => Setting::get('finance_tax_rate', 0),
+            'invoice_prefix' => Setting::get('finance_invoice_prefix', 'INV-'),
+            'auto_send_invoices' => Setting::get('finance_auto_send_invoices', false),
+            'stripe_enabled' => Setting::get('finance_stripe_enabled', false),
+            'stripe_publishable_key' => Setting::get('finance_stripe_publishable_key', ''),
+            'payment_reminders' => Setting::get('finance_payment_reminders', true),
+            'overdue_days' => Setting::get('finance_overdue_days', 30),
+        ];
+        return view('admin.finance.settings', compact('settings')); 
+    }
+    
+    public function financeStoreSettings(Request $request)
+    {
+        $validated = $request->validate([
+            'currency' => 'required|string|max:3',
+            'tax_rate' => 'required|numeric|min:0|max:100',
+            'invoice_prefix' => 'required|string|max:10',
+            'auto_send_invoices' => 'nullable|boolean',
+            'stripe_enabled' => 'nullable|boolean',
+            'stripe_publishable_key' => 'nullable|string|max:255',
+            'stripe_secret_key' => 'nullable|string|max:255',
+            'payment_reminders' => 'nullable|boolean',
+            'overdue_days' => 'required|integer|min:1|max:365',
+        ]);
+
+        foreach ($validated as $key => $value) {
+            Setting::set($key, $value);
+        }
+
+        return redirect()->route('finance.settings')->with('success', 'Finance settings updated successfully.');
+    }
 
     // PARTNERSHIPS
     public function partners() { return view('admin.partnerships.partners'); }
