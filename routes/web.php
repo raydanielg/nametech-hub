@@ -155,11 +155,17 @@ Route::middleware(['auth'])->group(function () {
 
         // System
         Route::get('/system/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'systemSettings'])->name('system.settings');
+        Route::post('/system/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeSystemSettings'])->name('system.settings.store');
         Route::get('/system/emails', [App\Http\Controllers\Admin\AdminDashboardController::class, 'emailSettings'])->name('system.emails');
+        Route::post('/system/emails', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeEmailSettings'])->name('system.emails.store');
         Route::get('/system/payments', [App\Http\Controllers\Admin\AdminDashboardController::class, 'paymentSettings'])->name('system.payments');
+        Route::post('/system/payments', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storePaymentSettings'])->name('system.payments.store');
         Route::get('/system/api-keys', [App\Http\Controllers\Admin\AdminDashboardController::class, 'apiKeys'])->name('system.api-keys');
+        Route::post('/system/api-keys', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeApiKey'])->name('system.api-keys.store');
+        Route::post('/system/api-keys/{id}/revoke', [App\Http\Controllers\Admin\AdminDashboardController::class, 'revokeApiKey'])->name('system.api-keys.revoke');
         Route::get('/system/audit-logs', [App\Http\Controllers\Admin\AdminDashboardController::class, 'auditLogs'])->name('system.audit-logs');
         Route::get('/system/backup', [App\Http\Controllers\Admin\AdminDashboardController::class, 'backup'])->name('system.backup');
+        Route::post('/system/backup', [App\Http\Controllers\Admin\AdminDashboardController::class, 'createBackup'])->name('system.backup.create');
         Route::get('/system/status', [App\Http\Controllers\Admin\AdminDashboardController::class, 'systemStatus'])->name('system.status');
         Route::get('/system/status/data', [App\Http\Controllers\Admin\AdminDashboardController::class, 'systemStatusData'])->name('system.status.data');
     });
