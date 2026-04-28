@@ -153,6 +153,10 @@ Route::middleware(['auth'])->group(function () {
     // Hub Director Routes
     Route::middleware(['has.role:hub_director'])->prefix('hub')->as('hub.')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\HubDirector\HubDashboardController::class, 'index'])->name('dashboard.main');
+        Route::get('/members', [App\Http\Controllers\HubDirector\HubDashboardController::class, 'members'])->name('members');
+        Route::get('/events', [App\Http\Controllers\HubDirector\HubDashboardController::class, 'events'])->name('events');
+        Route::get('/launchpad', [App\Http\Controllers\HubDirector\HubDashboardController::class, 'launchpad'])->name('launchpad');
+        Route::get('/mentors', [App\Http\Controllers\HubDirector\HubDashboardController::class, 'mentors'])->name('mentors');
     });
 
     // Studio Director Routes
