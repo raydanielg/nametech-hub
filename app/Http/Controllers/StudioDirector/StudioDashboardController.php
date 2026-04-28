@@ -7,5 +7,10 @@ use Illuminate\Http\Request;
 
 class StudioDashboardController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware(['auth', 'has.role:studio_director']);
+    }
+
+    public function index() { return view('studio.dashboard.main'); }
 }
