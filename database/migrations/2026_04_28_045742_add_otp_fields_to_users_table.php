@@ -14,7 +14,8 @@ class AddOtpFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('otp_code', 6)->nullable();
+            $table->timestamp('otp_expires_at')->nullable();
         });
     }
 
@@ -26,7 +27,7 @@ class AddOtpFieldsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn(['otp_code', 'otp_expires_at']);
         });
     }
 }
