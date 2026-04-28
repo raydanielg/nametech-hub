@@ -1,28 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen bg-gray-50">
-    <!-- Header -->
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <a href="{{ route('landing') }}" class="flex items-center">
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2">
-                            <path d="M20 5L35 30H5L20 5Z" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M20 15L28 28H12L20 15Z" fill="#10b981"/>
-                        </svg>
-                        <span class="text-xl font-bold text-gray-900">NAMTECH</span>
-                    </a>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-900 font-medium">Sign In</a>
-                    <a href="{{ route('register') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-lg font-medium transition">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+@include('partials.header')
 
+<div class="min-h-screen bg-gray-50 pt-20">
     <!-- Main Content -->
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
@@ -34,7 +15,7 @@
                     Thank you for choosing to be part of our community at NAMTECH-HUB ("Company," "we," "us," or "our"). 
                     We are committed to protecting your Personal Information and your right to privacy. If you have any 
                     questions or concerns about this Privacy Policy or our practices with regard to your Personal Information, 
-                    please contact us at <a href="mailto:privacy@namtech-hub.com" class="text-emerald-600 hover:underline">privacy@namtech-hub.com</a>.
+                    please contact us at <a href="mailto:privacy@namtech-hub.com">privacy@namtech-hub.com</a>.
                 </p>
 
                 <p class="mb-6">
@@ -42,7 +23,7 @@
                 </p>
 
                 <ul class="list-disc pl-6 mb-6 space-y-2">
-                    <li>Visit our website at <a href="{{ route('landing') }}" class="text-emerald-600 hover:underline">namtech-hub.com</a> or use any of our other Services</li>
+                    <li>Visit our website at <a href="{{ route('landing') }}">namtech-hub.com</a> or use any of our other Services</li>
                     <li>Engage with us in other related ways — including any sales, marketing, or events</li>
                 </ul>
 
@@ -147,7 +128,7 @@
                 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">9. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
                 <p class="mb-4">
                     If you have questions or comments about this notice, you may email us at 
-                    <a href="mailto:privacy@namtech-hub.com" class="text-emerald-600 hover:underline">privacy@namtech-hub.com</a>.
+                    <a href="mailto:privacy@namtech-hub.com">privacy@namtech-hub.com</a>.
                 </p>
 
                 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">10. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2>
@@ -160,24 +141,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-4 md:mb-0">
-                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2">
-                        <path d="M20 5L35 30H5L20 5Z" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M20 15L28 28H12L20 15Z" fill="#10b981"/>
-                    </svg>
-                    <span class="text-gray-600">© {{ date('Y') }} NAMTECH-HUB. All rights reserved.</span>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="{{ route('terms') }}" class="text-gray-500 hover:text-gray-900">Terms of Service</a>
-                    <a href="{{ route('privacy') }}" class="text-gray-500 hover:text-gray-900">Privacy Policy</a>
-                    <a href="{{ route('company.contact') }}" class="text-gray-500 hover:text-gray-900">Contact</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include('partials.footer')
 </div>
 @endsection
