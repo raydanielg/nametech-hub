@@ -201,9 +201,32 @@ Route::middleware(['auth'])->group(function () {
 
         // Partnerships
         Route::get('/partnerships/partners', [App\Http\Controllers\Admin\AdminDashboardController::class, 'partners'])->name('partnerships.partners');
+        Route::get('/partnerships/partners/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addPartner'])->name('partnerships.partners.add');
+        Route::post('/partnerships/partners', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storePartner'])->name('partnerships.partners.store');
+        Route::get('/partnerships/partners/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editPartner'])->name('partnerships.partners.edit');
+        Route::put('/partnerships/partners/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updatePartner'])->name('partnerships.partners.update');
+        Route::delete('/partnerships/partners/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyPartner'])->name('partnerships.partners.destroy');
+        
         Route::get('/partnerships/sponsors', [App\Http\Controllers\Admin\AdminDashboardController::class, 'sponsors'])->name('partnerships.sponsors');
+        Route::get('/partnerships/sponsors/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addSponsor'])->name('partnerships.sponsors.add');
+        Route::post('/partnerships/sponsors', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeSponsor'])->name('partnerships.sponsors.store');
+        Route::get('/partnerships/sponsors/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editSponsor'])->name('partnerships.sponsors.edit');
+        Route::put('/partnerships/sponsors/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateSponsor'])->name('partnerships.sponsors.update');
+        Route::delete('/partnerships/sponsors/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroySponsor'])->name('partnerships.sponsors.destroy');
+        
         Route::get('/partnerships/investors', [App\Http\Controllers\Admin\AdminDashboardController::class, 'investors'])->name('partnerships.investors');
+        Route::get('/partnerships/investors/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addInvestor'])->name('partnerships.investors.add');
+        Route::post('/partnerships/investors', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeInvestor'])->name('partnerships.investors.store');
+        Route::get('/partnerships/investors/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editInvestor'])->name('partnerships.investors.edit');
+        Route::put('/partnerships/investors/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateInvestor'])->name('partnerships.investors.update');
+        Route::delete('/partnerships/investors/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyInvestor'])->name('partnerships.investors.destroy');
+        
         Route::get('/partnerships/mentors', [App\Http\Controllers\Admin\AdminDashboardController::class, 'mentors'])->name('partnerships.mentors');
+        Route::get('/partnerships/mentors/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addMentor'])->name('partnerships.mentors.add');
+        Route::post('/partnerships/mentors', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeMentor'])->name('partnerships.mentors.store');
+        Route::get('/partnerships/mentors/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editMentor'])->name('partnerships.mentors.edit');
+        Route::put('/partnerships/mentors/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateMentor'])->name('partnerships.mentors.update');
+        Route::delete('/partnerships/mentors/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyMentor'])->name('partnerships.mentors.destroy');
 
         // Events
         Route::get('/events', [App\Http\Controllers\Admin\AdminDashboardController::class, 'events'])->name('events.index');

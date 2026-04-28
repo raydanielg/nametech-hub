@@ -1436,10 +1436,349 @@ class AdminDashboardController extends Controller
     }
 
     // PARTNERSHIPS
-    public function partners() { return view('admin.partnerships.partners'); }
-    public function sponsors() { return view('admin.partnerships.sponsors'); }
-    public function investors() { return view('admin.partnerships.investors'); }
-    public function mentors() { return view('admin.partnerships.mentors'); }
+    public function partners() 
+    { 
+        $partners = \App\Models\Partner::latest()->paginate(10);
+        $stats = [
+            'total' => \App\Models\Partner::count(),
+            'active' => \App\Models\Partner::where('status', 'active')->count(),
+            'pending' => \App\Models\Partner::where('status', 'pending')->count(),
+            'new_this_month' => \App\Models\Partner::whereMonth('created_at', now()->month)->count(),
+        ];
+        return view('admin.partnerships.partners', compact('partners', 'stats')); 
+    }
+    
+    public function addPartner() 
+    { 
+        return view('admin.partnerships.add-partner'); 
+    }
+    
+    public function storePartner(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'industry' => 'required|string|max:255',
+            'partnership_type' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $partner = \App\Models\Partner::create($validated);
+
+        // Handle logo upload if present
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('partners/logos', 'public');
+            $partner->update(['logo' => $logoPath]);
+        }
+
+        return redirect()->route('partnerships.partners')->with('success', 'Partner added successfully.');
+    }
+    
+    public function editPartner($id)
+    {
+        $partner = \App\Models\Partner::findOrFail($id);
+        return view('admin.partnerships.edit-partner', compact('partner'));
+    }
+    
+    public function updatePartner(Request $request, $id)
+    {
+        $partner = \App\Models\Partner::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'industry' => 'required|string|max:255',
+            'partnership_type' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $partner->update($validated);
+
+        // Handle logo upload if present
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('partners/logos', 'public');
+            $partner->update(['logo' => $logoPath]);
+        }
+
+        return redirect()->route('partnerships.partners')->with('success', 'Partner updated successfully.');
+    }
+    
+    public function destroyPartner($id)
+    {
+        $partner = \App\Models\Partner::findOrFail($id);
+        $partner->delete();
+        
+        return redirect()->route('partnerships.partners')->with('success', 'Partner deleted successfully.');
+    }
+
+    public function sponsors() 
+    { 
+        $sponsors = \App\Models\Sponsor::latest()->paginate(10);
+        $stats = [
+            'total' => \App\Models\Sponsor::count(),
+            'active' => \App\Models\Sponsor::where('status', 'active')->count(),
+            'total_funding' => \App\Models\Sponsor::sum('funding_amount'),
+            'new_this_month' => \App\Models\Sponsor::whereMonth('created_at', now()->month)->count(),
+        ];
+        return view('admin.partnerships.sponsors', compact('sponsors', 'stats')); 
+    }
+    
+    public function addSponsor() 
+    { 
+        return view('admin.partnerships.add-sponsor'); 
+    }
+    
+    public function storeSponsor(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'sponsorship_level' => 'required|string|max:255',
+            'funding_amount' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $sponsor = \App\Models\Sponsor::create($validated);
+
+        // Handle logo upload if present
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('sponsors/logos', 'public');
+            $sponsor->update(['logo' => $logoPath]);
+        }
+
+        return redirect()->route('partnerships.sponsors')->with('success', 'Sponsor added successfully.');
+    }
+    
+    public function editSponsor($id)
+    {
+        $sponsor = \App\Models\Sponsor::findOrFail($id);
+        return view('admin.partnerships.edit-sponsor', compact('sponsor'));
+    }
+    
+    public function updateSponsor(Request $request, $id)
+    {
+        $sponsor = \App\Models\Sponsor::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'sponsorship_level' => 'required|string|max:255',
+            'funding_amount' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $sponsor->update($validated);
+
+        // Handle logo upload if present
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('sponsors/logos', 'public');
+            $sponsor->update(['logo' => $logoPath]);
+        }
+
+        return redirect()->route('partnerships.sponsors')->with('success', 'Sponsor updated successfully.');
+    }
+    
+    public function destroySponsor($id)
+    {
+        $sponsor = \App\Models\Sponsor::findOrFail($id);
+        $sponsor->delete();
+        
+        return redirect()->route('partnerships.sponsors')->with('success', 'Sponsor deleted successfully.');
+    }
+
+    public function investors() 
+    { 
+        $investors = \App\Models\Investor::latest()->paginate(10);
+        $stats = [
+            'total' => \App\Models\Investor::count(),
+            'active' => \App\Models\Investor::where('status', 'active')->count(),
+            'total_investment' => \App\Models\Investor::sum('investment_amount'),
+            'new_this_month' => \App\Models\Investor::whereMonth('created_at', now()->month)->count(),
+        ];
+        return view('admin.partnerships.investors', compact('investors', 'stats')); 
+    }
+    
+    public function addInvestor() 
+    { 
+        return view('admin.partnerships.add-investor'); 
+    }
+    
+    public function storeInvestor(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'investment_type' => 'required|string|max:255',
+            'investment_amount' => 'required|numeric|min:0',
+            'equity_percentage' => 'nullable|numeric|min:0|max:100',
+            'description' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $investor = \App\Models\Investor::create($validated);
+
+        // Handle logo upload if present
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('investors/logos', 'public');
+            $investor->update(['logo' => $logoPath]);
+        }
+
+        return redirect()->route('partnerships.investors')->with('success', 'Investor added successfully.');
+    }
+    
+    public function editInvestor($id)
+    {
+        $investor = \App\Models\Investor::findOrFail($id);
+        return view('admin.partnerships.edit-investor', compact('investor'));
+    }
+    
+    public function updateInvestor(Request $request, $id)
+    {
+        $investor = \App\Models\Investor::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'investment_type' => 'required|string|max:255',
+            'investment_amount' => 'required|numeric|min:0',
+            'equity_percentage' => 'nullable|numeric|min:0|max:100',
+            'description' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $investor->update($validated);
+
+        // Handle logo upload if present
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('investors/logos', 'public');
+            $investor->update(['logo' => $logoPath]);
+        }
+
+        return redirect()->route('partnerships.investors')->with('success', 'Investor updated successfully.');
+    }
+    
+    public function destroyInvestor($id)
+    {
+        $investor = \App\Models\Investor::findOrFail($id);
+        $investor->delete();
+        
+        return redirect()->route('partnerships.investors')->with('success', 'Investor deleted successfully.');
+    }
+
+    public function mentors() 
+    { 
+        $mentors = \App\Models\Mentor::latest()->paginate(10);
+        $stats = [
+            'total' => \App\Models\Mentor::count(),
+            'active' => \App\Models\Mentor::where('status', 'active')->count(),
+            'total_mentees' => \App\Models\Mentor::sum('mentees_count'),
+            'new_this_month' => \App\Models\Mentor::whereMonth('created_at', now()->month)->count(),
+        ];
+        return view('admin.partnerships.mentors', compact('mentors', 'stats')); 
+    }
+    
+    public function addMentor() 
+    { 
+        return view('admin.partnerships.add-mentor'); 
+    }
+    
+    public function storeMentor(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'expertise' => 'required|string|max:255',
+            'experience_years' => 'required|integer|min:0',
+            'mentees_count' => 'nullable|integer|min:0',
+            'bio' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $mentor = \App\Models\Mentor::create($validated);
+
+        // Handle photo upload if present
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('mentors/photos', 'public');
+            $mentor->update(['photo' => $photoPath]);
+        }
+
+        return redirect()->route('partnerships.mentors')->with('success', 'Mentor added successfully.');
+    }
+    
+    public function editMentor($id)
+    {
+        $mentor = \App\Models\Mentor::findOrFail($id);
+        return view('admin.partnerships.edit-mentor', compact('mentor'));
+    }
+    
+    public function updateMentor(Request $request, $id)
+    {
+        $mentor = \App\Models\Mentor::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'required|string|max:255',
+            'expertise' => 'required|string|max:255',
+            'experience_years' => 'required|integer|min:0',
+            'mentees_count' => 'nullable|integer|min:0',
+            'bio' => 'nullable|string',
+            'website' => 'nullable|url|max:255',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:active,pending,inactive',
+        ]);
+
+        $mentor->update($validated);
+
+        // Handle photo upload if present
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('mentors/photos', 'public');
+            $mentor->update(['photo' => $photoPath]);
+        }
+
+        return redirect()->route('partnerships.mentors')->with('success', 'Mentor updated successfully.');
+    }
+    
+    public function destroyMentor($id)
+    {
+        $mentor = \App\Models\Mentor::findOrFail($id);
+        $mentor->delete();
+        
+        return redirect()->route('partnerships.mentors')->with('success', 'Mentor deleted successfully.');
+    }
 
     // EVENTS
     public function events() 
