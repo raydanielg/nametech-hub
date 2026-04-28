@@ -234,13 +234,14 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Activity Chart
+        // Activity Chart with Mock Data for Visualization
         const activityOptions = {
             series: [{
-                name: 'Total Users',
-                data: @json(array_values($chartData['users'] ?? array_fill(0, 14, 0)))
+                name: 'Users',
+                data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10, 4, 1]
             }, {
-                name: 'Revenue (MTD)',
-                data: @json(array_values($chartData['revenue'] ?? array_fill(0, 14, 0)))
+                name: 'Engagement',
+                data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35, 24, 21]
             }],
             chart: {
                 height: 280,
@@ -265,9 +266,8 @@
                 }
             },
             xaxis: {
-                categories: @json(array_keys($chartData['users'] ?? array_fill(0, 14, ''))),
+                categories: @json(collect(range(13, 0))->map(fn($i) => now()->subDays($i)->format('d M'))->toArray()),
                 labels: {
-                    rotate: -45,
                     style: { fontSize: '10px', fontWeight: 600 }
                 },
                 axisBorder: { show: false },
@@ -295,14 +295,9 @@
         const activityChart = new ApexCharts(document.querySelector("#activityChart"), activityOptions);
         activityChart.render();
 
-        // Distribution Chart with Real Data
+        // Distribution Chart with Mock Data
         const distributionOptions = {
-            series: [
-                {{ $stats['total_users'] ?? 0 }},
-                {{ $stats['total_startups'] ?? 0 }},
-                {{ $stats['active_courses'] ?? 0 }},
-                {{ $stats['open_tickets'] ?? 0 }}
-            ],
+            series: [450, 240, 180, 130],
             chart: {
                 type: 'donut',
                 height: 300,
@@ -320,7 +315,7 @@
                             value: { show: true, fontSize: '20px', fontWeight: 900, color: '#1e293b' },
                             total: {
                                 show: true,
-                                label: 'Total Items',
+                                label: 'Total',
                                 color: '#64748b',
                                 formatter: function (w) {
                                     return w.globals.seriesTotals.reduce((a, b) => a + b, 0)
