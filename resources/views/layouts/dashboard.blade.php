@@ -68,14 +68,14 @@
                     <!-- Dropdown -->
                     <div x-show="open" 
                          @click.away="open = false"
+                         x-cloak
                          x-transition:enter="transition ease-out duration-100"
                          x-transition:enter-start="transform opacity-0 scale-95"
                          x-transition:enter-end="transform opacity-100 scale-100"
                          x-transition:leave="transition ease-in duration-75"
                          x-transition:leave-start="transform opacity-100 scale-100"
                          x-transition:leave-end="transform opacity-0 scale-95"
-                         class="absolute right-0 mt-3 w-64 bg-white rounded-[1.5rem] shadow-2xl border border-gray-100 py-3 z-50 overflow-hidden"
-                         style="display: none;">
+                         class="absolute right-0 mt-3 w-64 bg-white rounded-[1.5rem] shadow-2xl border border-gray-100 py-3 z-50 overflow-hidden">
                         
                         <div class="px-6 py-4 bg-gray-50/50 border-b border-gray-100 mb-2">
                             <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Signed in as</p>
@@ -135,5 +135,7 @@
     /* Animation */
     .fade-in { animation: fadeIn 0.4s ease-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    [x-cloak] { display: none !important; }
 </style>
 @endsection
