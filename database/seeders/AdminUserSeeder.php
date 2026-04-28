@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class AdminUserSeeder extends Seeder
 {
@@ -17,13 +18,20 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::updateOrCreate(
-            ['email' => 'admin@namtech.hub'],
-            [
-                'name' => 'Malkia Admin',
+        $admin = User::where('email', 'admin@namtech.hub')->first();
+
+        if (!$admin) {
+            $admin = User::create([
+                'id' => (string) Str::uuid(),
+                'email' => 'admin@namtech.hub',
+                'first_name' => 'Malkia',
+                'last_name' => 'Admin',
                 'password' => Hash::make('password'),
-            ]
-        );
+                'role' => 'super_admin',
+                'status' => 'active',
+                'email_verified' => true,
+            ]);
+        }
 
         $admin->assignRole('super_admin');
     }
