@@ -78,7 +78,17 @@ Route::middleware(['auth'])->group(function () {
         // User Management
         Route::get('/users', [App\Http\Controllers\Admin\AdminDashboardController::class, 'users'])->name('users.index');
         Route::get('/users/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addUser'])->name('users.add');
+        Route::post('/users', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeUser'])->name('users.store');
+        Route::get('/users/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editUser'])->name('users.edit');
+        Route::put('/users/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateUser'])->name('users.update');
+        Route::delete('/users/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyUser'])->name('users.destroy');
+        Route::post('/users/{id}/restore', [App\Http\Controllers\Admin\AdminDashboardController::class, 'restoreUser'])->name('users.restore');
+        Route::post('/users/{id}/approve', [App\Http\Controllers\Admin\AdminDashboardController::class, 'approveUser'])->name('users.approve');
+        Route::post('/users/{id}/reject', [App\Http\Controllers\Admin\AdminDashboardController::class, 'rejectUser'])->name('users.reject');
         Route::get('/users/roles', [App\Http\Controllers\Admin\AdminDashboardController::class, 'roles'])->name('users.roles');
+        Route::post('/users/roles', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeRole'])->name('users.roles.store');
+        Route::put('/users/roles/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateRole'])->name('users.roles.update');
+        Route::delete('/users/roles/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyRole'])->name('users.roles.destroy');
         Route::get('/users/pending', [App\Http\Controllers\Admin\AdminDashboardController::class, 'pendingUsers'])->name('users.pending');
         Route::get('/users/deleted', [App\Http\Controllers\Admin\AdminDashboardController::class, 'deletedUsers'])->name('users.deleted');
 
