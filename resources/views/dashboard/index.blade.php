@@ -7,7 +7,7 @@
     <!-- Welcome Section -->
     <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
         <div class="relative z-10 space-y-2">
-            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Karibu tena, <span class="text-pink-600">{{ $user->name }}!</span></h1>
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Karibu tena, <span class="text-pink-600">{{ $user->first_name }}!</span></h1>
             <p class="text-gray-500 font-medium">Hapa ndipo unapoongoza na kufuatilia maendeleo ya {{ config('app.name') }}.</p>
             <div class="pt-4 flex items-center space-x-4">
                 <span class="px-4 py-2 bg-pink-50 text-pink-600 rounded-full text-xs font-bold uppercase tracking-widest">{{ str_replace('_', ' ', $role) }}</span>

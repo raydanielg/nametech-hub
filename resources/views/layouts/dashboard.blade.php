@@ -45,14 +45,14 @@
                 
                 <div class="flex items-center space-x-3 border-l pl-6 border-gray-100">
                     <div class="text-right hidden sm:block">
-                        <p class="text-sm font-bold text-gray-800">{{ auth()->user()->name }}</p>
+                        <p class="text-sm font-bold text-gray-800">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
                         <p class="text-xs text-gray-400 font-medium">{{ auth()->user()->roles->first()->name ?? 'User' }}</p>
                     </div>
                     <div class="w-10 h-10 bg-gray-200 rounded-xl overflow-hidden shadow-inner flex items-center justify-center text-gray-400 font-bold border-2 border-pink-50">
-                        @if(auth()->user()->profile_photo_url)
-                            <img src="{{ auth()->user()->profile_photo_url }}" alt="Avatar" class="w-full h-full object-cover">
+                        @if(auth()->user()->profile_picture_url)
+                            <img src="{{ auth()->user()->profile_picture_url }}" alt="Avatar" class="w-full h-full object-cover">
                         @else
-                            {{ substr(auth()->user()->name, 0, 1) }}
+                            {{ substr(auth()->user()->first_name, 0, 1) }}
                         @endif
                     </div>
                 </div>
