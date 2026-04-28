@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
         // Dashboard
         Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard.main');
         Route::get('/dashboard/stats', [App\Http\Controllers\Admin\AdminDashboardController::class, 'stats'])->name('dashboard.stats');
+        Route::get('/dashboard/activity', [App\Http\Controllers\Admin\AdminDashboardController::class, 'activity'])->name('dashboard.activity');
         Route::get('/dashboard/health', [App\Http\Controllers\Admin\AdminDashboardController::class, 'health'])->name('dashboard.health');
 
         // User Management
