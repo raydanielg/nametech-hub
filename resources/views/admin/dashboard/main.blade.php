@@ -5,7 +5,7 @@
 @section('dashboard-content')
 <div class="space-y-6 fade-in">
     <!-- Quick Stats Grid (2 Rows of 5) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         <!-- ROW 1 -->
         <!-- Card 1 -->
         <div class="bg-white/60 backdrop-blur-sm p-4 rounded-[1.5rem] border border-gray-100/50 shadow-sm flex items-center space-x-4">
