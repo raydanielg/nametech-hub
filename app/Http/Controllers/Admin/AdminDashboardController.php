@@ -109,11 +109,58 @@ class AdminDashboardController extends Controller
     public function hubSettings() { return view('admin.hub.settings'); }
 
     // PROGRAMS
-    public function launchpad() { return view('admin.programs.launchpad'); }
-    public function scale() { return view('admin.programs.scale'); }
-    public function applications() { return view('admin.programs.applications'); }
-    public function cohorts() { return view('admin.programs.cohorts'); }
-    public function milestones() { return view('admin.programs.milestones'); }
+    public function launchpad() 
+    { 
+        $startups = \App\Models\Startup::where('program_type', 'launchpad')->with(['founder', 'cohort'])->latest()->paginate(10);
+        $stats = [
+            'total_startups' => \App\Models\Startup::where('program_type', 'launchpad')->count(),
+            'active' => \App\Models\Startup::where('program_type', 'launchpad')->where('status', 'active')->count(),
+            'graduated' => \App\Models\Startup::where('program_type', 'launchpad')->where('status', 'graduated')->count(),
+        ];
+        return view('admin.programs.launchpad', compact('startups', 'stats')); 
+    }
+    
+    public function scale() 
+    { 
+        $startups = \App\Models\Startup::where('program_type', 'scale')->with(['founder', 'cohort'])->latest()->paginate(10);
+        $stats = [
+            'total_startups' => \App\Models\Startup::where('program_type', 'scale')->count(),
+            'active' => \App\Models\Startup::where('program_type', 'scale')->where('status', 'active')->count(),
+            'funded' => \App\Models\Startup::where('program_type', 'scale')->where('funding_status', 'funded')->count(),
+        ];
+        return view('admin.programs.scale', compact('startups', 'stats')); 
+    }
+    
+    public function applications() 
+    { 
+        $applications = \App\Models\ProgramApplication::with(['user', 'startup'])->latest()->paginate(10);
+        $stats = [
+            'total' => \App\Models\ProgramApplication::count(),
+            'pending' => \App\Models\ProgramApplication::where('status', 'pending')->count(),
+            'approved' => \App\Models\ProgramApplication::where('status', 'approved')->count(),
+            'rejected' => \App\Models\ProgramApplication::where('status', 'rejected')->count(),
+        ];
+        return view('admin.programs.applications', compact('applications', 'stats')); 
+    }
+    
+    public function cohorts() 
+    { 
+        $cohorts = \App\Models\Cohort::withCount('startups')->latest()->paginate(10);
+        return view('admin.programs.cohorts', compact('cohorts')); 
+    }
+    
+    public function milestones() 
+    { 
+        $milestones = \App\Models\Milestone::with(['startup', 'programApplication'])->latest()->paginate(10);
+        $stats = [
+            'total' => \App\Models\Milestone::count(),
+            'completed' => \App\Models\Milestone::where('status', 'completed')->count(),
+            'pending' => \App\Models\Milestone::where('status', 'pending')->count(),
+            'overdue' => \App\Models\Milestone::where('due_date', '<', now())->where('status', '!=', 'completed')->count(),
+        ];
+        return view('admin.programs.milestones', compact('milestones', 'stats')); 
+    }
+    
     public function demoDay() { return view('admin.programs.demo-day'); }
 
     // STUDIO
