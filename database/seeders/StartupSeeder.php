@@ -17,7 +17,7 @@ class StartupSeeder extends Seeder
         $cohort = \App\Models\ProgramCohort::first();
 
         if ($founder) {
-            \App\Models\Startup::create([
+            $startup = \App\Models\Startup::create([
                 'id' => \Illuminate\Support\Str::uuid(),
                 'name' => 'TechNova Solutions',
                 'description' => 'AI-powered supply chain optimization for African retailers.',
@@ -28,6 +28,24 @@ class StartupSeeder extends Seeder
                 'progress' => 45,
                 'website' => 'https://technova.io',
                 'funding_status' => 'Pre-seed',
+            ]);
+
+            \App\Models\Milestone::create([
+                'id' => \Illuminate\Support\Str::uuid(),
+                'startup_id' => $startup->id,
+                'title' => 'MVP Launch',
+                'description' => 'Complete the initial version of the product and launch to first 10 beta users.',
+                'due_date' => now()->addWeeks(2),
+                'status' => 'pending',
+            ]);
+
+            \App\Models\Milestone::create([
+                'id' => \Illuminate\Support\Str::uuid(),
+                'startup_id' => $startup->id,
+                'title' => 'Business Model Canvas',
+                'description' => 'Finalize the BMC and validate with mentors.',
+                'due_date' => now()->subWeeks(1),
+                'status' => 'completed',
             ]);
         }
     }
