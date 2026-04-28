@@ -104,11 +104,18 @@
             <h3 class="text-sm font-black text-gray-800 mb-4">Activity Trend (Last 14 Days)</h3>
             <div class="h-64 flex items-end space-x-2 relative border-b border-gray-100">
                 <!-- Simple SVG Chart Representation -->
-                <svg class="w-full h-full" viewBox="0 0 400 100">
-                    <path d="M0,80 Q50,20 100,60 T200,30 T300,70 T400,10" fill="none" stroke="#3b82f6" stroke-width="2" />
-                    <circle cx="100" cy="60" r="3" fill="#3b82f6" />
-                    <circle cx="200" cy="30" r="3" fill="#3b82f6" />
-                    <circle cx="300" cy="70" r="3" fill="#3b82f6" />
+                <svg class="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.2" />
+                            <stop offset="100%" style="stop-color:#10b981;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M0,80 Q50,20 100,60 T200,30 T300,70 T400,10" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
+                    <path d="M0,80 Q50,20 100,60 T200,30 T300,70 T400,10 L400,100 L0,100 Z" fill="url(#chartGradient)" />
+                    <circle cx="100" cy="60" r="4" fill="#10b981" stroke="white" stroke-width="2" />
+                    <circle cx="200" cy="30" r="4" fill="#10b981" stroke="white" stroke-width="2" />
+                    <circle cx="300" cy="70" r="4" fill="#10b981" stroke="white" stroke-width="2" />
                 </svg>
                 <!-- X-Axis Labels -->
                 <div class="absolute -bottom-6 w-full flex justify-between px-2">
@@ -120,16 +127,8 @@
             <!-- Legend -->
             <div class="mt-8 flex justify-center space-x-4">
                 <div class="flex items-center space-x-2">
-                    <div class="w-3 h-1 bg-blue-500 rounded-full"></div>
-                    <span class="text-[10px] text-gray-400 font-bold uppercase">Users</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-3 h-1 bg-green-500 rounded-full"></div>
-                    <span class="text-[10px] text-gray-400 font-bold uppercase">Payments</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-3 h-1 bg-amber-500 rounded-full"></div>
-                    <span class="text-[10px] text-gray-400 font-bold uppercase">Investor Txns</span>
+                    <div class="w-3 h-1 bg-emerald-500 rounded-full"></div>
+                    <span class="text-[10px] text-gray-400 font-bold uppercase">System Activity</span>
                 </div>
             </div>
         </div>
@@ -138,16 +137,18 @@
         <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-between">
             <h3 class="text-sm font-black text-gray-800 self-start mb-4">Distribution</h3>
             <div class="relative w-48 h-48">
-                <svg class="w-full h-full" viewBox="0 0 36 36">
+                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path class="text-gray-100" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="text-emerald-500" stroke-width="3" stroke-dasharray="75, 100" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 </svg>
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <span class="text-[10px] text-gray-400 font-bold uppercase">No data</span>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-2xl font-black text-gray-900">75%</span>
+                    <span class="text-[8px] text-gray-400 font-bold uppercase">Target</span>
                 </div>
             </div>
-            <div class="mt-4 flex items-center space-x-2">
-                <div class="w-3 h-3 bg-gray-200 rounded-sm"></div>
-                <span class="text-[10px] text-gray-400 font-bold uppercase">No data</span>
+            <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                <span class="text-[10px] text-gray-400 font-bold uppercase">Active Goals</span>
             </div>
         </div>
     </div>
