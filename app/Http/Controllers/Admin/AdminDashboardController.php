@@ -15,6 +15,9 @@ use App\Models\Payment;
 use App\Models\SupportTicket;
 use App\Models\Enrollment;
 use App\Models\AcademyCourse;
+use App\Models\Setting;
+use App\Models\ApiKey;
+use App\Models\AuditLog;
 
 class AdminDashboardController extends Controller
 {
