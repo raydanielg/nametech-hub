@@ -553,11 +553,185 @@ class AdminDashboardController extends Controller
     public function exportData() { return view('admin.reports.export'); }
 
     // SYSTEM
-    public function systemSettings() { return view('admin.system.settings'); }
-    public function emailSettings() { return view('admin.system.emails'); }
-    public function paymentSettings() { return view('admin.system.payments'); }
-    public function apiKeys() { return view('admin.system.api-keys'); }
-    public function auditLogs() { return view('admin.system.audit-logs'); }
-    public function backup() { return view('admin.system.backup'); }
-    public function systemStatus() { return view('admin.system.status'); }
+    public function systemSettings()
+    {
+        $settings = Setting::whereIn('group', ['general', 'branding'])->pluck('value', 'key');
+        return view('admin.system.settings', compact('settings'));
+    }
+
+    public function storeSystemSettings(Request $request)
+    {
+        $validated = $request->validate([
+            'app_name' => 'nullable|string|max:255',
+            'app_url' => 'nullable|url|max:255',
+            'timezone' => 'nullable|string|max:50',
+            'date_format' => 'nullable|string|max:20',
+            'maintenance_mode' => 'nullable|boolean',
+            'enable_registration' => 'nullable|boolean',
+        ]);
+
+        foreach ($validated as $key => $value) {
+            Setting::set($key, $value, 'general', is_bool($value) ? 'boolean' : 'string');
+        }
+
+        return redirect()->route('admin.system.settings')->with('success', 'General settings updated successfully.');
+    }
+
+    public function emailSettings()
+    {
+        $settings = Setting::where('group', 'email')->pluck('value', 'key');
+        return view('admin.system.emails', compact('settings'));
+    }
+
+    public function storeEmailSettings(Request $request)
+    {
+        $validated = $request->validate([
+            'mail_driver' => 'required|in:smtp,sendmail,mailgun,postmark,ses,log,array',
+            'mail_host' => 'nullable|string|max:255',
+            'mail_port' => 'nullable|integer',
+            'mail_username' => 'nullable|string|max:255',
+            'mail_password' => 'nullable|string|max:255',
+            'mail_encryption' => 'nullable|in:tls,ssl,null',
+            'mail_from_address' => 'required|email|max:255',
+            'mail_from_name' => 'required|string|max:255',
+        ]);
+
+        foreach ($validated as $key => $value) {
+            Setting::set($key, $value, 'email');
+        }
+
+        return redirect()->route('admin.system.emails')->with('success', 'Email settings updated successfully.');
+    }
+
+    public function paymentSettings()
+    {
+        $settings = Setting::where('group', 'payment')->pluck('value', 'key');
+        return view('admin.system.payments', compact('settings'));
+    }
+
+    public function storePaymentSettings(Request $request)
+    {
+        $validated = $request->validate([
+            'currency' => 'required|string|size:3',
+            'currency_symbol' => 'required|string|max:10',
+            'stripe_enabled' => 'nullable|boolean',
+            'stripe_key' => 'nullable|string|max:255',
+            'stripe_secret' => 'nullable|string|max:255',
+            'paypal_enabled' => 'nullable|boolean',
+            'paypal_client_id' => 'nullable|string|max:255',
+            'paypal_secret' => 'nullable|string|max:255',
+        ]);
+
+        foreach ($validated as $key => $value) {
+            Setting::set($key, $value, 'payment', is_bool($value) ? 'boolean' : 'string');
+        }
+
+        return redirect()->route('admin.system.payments')->with('success', 'Payment settings updated successfully.');
+    }
+
+    public function apiKeys()
+    {
+        $keys = ApiKey::with('creator')->latest()->paginate(10);
+        return view('admin.system.api-keys', compact('keys'));
+    }
+
+    public function storeApiKey(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'service' => 'required|string|max:50',
+            'expires_at' => 'nullable|date',
+        ]);
+
+        ApiKey::create([
+            'name' => $validated['name'],
+            'service' => $validated['service'],
+            'expires_at' => $validated['expires_at'] ?? null,
+            'created_by' => auth()->id(),
+        ]);
+
+        return redirect()->route('admin.system.api-keys')->with('success', 'API key created successfully.');
+    }
+
+    public function revokeApiKey(string $id)
+    {
+        $key = ApiKey::findOrFail($id);
+        $key->update(['is_active' => false]);
+
+        return redirect()->route('admin.system.api-keys')->with('success', 'API key revoked successfully.');
+    }
+
+    public function auditLogs()
+    {
+        $logs = AuditLog::with('user')->latest()->paginate(20);
+        return view('admin.system.audit-logs', compact('logs'));
+    }
+
+    public function backup()
+    {
+        $backups = [];
+        $backupPath = storage_path('app/backups');
+
+        if (is_dir($backupPath)) {
+            $files = glob($backupPath . '/*.zip');
+            foreach ($files as $file) {
+                $backups[] = [
+                    'name' => basename($file),
+                    'size' => round(filesize($file) / 1024 / 1024, 2) . ' MB',
+                    'created_at' => date('Y-m-d H:i:s', filemtime($file)),
+                ];
+            }
+        }
+
+        usort($backups, fn($a, $b) => strcmp($b['created_at'], $a['created_at']));
+
+        return view('admin.system.backup', compact('backups'));
+    }
+
+    public function createBackup()
+    {
+        $backupPath = storage_path('app/backups');
+        if (!is_dir($backupPath)) {
+            mkdir($backupPath, 0755, true);
+        }
+
+        $filename = 'backup_' . now()->format('Y-m-d_H-i-s') . '.zip';
+        $filepath = $backupPath . '/' . $filename;
+
+        // Simple database backup (SQL dump)
+        $dbPath = storage_path('app/backups/db_' . now()->format('Y-m-d_H-i-s') . '.sql');
+        $command = sprintf(
+            'mysqldump -u%s -p%s %s > %s',
+            escapeshellarg(config('database.connections.mysql.username')),
+            escapeshellarg(config('database.connections.mysql.password')),
+            escapeshellarg(config('database.connections.mysql.database')),
+            escapeshellarg($dbPath)
+        );
+        @exec($command);
+
+        // Create ZIP
+        $zip = new \ZipArchive();
+        if ($zip->open($filepath, \ZipArchive::CREATE) === true) {
+            if (file_exists($dbPath)) {
+                $zip->addFile($dbPath, basename($dbPath));
+            }
+            $zip->close();
+            @unlink($dbPath);
+        }
+
+        AuditLog::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'user_id' => auth()->id(),
+            'action' => 'backup_created',
+            'description' => 'System backup created: ' . $filename,
+            'ip_address' => request()->ip(),
+        ]);
+
+        return redirect()->route('admin.system.backup')->with('success', 'Backup created successfully.');
+    }
+
+    public function systemStatus()
+    {
+        return view('admin.system.status');
+    }
 }
