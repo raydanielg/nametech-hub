@@ -12,11 +12,10 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css', {
-        sassOptions: {
-            quietDeps: true,
-        },
-    })
+    .postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+        require('autoprefixer'),
+    ])
     .sourceMaps();
 
 // Disable WebpackBar to avoid ProgressPlugin validation error
