@@ -4,10 +4,13 @@
 @include('landing.partials.header')
 
 <style>
-    /* Override navbar background to match Windsurf style */
+    /* Ensure navbar is exactly like landing page */
     .navbar {
-        background-color: #f0f0eb !important;
-        border-bottom: none !important;
+        background-color: #fff !important;
+        border-bottom: 1px solid #dee2e6 !important;
+        position: sticky !important;
+        top: 0;
+        z-index: 1020;
     }
     .prose h1, .prose h2, .prose h3 {
         color: #111;
@@ -15,17 +18,21 @@
     .legal-content {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
+    /* Fixed beige background for the hero section to match Windsurf style */
+    .hero-beige {
+        background-color: #f0f0eb;
+    }
 </style>
 
-<div class="legal-content min-h-screen bg-[#f0f0eb]">
-    <!-- Hero Title Section -->
-    <div class="py-20 text-center">
+<div class="legal-content min-h-screen bg-white">
+    <!-- Hero Title Section with Beige Background -->
+    <div class="hero-beige py-20 text-center">
         <h1 class="text-6xl font-medium text-gray-900 tracking-tight">Privacy Policy</h1>
     </div>
 
-    <!-- Main Content -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-        <div class="bg-white p-12 md:p-20 shadow-sm">
+    <!-- Main Content on White Background -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 -mt-10 relative z-10">
+        <div class="bg-white p-12 md:p-20 shadow-sm border border-gray-100 rounded-sm">
             <div class="prose prose-lg prose-emerald max-w-none text-gray-800">
                 <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">PRIVACY POLICY</p>
                 <p class="text-sm text-gray-500 mb-10">Last updated: October 21, 2025</p>
