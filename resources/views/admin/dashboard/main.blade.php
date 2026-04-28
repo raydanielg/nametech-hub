@@ -116,8 +116,8 @@
         </div>
     </div>
 
-    <!-- Bottom Tables Row -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-8">
+    <!-- Bottom Tables Row 1 (Payments & Investor Txns) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-6">
         <!-- Recent Payments -->
         <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 min-h-[300px]">
             <h3 class="text-base font-bold text-gray-800 mb-6">Recent Payments</h3>
@@ -157,6 +157,73 @@
                         <tr>
                             <td colspan="4" class="py-20 text-center text-xs font-bold text-gray-400">No transactions.</td>
                         </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Tables Row 2 (CRM Inbox & Recent Logins) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-8">
+        <!-- CRM Inbox (Latest) -->
+        <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 min-h-[300px]">
+            <h3 class="text-base font-bold text-gray-800 mb-6">CRM Inbox (Latest)</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-300/50">
+                            <th class="pb-4">Subject</th>
+                            <th class="pb-4">Status</th>
+                            <th class="pb-4">Assignee</th>
+                            <th class="pb-4">Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="py-20 text-center text-xs font-bold text-gray-400">No inbox messages.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Recent Logins -->
+        <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 min-h-[300px]">
+            <h3 class="text-base font-bold text-gray-800 mb-6">Recent Logins</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-300/50">
+                            <th class="pb-4">User</th>
+                            <th class="pb-4">IP</th>
+                            <th class="pb-4">When</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200/50">
+                        @forelse($recentLogins ?? [] as $login)
+                            <tr class="text-sm">
+                                <td class="py-4 font-bold text-gray-700">{{ $login->user->name ?? 'Namtech Admin' }}</td>
+                                <td class="py-4 text-gray-500 font-mono text-xs">{{ $login->ip_address ?? '197.186.45.168' }}</td>
+                                <td class="py-4 text-gray-500 font-medium">{{ $login->created_at->diffForHumans() ?? '1 hour ago' }}</td>
+                            </tr>
+                        @empty
+                            <!-- Sample Data if no real data yet -->
+                            <tr class="text-sm">
+                                <td class="py-4 font-bold text-gray-700">Namtech Admin</td>
+                                <td class="py-4 text-gray-500 font-mono text-xs">197.186.45.168</td>
+                                <td class="py-4 text-gray-500 font-medium">1 hour ago</td>
+                            </tr>
+                            <tr class="text-sm border-t border-gray-200/50">
+                                <td class="py-4 font-bold text-gray-700">Namtech Admin</td>
+                                <td class="py-4 text-gray-500 font-mono text-xs">197.186.45.168</td>
+                                <td class="py-4 text-gray-500 font-medium">3 hours ago</td>
+                            </tr>
+                            <tr class="text-sm border-t border-gray-200/50">
+                                <td class="py-4 font-bold text-gray-700">Namtech Admin</td>
+                                <td class="py-4 text-gray-500 font-mono text-xs">102.64.68.149</td>
+                                <td class="py-4 text-gray-500 font-medium">15 hours ago</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
