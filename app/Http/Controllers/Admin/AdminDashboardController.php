@@ -463,9 +463,6 @@ class AdminDashboardController extends Controller
     
     public function addResource() { return view('admin.resources.create'); }
     public function toolkit() { return view('admin.resources.toolkit'); }
-    public function downloads() { return view('admin.resources.downloads'); }
-
-    // SUPPORT
     public function tickets() 
     { 
         $tickets = \App\Models\SupportTicket::with(['user', 'assignedTo'])->latest()->paginate(10);
