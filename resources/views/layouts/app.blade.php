@@ -16,6 +16,42 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            .prose h1 { @apply text-4xl font-bold text-gray-900 mb-6; }
+            .prose h2 { @apply text-2xl font-bold text-gray-900 mt-10 mb-4; }
+            .prose h3 { @apply text-lg font-semibold text-gray-900 mt-6 mb-3; }
+            .prose p { @apply mb-4 leading-relaxed; }
+            .prose ul { @apply list-disc pl-6 mb-6 space-y-2; }
+            .prose strong { @apply font-bold text-gray-900; }
+            .prose a { @apply text-emerald-600 hover:underline font-medium; }
+        }
+    </style>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
