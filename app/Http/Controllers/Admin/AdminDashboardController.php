@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+
 class AdminDashboardController extends Controller
 {
     public function __construct()
@@ -13,16 +16,73 @@ class AdminDashboardController extends Controller
     }
 
     // DASHBOARD
-    public function index() { return view('admin.dashboard.main'); }
-    public function stats() { return view('admin.dashboard.stats'); }
-    public function health() { return view('admin.dashboard.health'); }
+    public function index() 
+    { 
+        $stats = [
+            'total_users' => User::count(),
+            'active_startups' => \App\Models\Startup::where('status', 'active')->count(),
+            'total_revenue' => \App\Models\Payment::sum('amount'),
+            'pending_tickets' => \App\Models\SupportTicket::where('status', 'open')->count(),
+        ];
+        return view('admin.dashboard.main', compact('stats')); 
+    }
 
     // USER MANAGEMENT
-    public function users() { return view('admin.users.index'); }
-    public function addUser() { return view('admin.users.create'); }
-    public function roles() { return view('admin.users.roles'); }
-    public function pendingUsers() { return view('admin.users.pending'); }
-    public function deletedUsers() { return view('admin.users.deleted'); }
+    public function users() 
+    { 
+        $users = User::with('roles')->latest()->paginate(10);
+        return view('admin.users.index', compact('users')); 
+    }
+
+    public function addUser() 
+    { 
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles')); 
+    }
+
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'role' => 'required|exists:roles,name',
+        ]);
+
+        $user = User::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => \Illuminate\Support\Facades\Hash::make($request->password),
+            'role' => $request->role,
+            'status' => 'active',
+            'email_verified' => true,
+        ]);
+
+        $user->assignRole($request->role);
+
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
+    }
+
+    public function roles() 
+    { 
+        $roles = Role::withCount('users')->get();
+        return view('admin.users.roles', compact('roles')); 
+    }
+
+    public function pendingUsers() 
+    { 
+        $users = User::where('status', 'pending_verification')->latest()->paginate(10);
+        return view('admin.users.pending', compact('users')); 
+    }
+
+    public function deletedUsers() 
+    { 
+        $users = User::onlyTrashed()->latest()->paginate(10);
+        return view('admin.users.deleted', compact('users')); 
+    }
 
     // HUB MANAGEMENT
     public function memberships() { return view('admin.hub.memberships'); }
