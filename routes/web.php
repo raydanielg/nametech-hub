@@ -175,5 +175,10 @@ Route::middleware(['auth'])->group(function () {
     // Startup Founder Routes
     Route::middleware(['has.role:startup_founder'])->prefix('founder')->as('founder.')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'index'])->name('dashboard.main');
+        Route::get('/startup', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'myStartup'])->name('startup');
+        Route::get('/milestones', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'milestones'])->name('milestones');
+        Route::get('/mentor', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'myMentor'])->name('mentor');
+        Route::get('/sessions', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'sessions'])->name('sessions');
+        Route::get('/investors', [App\Http\Controllers\StartupFounder\FounderDashboardController::class, 'investors'])->name('investors');
     });
 });
