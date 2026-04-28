@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Carbon;
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use App\Models\Startup;
+use App\Models\Payment;
+use App\Models\SupportTicket;
+use App\Models\Enrollment;
+use App\Models\AcademyCourse;
 
 class AdminDashboardController extends Controller
 {
@@ -18,13 +25,123 @@ class AdminDashboardController extends Controller
     // DASHBOARD
     public function index() 
     { 
-        $stats = [
+        $stats = $this->buildDashboardStats();
+        $activity = $this->buildRecentActivity();
+
+        return view('admin.dashboard.main', compact('stats', 'activity')); 
+    }
+
+    public function stats(): JsonResponse
+    {
+        return response()->json([
+            'stats' => $this->buildDashboardStats(),
+            'generated_at' => now()->toIso8601String(),
+        ]);
+    }
+
+    public function activity(): JsonResponse
+    {
+        return response()->json([
+            'activity' => $this->buildRecentActivity(),
+            'generated_at' => now()->toIso8601String(),
+        ]);
+    }
+
+    private function buildDashboardStats(): array
+    {
+        $now = now();
+
+        return [
+            // Users
             'total_users' => User::count(),
-            'active_startups' => \App\Models\Startup::where('status', 'active')->count(),
-            'total_revenue' => \App\Models\Payment::sum('amount'),
-            'pending_tickets' => \App\Models\SupportTicket::where('status', 'open')->count(),
+            'new_users_today' => User::whereDate('created_at', today())->count(),
+
+            // Startups
+            'total_startups' => Startup::count(),
+            'active_startups' => Startup::where('status', 'active')->count(),
+
+            // Academy
+            'active_courses' => AcademyCourse::active()->count(),
+            'total_enrollments' => Enrollment::count(),
+            'certificates_issued' => Enrollment::whereNotNull('certificate_url')->count(),
+            'completed_this_month' => Enrollment::whereNotNull('completed_at')
+                ->whereBetween('completed_at', [$now->copy()->startOfMonth(), $now->copy()->endOfMonth()])
+                ->count(),
+
+            // Finance
+            'revenue_total' => (float) Payment::where('status', 'success')->sum('amount'),
+            'revenue_today' => (float) Payment::where('status', 'success')->whereDate('paid_at', today())->sum('amount'),
+            'revenue_mtd' => (float) Payment::where('status', 'success')
+                ->whereBetween('paid_at', [$now->copy()->startOfMonth(), $now->copy()->endOfMonth()])
+                ->sum('amount'),
+
+            // Support
+            'open_tickets' => SupportTicket::where('status', 'open')->count(),
+            'urgent_tickets' => SupportTicket::where('status', 'open')->where('priority', 'urgent')->count(),
         ];
-        return view('admin.dashboard.main', compact('stats')); 
+    }
+
+    private function buildRecentActivity(int $limit = 10): array
+    {
+        $items = [];
+
+        $users = User::select(['id', 'first_name', 'last_name', 'email', 'created_at'])
+            ->latest('created_at')
+            ->limit($limit)
+            ->get();
+
+        foreach ($users as $user) {
+            $items[] = [
+                'type' => 'user_registered',
+                'title' => 'New user registered',
+                'description' => trim(($user->first_name . ' ' . $user->last_name)) ?: $user->email,
+                'time' => $user->created_at?->diffForHumans(),
+                'timestamp' => $user->created_at?->toIso8601String(),
+            ];
+        }
+
+        $tickets = SupportTicket::select(['id', 'ticket_number', 'subject', 'priority', 'status', 'created_at'])
+            ->latest('created_at')
+            ->limit($limit)
+            ->get();
+
+        foreach ($tickets as $ticket) {
+            $items[] = [
+                'type' => 'ticket_created',
+                'title' => 'New support ticket',
+                'description' => $ticket->ticket_number . ' • ' . $ticket->subject,
+                'time' => $ticket->created_at?->diffForHumans(),
+                'timestamp' => $ticket->created_at?->toIso8601String(),
+                'meta' => [
+                    'priority' => $ticket->priority,
+                    'status' => $ticket->status,
+                ],
+            ];
+        }
+
+        $payments = Payment::select(['id', 'amount', 'currency', 'status', 'paid_at', 'created_at'])
+            ->latest('paid_at')
+            ->limit($limit)
+            ->get();
+
+        foreach ($payments as $payment) {
+            $items[] = [
+                'type' => 'payment_updated',
+                'title' => 'Payment ' . ($payment->status ?? 'updated'),
+                'description' => ($payment->currency ?? 'USD') . ' ' . number_format((float) $payment->amount, 2),
+                'time' => ($payment->paid_at ?? $payment->created_at)?->diffForHumans(),
+                'timestamp' => ($payment->paid_at ?? $payment->created_at)?->toIso8601String(),
+                'meta' => [
+                    'status' => $payment->status,
+                ],
+            ];
+        }
+
+        usort($items, function ($a, $b) {
+            return strcmp($b['timestamp'] ?? '', $a['timestamp'] ?? '');
+        });
+
+        return array_slice($items, 0, $limit);
     }
 
     // USER MANAGEMENT
