@@ -256,22 +256,141 @@ class AdminDashboardController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }
 
+    public function editUser(string $id)
+    {
+        $user = User::with('roles')->findOrFail($id);
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
+    }
+
+    public function updateUser(Request $request, string $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'phone' => 'nullable|string|max:20',
+            'role' => 'required|exists:roles,name',
+            'status' => 'required|in:active,pending_verification,suspended',
+        ]);
+
+        $user->update([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'role' => $validated['role'],
+            'status' => $validated['status'],
+        ]);
+
+        $user->syncRoles([$validated['role']]);
+
+        return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
+    }
+
+    public function destroyUser(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'User moved to trash.');
+    }
+
+    public function restoreUser(string $id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->restore();
+
+        return redirect()->route('admin.users.deleted')->with('success', 'User restored successfully.');
+    }
+
+    public function approveUser(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update(['status' => 'active', 'email_verified' => true]);
+
+        return redirect()->route('admin.users.pending')->with('success', 'User approved successfully.');
+    }
+
+    public function rejectUser(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update(['status' => 'rejected']);
+
+        return redirect()->route('admin.users.pending')->with('success', 'User rejected.');
+    }
+
     public function roles() 
     { 
         $roles = Role::withCount('users')->get();
-        return view('admin.users.roles', compact('roles')); 
+        $permissions = \Spatie\Permission\Models\Permission::all()->groupBy('group');
+        return view('admin.users.roles', compact('roles', 'permissions')); 
+    }
+
+    public function storeRole(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name',
+            'permissions' => 'nullable|array',
+        ]);
+
+        $role = Role::create(['name' => $validated['name'], 'guard_name' => 'web']);
+
+        if (!empty($validated['permissions'])) {
+            $role->syncPermissions($validated['permissions']);
+        }
+
+        return redirect()->route('admin.users.roles')->with('success', 'Role created successfully.');
+    }
+
+    public function updateRole(Request $request, string $id)
+    {
+        $role = Role::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name,' . $id,
+            'permissions' => 'nullable|array',
+        ]);
+
+        $role->update(['name' => $validated['name']]);
+        $role->syncPermissions($validated['permissions'] ?? []);
+
+        return redirect()->route('admin.users.roles')->with('success', 'Role updated successfully.');
+    }
+
+    public function destroyRole(string $id)
+    {
+        $role = Role::findOrFail($id);
+
+        if ($role->users()->count() > 0) {
+            return redirect()->route('admin.users.roles')->with('error', 'Cannot delete role with assigned users.');
+        }
+
+        $role->delete();
+
+        return redirect()->route('admin.users.roles')->with('success', 'Role deleted successfully.');
     }
 
     public function pendingUsers() 
     { 
-        $users = User::where('status', 'pending_verification')->latest()->paginate(10);
-        return view('admin.users.pending', compact('users')); 
+        $users = User::where('status', 'pending_verification')->with('roles')->latest()->paginate(10);
+        $stats = [
+            'total_pending' => User::where('status', 'pending_verification')->count(),
+            'pending_today' => User::where('status', 'pending_verification')->whereDate('created_at', today())->count(),
+        ];
+        return view('admin.users.pending', compact('users', 'stats')); 
     }
 
     public function deletedUsers() 
     { 
-        $users = User::onlyTrashed()->latest()->paginate(10);
-        return view('admin.users.deleted', compact('users')); 
+        $users = User::onlyTrashed()->with('roles')->latest()->paginate(10);
+        $stats = [
+            'total_deleted' => User::onlyTrashed()->count(),
+            'deleted_this_month' => User::onlyTrashed()->whereMonth('deleted_at', now()->month)->count(),
+        ];
+        return view('admin.users.deleted', compact('users', 'stats')); 
     }
 
     // HUB MANAGEMENT
