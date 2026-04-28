@@ -91,5 +91,3 @@
     @include('landing.partials.footer')
 </div>
 @endsection
-
-@endsection
