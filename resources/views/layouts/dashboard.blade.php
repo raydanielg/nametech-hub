@@ -131,6 +131,13 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: #d1d5db; }
+
+    aside nav a { border: 1px solid transparent; }
+    aside nav a:hover {
+        background: #ffffff !important;
+        border-color: #f3f4f6;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    }
     
     /* Animation */
     .fade-in { animation: fadeIn 0.4s ease-out; }
