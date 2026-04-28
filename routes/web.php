@@ -169,11 +169,35 @@ Route::middleware(['auth'])->group(function () {
 
         // Finance
         Route::get('/finance/invoices', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeInvoices'])->name('finance.invoices');
+        Route::get('/finance/invoices/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeAddInvoice'])->name('finance.invoices.add');
+        Route::post('/finance/invoices', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeStoreInvoice'])->name('finance.invoices.store');
+        Route::get('/finance/invoices/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeEditInvoice'])->name('finance.invoices.edit');
+        Route::put('/finance/invoices/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeUpdateInvoice'])->name('finance.invoices.update');
+        Route::delete('/finance/invoices/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeDestroyInvoice'])->name('finance.invoices.destroy');
+        Route::post('/finance/invoices/{id}/send', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeSendInvoice'])->name('finance.invoices.send');
+        Route::post('/finance/invoices/{id}/mark-paid', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeMarkInvoicePaid'])->name('finance.invoices.mark-paid');
+        
         Route::get('/finance/payments', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financePayments'])->name('finance.payments');
+        Route::post('/finance/payments', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeStorePayment'])->name('finance.payments.store');
+        Route::get('/finance/payments/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeEditPayment'])->name('finance.payments.edit');
+        Route::put('/finance/payments/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeUpdatePayment'])->name('finance.payments.update');
+        Route::delete('/finance/payments/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeDestroyPayment'])->name('finance.payments.destroy');
+        Route::post('/finance/payments/{id}/refund', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeRefundPayment'])->name('finance.payments.refund');
+        
         Route::get('/finance/revenue', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeRevenue'])->name('finance.revenue');
         Route::get('/finance/expenses', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeExpenses'])->name('finance.expenses');
+        Route::get('/finance/expenses/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeAddExpense'])->name('finance.expenses.add');
+        Route::post('/finance/expenses', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeStoreExpense'])->name('finance.expenses.store');
+        Route::get('/finance/expenses/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeEditExpense'])->name('finance.expenses.edit');
+        Route::put('/finance/expenses/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeUpdateExpense'])->name('finance.expenses.update');
+        Route::delete('/finance/expenses/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeDestroyExpense'])->name('finance.expenses.destroy');
+        
         Route::get('/finance/stripe', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeStripe'])->name('finance.stripe');
+        Route::post('/finance/stripe/sync', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeStripeSync'])->name('finance.stripe.sync');
+        Route::get('/finance/stripe/webhooks', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeStripeWebhooks'])->name('finance.stripe.webhooks');
+        
         Route::get('/finance/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeSettings'])->name('finance.settings');
+        Route::post('/finance/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'financeStoreSettings'])->name('finance.settings.store');
 
         // Partnerships
         Route::get('/partnerships/partners', [App\Http\Controllers\Admin\AdminDashboardController::class, 'partners'])->name('partnerships.partners');
