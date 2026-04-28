@@ -15,67 +15,67 @@
                 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />',
             ],
             [
-                'label' => 'Active Startups',
-                'value' => number_format($stats['active_startups'] ?? 0),
-                'iconBg' => 'bg-pink-100/50',
-                'iconText' => 'text-pink-500/80',
+                'label' => 'New Users Today',
+                'value' => number_format($stats['new_users_today'] ?? 0),
+                'iconBg' => 'bg-emerald-100/50',
+                'iconText' => 'text-emerald-500/80',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />',
+            ],
+            [
+                'label' => 'Total Startups',
+                'value' => number_format($stats['total_startups'] ?? 0),
+                'iconBg' => 'bg-amber-100/50',
+                'iconText' => 'text-amber-500/80',
                 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />',
             ],
             [
-                'label' => 'Total Revenue',
-                'value' => 'TZS ' . number_format(($stats['total_revenue'] ?? 0)),
-                'iconBg' => 'bg-emerald-100/50',
-                'iconText' => 'text-emerald-500/80',
-                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />',
-            ],
-            [
-                'label' => 'Pending Tickets',
-                'value' => number_format($stats['pending_tickets'] ?? 0),
-                'iconBg' => 'bg-amber-100/50',
-                'iconText' => 'text-amber-500/80',
-                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />',
-            ],
-            [
-                'label' => 'Certificates Issued',
-                'value' => '0',
+                'label' => 'Active Startups',
+                'value' => number_format($stats['active_startups'] ?? 0),
                 'iconBg' => 'bg-blue-100/50',
                 'iconText' => 'text-blue-500/80',
                 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
             ],
             [
-                'label' => 'Sales (MTD)',
-                'value' => 'TZS 0',
-                'iconBg' => 'bg-orange-100/50',
-                'iconText' => 'text-orange-500/80',
+                'label' => 'Active Courses',
+                'value' => number_format($stats['active_courses'] ?? 0),
+                'iconBg' => 'bg-purple-100/50',
+                'iconText' => 'text-purple-500/80',
                 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
             ],
             [
-                'label' => 'Payments (MTD)',
-                'value' => 'TZS 0',
+                'label' => 'Total Enrollments',
+                'value' => number_format($stats['total_enrollments'] ?? 0),
                 'iconBg' => 'bg-cyan-100/50',
                 'iconText' => 'text-cyan-500/80',
-                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />',
             ],
             [
-                'label' => 'Active Employees',
-                'value' => '0',
-                'iconBg' => 'bg-purple-100/50',
-                'iconText' => 'text-purple-500/80',
-                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />',
+                'label' => 'Certificates Issued',
+                'value' => number_format($stats['certificates_issued'] ?? 0),
+                'iconBg' => 'bg-emerald-100/50',
+                'iconText' => 'text-emerald-500/80',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
             ],
             [
-                'label' => 'Monthly Payroll',
-                'value' => 'TZS 0',
-                'iconBg' => 'bg-rose-100/50',
-                'iconText' => 'text-rose-500/80',
+                'label' => 'Revenue Today',
+                'value' => 'TZS ' . number_format((float) ($stats['revenue_today'] ?? 0), 2),
+                'iconBg' => 'bg-indigo-100/50',
+                'iconText' => 'text-indigo-500/80',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />',
+            ],
+            [
+                'label' => 'Revenue (MTD)',
+                'value' => 'TZS ' . number_format((float) ($stats['revenue_mtd'] ?? 0), 2),
+                'iconBg' => 'bg-amber-100/50',
+                'iconText' => 'text-amber-500/80',
                 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />',
             ],
             [
-                'label' => 'CRM Open Inbox',
-                'value' => '0',
-                'iconBg' => 'bg-green-100/50',
-                'iconText' => 'text-green-500/80',
-                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />',
+                'label' => 'Open Tickets',
+                'value' => number_format($stats['open_tickets'] ?? 0),
+                'iconBg' => 'bg-rose-100/50',
+                'iconText' => 'text-rose-500/80',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />',
             ],
         ];
     @endphp
@@ -149,23 +149,82 @@
         </div>
     </div>
 
-    <!-- Recent Tables Row -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-gray-100 shadow-sm">
-            <h3 class="text-sm font-black text-gray-800 mb-6">Recent Payments</h3>
-            <div class="flex flex-col items-center justify-center py-10 opacity-30">
-                <svg class="w-12 h-12 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">No recent records</span>
-            </div>
+    <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-gray-100 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-black text-gray-800">Recent Activity</h3>
+            <div class="text-[10px] font-bold text-gray-400 uppercase" id="activity-updated-at">Updating…</div>
         </div>
-        <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-gray-100 shadow-sm">
-            <h3 class="text-sm font-black text-gray-800 mb-6">Recent Investor Transactions</h3>
-            <div class="flex flex-col items-center justify-center py-10 opacity-30">
-                <svg class="w-12 h-12 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"></path></svg>
-                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">No recent records</span>
-            </div>
+
+        <div class="divide-y divide-gray-100" id="activity-feed">
+            @forelse(($activity ?? []) as $item)
+                <div class="py-3 flex items-start justify-between gap-4">
+                    <div class="min-w-0">
+                        <div class="text-sm font-bold text-gray-800 truncate">{{ $item['title'] ?? 'Activity' }}</div>
+                        <div class="text-xs text-gray-500 truncate">{{ $item['description'] ?? '' }}</div>
+                    </div>
+                    <div class="shrink-0 text-[11px] font-medium text-gray-400">{{ $item['time'] ?? '' }}</div>
+                </div>
+            @empty
+                <div class="py-10 text-center text-sm text-gray-400 font-medium">No activity yet</div>
+            @endforelse
         </div>
     </div>
 </div>
+
+<script>
+    (function () {
+        const feed = document.getElementById('activity-feed');
+        const updatedAt = document.getElementById('activity-updated-at');
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.innerText = text ?? '';
+            return div.innerHTML;
+        }
+
+        async function refreshActivity() {
+            try {
+                const res = await fetch("{{ route('admin.dashboard.activity') }}", {
+                    headers: { 'Accept': 'application/json' },
+                    credentials: 'same-origin'
+                });
+
+                if (!res.ok) return;
+                const data = await res.json();
+
+                const items = data.activity || [];
+                if (!feed) return;
+
+                if (!items.length) {
+                    feed.innerHTML = '<div class="py-10 text-center text-sm text-gray-400 font-medium">No activity yet</div>';
+                } else {
+                    feed.innerHTML = items.map((item) => {
+                        const title = escapeHtml(item.title || 'Activity');
+                        const desc = escapeHtml(item.description || '');
+                        const time = escapeHtml(item.time || '');
+                        return `
+                            <div class="py-3 flex items-start justify-between gap-4">
+                                <div class="min-w-0">
+                                    <div class="text-sm font-bold text-gray-800 truncate">${title}</div>
+                                    <div class="text-xs text-gray-500 truncate">${desc}</div>
+                                </div>
+                                <div class="shrink-0 text-[11px] font-medium text-gray-400">${time}</div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                if (updatedAt && data.generated_at) {
+                    updatedAt.textContent = new Date(data.generated_at).toLocaleTimeString();
+                }
+            } catch (e) {
+                // ignore
+            }
+        }
+
+        refreshActivity();
+        setInterval(refreshActivity, 15000);
+    })();
+</script>
 @endsection
 
