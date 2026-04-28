@@ -6,8 +6,8 @@
     <aside class="w-64 bg-white shadow-xl hidden md:flex flex-col border-r border-gray-200">
         <div class="p-6 flex items-center justify-between border-b border-gray-100">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-pink-600 rounded-lg flex items-center justify-center text-white font-bold">N</div>
-                <span class="text-xl font-bold text-gray-800">NAMTECH</span>
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">N</div>
+                <span class="text-xl font-bold text-gray-800">Namtech-hub</span>
             </div>
         </div>
         
@@ -38,9 +38,9 @@
             </div>
             
             <div class="flex items-center space-x-6">
-                <button class="text-gray-400 hover:text-pink-600 transition relative">
+                <button class="text-gray-400 hover:text-indigo-600 transition relative">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 01-6 0v-1m6 0H9"></path></svg>
-                    <span class="absolute top-0 right-0 block h-2.5 w-2.5 rounded-full bg-pink-500 border-2 border-white"></span>
+                    <span class="absolute top-0 right-0 block h-2.5 w-2.5 rounded-full bg-indigo-500 border-2 border-white"></span>
                 </button>
                 
                 <div class="flex items-center space-x-3 border-l pl-6 border-gray-100">
@@ -48,7 +48,7 @@
                         <p class="text-sm font-bold text-gray-800">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
                         <p class="text-xs text-gray-400 font-medium">{{ auth()->user()->roles->first()->name ?? 'User' }}</p>
                     </div>
-                    <div class="w-10 h-10 bg-gray-200 rounded-xl overflow-hidden shadow-inner flex items-center justify-center text-gray-400 font-bold border-2 border-pink-50">
+                    <div class="w-10 h-10 bg-gray-200 rounded-xl overflow-hidden shadow-inner flex items-center justify-center text-gray-400 font-bold border-2 border-indigo-50">
                         @if(auth()->user()->profile_picture_url)
                             <img src="{{ auth()->user()->profile_picture_url }}" alt="Avatar" class="w-full h-full object-cover">
                         @else
