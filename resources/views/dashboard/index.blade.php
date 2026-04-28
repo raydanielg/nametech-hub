@@ -15,9 +15,7 @@
                 <span class="text-sm text-gray-400 font-medium">{{ now()->format('l, d M Y') }}</span>
             </div>
         </div>
-        <div class="mt-6 md:mt-0 relative z-10">
-            <button class="bg-emerald-600 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition transform hover:-translate-y-1">Quick Action</button>
-        </div>
+        <!-- Removed Quick Action button as per user request -->
         <!-- Decorative elements -->
         <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-50 rounded-full opacity-50"></div>
         <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-emerald-50 rounded-full opacity-30"></div>
