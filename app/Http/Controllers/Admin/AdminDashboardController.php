@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Carbon;
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -43,6 +42,25 @@ class AdminDashboardController extends Controller
     {
         return response()->json([
             'activity' => $this->buildRecentActivity(),
+            'generated_at' => now()->toIso8601String(),
+        ]);
+    }
+
+    public function health(): JsonResponse
+    {
+        $checks = [
+            'database' => true,
+        ];
+
+        try {
+            User::query()->limit(1)->count();
+        } catch (\Throwable $e) {
+            $checks['database'] = false;
+        }
+
+        return response()->json([
+            'status' => $checks['database'] ? 'ok' : 'degraded',
+            'checks' => $checks,
             'generated_at' => now()->toIso8601String(),
         ]);
     }
