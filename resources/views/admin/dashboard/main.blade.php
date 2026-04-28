@@ -169,19 +169,20 @@
         // Activity Chart
         const activityOptions = {
             series: [{
-                name: 'Users',
-                data: [0, 4, 0, 1, 5, 3, 2, 6, 11, 4, 7, 6, 5, 0]
+                name: 'Total Users',
+                data: @json(array_values($chartData['users'] ?? array_fill(0, 14, 0)))
             }, {
-                name: 'Payments',
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                name: 'Revenue (MTD)',
+                data: @json(array_values($chartData['revenue'] ?? array_fill(0, 14, 0)))
             }],
             chart: {
                 height: 280,
                 type: 'area',
                 toolbar: { show: false },
-                background: 'transparent'
+                background: 'transparent',
+                foreColor: '#64748b'
             },
-            colors: ['#3b82f6', '#10b981', '#f59e0b', '#a855f7'],
+            colors: ['#3b82f6', '#10b981'],
             dataLabels: { enabled: false },
             stroke: {
                 curve: 'smooth',
@@ -197,11 +198,13 @@
                 }
             },
             xaxis: {
-                categories: @json(collect(range(13, 0))->map(fn($i) => now()->subDays($i)->format('Y-m-d'))->toArray()),
+                categories: @json(array_keys($chartData['users'] ?? array_fill(0, 14, ''))),
                 labels: {
                     rotate: -45,
                     style: { fontSize: '10px', fontWeight: 600 }
-                }
+                },
+                axisBorder: { show: false },
+                axisTicks: { show: false }
             },
             yaxis: {
                 labels: {
@@ -209,8 +212,10 @@
                 }
             },
             grid: {
-                borderColor: '#ccc',
-                strokeDashArray: 0,
+                borderColor: '#cbd5e1',
+                strokeDashArray: 4,
+                xaxis: { lines: { show: true } },
+                yaxis: { lines: { show: true } }
             },
             legend: {
                 position: 'bottom',
@@ -223,14 +228,20 @@
         const activityChart = new ApexCharts(document.querySelector("#activityChart"), activityOptions);
         activityChart.render();
 
-        // Distribution Chart
+        // Distribution Chart with Real Data
         const distributionOptions = {
-            series: [44, 55, 41, 17],
+            series: [
+                {{ $stats['total_users'] ?? 0 }},
+                {{ $stats['total_startups'] ?? 0 }},
+                {{ $stats['active_courses'] ?? 0 }},
+                {{ $stats['open_tickets'] ?? 0 }}
+            ],
             chart: {
                 type: 'donut',
-                height: 300
+                height: 300,
+                background: 'transparent'
             },
-            labels: ['Users', 'Payments', 'Investors', 'Others'],
+            labels: ['Users', 'Startups', 'Courses', 'Tickets'],
             colors: ['#3b82f6', '#10b981', '#f59e0b', '#a855f7'],
             plotOptions: {
                 pie: {
@@ -238,11 +249,12 @@
                         size: '75%',
                         labels: {
                             show: true,
-                            name: { show: true },
-                            value: { show: true, fontSize: '20px', fontWeight: 900 },
+                            name: { show: true, color: '#64748b' },
+                            value: { show: true, fontSize: '20px', fontWeight: 900, color: '#1e293b' },
                             total: {
                                 show: true,
-                                label: 'Total',
+                                label: 'Total Items',
+                                color: '#64748b',
                                 formatter: function (w) {
                                     return w.globals.seriesTotals.reduce((a, b) => a + b, 0)
                                 }
@@ -251,7 +263,10 @@
                     }
                 }
             },
-            legend: { position: 'bottom' },
+            legend: { 
+                position: 'bottom',
+                labels: { colors: '#64748b' }
+            },
             dataLabels: { enabled: false }
         };
 
