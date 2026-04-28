@@ -2,11 +2,9 @@
 
 @section('dashboard-title', 'System Overview')
 
-@push('styles')
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-@endpush
-
 @section('dashboard-content')
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 <div class="space-y-6 fade-in">
     <!-- Quick Stats Grid (2 Rows of 5) -->
     @php
@@ -106,13 +104,13 @@
         <!-- Activity Trend Chart -->
         <div class="lg:col-span-2 bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300">
             <h3 class="text-base font-bold text-gray-800 mb-6">Activity Trend (Last 14 Days)</h3>
-            <div id="activityChart" class="h-64"></div>
+            <div id="activityChart" style="min-height: 280px;"></div>
         </div>
 
         <!-- Distribution Circle -->
         <div class="bg-[#E9E9EB] p-6 rounded-[2rem] shadow-sm border border-transparent hover:border-white transition-all duration-300 flex flex-col items-center">
             <h3 class="text-base font-bold text-gray-800 self-start mb-6">Distribution</h3>
-            <div id="distributionChart" class="w-full h-64"></div>
+            <div id="distributionChart" class="w-full" style="min-height: 300px;"></div>
         </div>
     </div>
 
