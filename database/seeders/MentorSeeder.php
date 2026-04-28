@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\User;
 use App\Models\Startup;
+use App\Models\Mentor;
 use App\Models\MentorAssignment;
 use App\Models\MentorSession;
 use Illuminate\Support\Str;
@@ -19,20 +20,32 @@ class MentorSeeder extends Seeder
      */
     public function run()
     {
-        $mentor = User::where('email', 'mentor@example.com')->first();
+        $user = User::where('email', 'mentor@example.com')->first();
         $startup = Startup::first();
 
-        if ($mentor && $startup) {
-            // Create Assignment first
+        if ($user && $startup) {
+            // 1. Create Mentor record first
+            $mentor = Mentor::create([
+                'id' => Str::uuid(),
+                'user_id' => $user->id,
+                'expertise_areas' => ['Fintech', 'Product Strategy', 'Scaling'],
+                'years_of_experience' => 10,
+                'current_role' => 'Senior Strategy Consultant',
+                'company' => 'Global Tech Advisors',
+                'bio' => 'Experienced mentor with a track record of scaling startups in Africa.',
+            ]);
+
+            // 2. Create Assignment linking Mentor and Startup
             $assignment = MentorAssignment::create([
                 'id' => Str::uuid(),
                 'mentor_id' => $mentor->id,
                 'startup_id' => $startup->id,
+                'program_type' => 'Launchpad',
                 'status' => 'active',
-                'started_at' => now(),
+                'start_date' => now(),
             ]);
 
-            // Create Sessions using the assignment_id
+            // 3. Create Sessions using the assignment_id
             MentorSession::create([
                 'id' => Str::uuid(),
                 'assignment_id' => $assignment->id,
