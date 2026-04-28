@@ -200,5 +200,7 @@ Route::middleware(['auth'])->group(function () {
     // Student Routes
     Route::middleware(['has.role:student'])->prefix('student')->as('student.')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Student\StudentDashboardController::class, 'index'])->name('dashboard.main');
+        Route::get('/courses', [App\Http\Controllers\Student\StudentDashboardController::class, 'courses'])->name('courses');
+        Route::get('/events', [App\Http\Controllers\Student\StudentDashboardController::class, 'events'])->name('events');
     });
 });
