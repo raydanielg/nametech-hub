@@ -8,19 +8,19 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
             <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Active Projects</p>
-            <h3 class="text-2xl font-black text-gray-900">14</h3>
+            <h3 class="text-2xl font-black text-gray-900">{{ $stats['active_projects'] }}</h3>
         </div>
         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
             <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Total Clients</p>
-            <h3 class="text-2xl font-black text-gray-900">42</h3>
+            <h3 class="text-2xl font-black text-gray-900">{{ $stats['total_clients'] }}</h3>
         </div>
         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
             <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Team Members</p>
-            <h3 class="text-2xl font-black text-gray-900">28</h3>
+            <h3 class="text-2xl font-black text-gray-900">{{ $stats['team_members'] }}</h3>
         </div>
         <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
             <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Overdue Tasks</p>
-            <h3 class="text-2xl font-black text-pink-600">3</h3>
+            <h3 class="text-2xl font-black text-pink-600">{{ $stats['overdue_tasks'] }}</h3>
         </div>
     </div>
 
