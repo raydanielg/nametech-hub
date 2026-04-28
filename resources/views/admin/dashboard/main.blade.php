@@ -4,8 +4,9 @@
 
 @section('dashboard-content')
 <div class="space-y-6 fade-in">
-    <!-- Quick Stats Grid (Exact Image Style) -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <!-- Quick Stats Grid (2 Rows of 5) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- ROW 1 -->
         <!-- Card 1 -->
         <div class="bg-white/60 backdrop-blur-sm p-4 rounded-[1.5rem] border border-gray-100/50 shadow-sm flex items-center space-x-4">
             <div class="w-12 h-12 bg-indigo-100/50 rounded-2xl flex items-center justify-center shrink-0">
@@ -61,6 +62,7 @@
             </div>
         </div>
 
+        <!-- ROW 2 -->
         <!-- Card 6 -->
         <div class="bg-white/60 backdrop-blur-sm p-4 rounded-[1.5rem] border border-gray-100/50 shadow-sm flex items-center space-x-4">
             <div class="w-12 h-12 bg-orange-100/50 rounded-2xl flex items-center justify-center shrink-0">
