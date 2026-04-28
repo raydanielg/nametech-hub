@@ -3,7 +3,7 @@
 @section('content')
 @include('landing.partials.header')
 
-<div class="min-h-screen bg-white pt-20">
+<div class="min-h-screen bg-white">
     <!-- Main Content -->
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="p-0">
