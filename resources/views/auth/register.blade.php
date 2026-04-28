@@ -21,8 +21,8 @@
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label for="first_name" class="form-label text-muted small fw-semibold">First name</label>
-                        <input id="first_name" type="text" class="form-control form-control-lg bg-light border-0 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Your first name">
-                        @error('name')
+                        <input id="first_name" type="text" class="form-control form-control-lg bg-light border-0 @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="given-name" placeholder="Your first name">
+                        @error('first_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -30,7 +30,12 @@
                     </div>
                     <div class="col-md-6">
                         <label for="last_name" class="form-label text-muted small fw-semibold">Last name</label>
-                        <input id="last_name" type="text" class="form-control form-control-lg bg-light border-0" name="last_name" placeholder="Your last name">
+                        <input id="last_name" type="text" class="form-control form-control-lg bg-light border-0 @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="family-name" placeholder="Your last name">
+                        @error('last_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
