@@ -3,12 +3,12 @@
 @section('content')
 @include('landing.partials.header')
 
-<div class="min-h-screen bg-gray-50 pt-20">
+<div class="min-h-screen bg-white pt-20">
     <!-- Main Content -->
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
+        <div class="p-0">
             <h1 class="text-4xl font-bold text-gray-900 mb-2">Terms of Service</h1>
-            <p class="text-gray-500 mb-8">Last updated: {{ date('F d, Y') }}</p>
+            <p class="text-gray-500 mb-8 border-b pb-8">Last updated: {{ date('F d, Y') }}</p>
 
             <div class="prose prose-emerald max-w-none text-gray-600">
                 <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">1. AGREEMENT TO TERMS</h2>
