@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('partials.header')
+@include('landing.partials.header')
 
 <div class="min-h-screen bg-gray-50 pt-20">
     <!-- Main Content -->
@@ -141,6 +141,6 @@
         </div>
     </div>
 
-    @include('partials.footer')
+    @include('landing.partials.footer')
 </div>
 @endsection
