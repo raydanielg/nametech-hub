@@ -5,7 +5,7 @@
 <!-- Common Section -->
 <div class="mb-4">
     <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-2">Main</p>
-    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 p-2 rounded-xl transition duration-150 {{ request()->routeIs('dashboard') ? 'bg-pink-600 text-white shadow-lg shadow-pink-200' : 'text-gray-500 hover:bg-pink-50 hover:text-pink-600' }}">
+    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 p-2 rounded-xl transition duration-150 border {{ request()->routeIs('dashboard') ? 'bg-white text-emerald-700 border-gray-100 shadow-sm' : 'border-transparent text-gray-500 hover:bg-white hover:text-emerald-600 hover:border-gray-100 hover:shadow-sm' }}">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
         <span class="font-semibold text-sm">Dashboard</span>
     </a>
