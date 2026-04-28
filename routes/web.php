@@ -109,10 +109,35 @@ Route::middleware(['auth'])->group(function () {
 
         // Studio
         Route::get('/studio/projects', [App\Http\Controllers\Admin\AdminDashboardController::class, 'studioProjects'])->name('studio.projects');
+        Route::get('/studio/projects/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addStudioProject'])->name('studio.projects.add');
+        Route::post('/studio/projects', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeStudioProject'])->name('studio.projects.store');
+        Route::get('/studio/projects/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editStudioProject'])->name('studio.projects.edit');
+        Route::put('/studio/projects/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateStudioProject'])->name('studio.projects.update');
+        Route::delete('/studio/projects/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyStudioProject'])->name('studio.projects.destroy');
+        
         Route::get('/studio/clients', [App\Http\Controllers\Admin\AdminDashboardController::class, 'studioClients'])->name('studio.clients');
+        Route::get('/studio/clients/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addStudioClient'])->name('studio.clients.add');
+        Route::post('/studio/clients', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeStudioClient'])->name('studio.clients.store');
+        Route::get('/studio/clients/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editStudioClient'])->name('studio.clients.edit');
+        Route::put('/studio/clients/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateStudioClient'])->name('studio.clients.update');
+        Route::delete('/studio/clients/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyStudioClient'])->name('studio.clients.destroy');
+        
         Route::get('/studio/developers', [App\Http\Controllers\Admin\AdminDashboardController::class, 'studioDevelopers'])->name('studio.developers');
+        Route::get('/studio/developers/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addStudioDeveloper'])->name('studio.developers.add');
+        Route::post('/studio/developers', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeStudioDeveloper'])->name('studio.developers.store');
+        Route::get('/studio/developers/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editStudioDeveloper'])->name('studio.developers.edit');
+        Route::put('/studio/developers/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateStudioDeveloper'])->name('studio.developers.update');
+        Route::delete('/studio/developers/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyStudioDeveloper'])->name('studio.developers.destroy');
+        
         Route::get('/studio/repos', [App\Http\Controllers\Admin\AdminDashboardController::class, 'studioRepos'])->name('studio.repos');
+        Route::get('/studio/repos/add', [App\Http\Controllers\Admin\AdminDashboardController::class, 'addStudioRepo'])->name('studio.repos.add');
+        Route::post('/studio/repos', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeStudioRepo'])->name('studio.repos.store');
+        Route::get('/studio/repos/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editStudioRepo'])->name('studio.repos.edit');
+        Route::put('/studio/repos/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'updateStudioRepo'])->name('studio.repos.update');
+        Route::delete('/studio/repos/{id}', [App\Http\Controllers\Admin\AdminDashboardController::class, 'destroyStudioRepo'])->name('studio.repos.destroy');
+        
         Route::get('/studio/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'studioSettings'])->name('studio.settings');
+        Route::post('/studio/settings', [App\Http\Controllers\Admin\AdminDashboardController::class, 'storeStudioSettings'])->name('studio.settings.store');
 
         // Academy
         Route::get('/academy/courses', [App\Http\Controllers\Admin\AdminDashboardController::class, 'academyCourses'])->name('academy.courses');
