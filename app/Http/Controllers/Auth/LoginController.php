@@ -29,6 +29,22 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated($request, $user)
+    {
+        if ($user->hasRole('super_admin') || $user->hasRole('admin')) {
+            return redirect('/home');
+        }
+
+        return redirect()->intended($this->redirectPath());
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void
