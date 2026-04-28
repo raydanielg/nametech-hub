@@ -65,86 +65,74 @@ Route::get('/search', function (Request $request) {
     return response()->json(['results' => array_values($results)]);
 });
 
-// Auth routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+    // Auth routes
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::middleware(['auth:sanctum'])->post('/logout', [AuthController::class, 'logout']);
+    Route::middleware(['auth:sanctum'])->get('/me', [AuthController::class, 'me']);
 
-Route::middleware(['auth:sanctum'])->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
 
-    // User routes
-    Route::get('/user', [UserController::class, 'show']);
-    Route::put('/user', [UserController::class, 'update']);
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+        // User routes
+        Route::get('/users', [UserController::class, 'index']);
+        Route::get('/users/{id}', [UserController::class, 'show']);
+        Route::put('/users/{id}', [UserController::class, 'update']);
+        Route::delete('/users/{id}', [UserController::class, 'destroy']);
+        Route::get('/dashboard', [DashboardController::class, 'index']);
+        Route::get('/dashboard/activity', [DashboardController::class, 'recentActivity']);
 
-    // Membership routes
-    Route::apiResource('memberships', MembershipController::class);
-    Route::post('memberships/{id}/renew', [MembershipController::class, 'renew']);
+        // Membership routes
+        Route::apiResource('memberships', MembershipController::class);
 
-    // Startup routes
-    Route::apiResource('startups', StartupController::class);
-    Route::post('startups/{id}/apply-launchpad', [LaunchpadController::class, 'apply']);
-    Route::post('startups/{id}/apply-scale', [ScaleController::class, 'apply']);
-    Route::post('milestones/{id}/submit', [MilestoneController::class, 'submit']);
-    Route::post('milestones/{id}/approve', [MilestoneController::class, 'approve']);
+        // Startup routes
+        Route::apiResource('startups', StartupController::class);
+        Route::post('launchpad/apply', [LaunchpadController::class, 'apply']);
+        Route::post('scale/apply', [ScaleController::class, 'apply']);
+        Route::apiResource('milestones', MilestoneController::class);
 
-    // Mentor routes
-    Route::apiResource('mentors', MentorController::class);
-    Route::post('mentors/{id}/assign', [MentorAssignmentController::class, 'store']);
-    Route::post('mentor-sessions/{id}/complete', [MentorSessionController::class, 'complete']);
-    Route::get('mentor-match', [MentorController::class, 'match']);
+        // Mentor routes
+        Route::apiResource('mentors', MentorController::class);
 
-    // Studio routes
-    Route::apiResource('studio-clients', StudioClientController::class);
-    Route::apiResource('studio-projects', StudioProjectController::class);
-    Route::post('projects/{id}/milestones', [ProjectMilestoneController::class, 'store']);
-    Route::post('milestones/{id}/approve', [ProjectMilestoneController::class, 'approve']);
+        // Studio routes
+        Route::apiResource('studio-clients', StudioClientController::class);
+        Route::apiResource('studio-projects', StudioProjectController::class);
 
-    // Academy routes
-    Route::apiResource('courses', CourseController::class);
-    Route::post('courses/{id}/enroll', [EnrollmentController::class, 'store']);
-    Route::get('courses/{id}/progress', [EnrollmentController::class, 'progress']);
-    Route::get('certificates/{id}/download', [CourseController::class, 'downloadCertificate']);
+        // Academy routes
+        Route::apiResource('academy/courses', AcademyController::class);
+        Route::post('academy/courses/{id}/enroll', [AcademyController::class, 'enroll']);
+        Route::apiResource('courses', CourseController::class);
 
-    // Investor routes (paid access)
-    Route::apiResource('investors', InvestorController::class)->middleware('role:startup,scale');
-    Route::get('investor-match', [InvestorController::class, 'match']);
+        // Investor routes
+        Route::apiResource('investors', InvestorController::class);
 
-    // Resources
-    Route::apiResource('resources', ResourceController::class);
-    Route::get('resources/premium/download/{id}', [ResourceController::class, 'downloadPremium']);
+        // Resources
+        Route::apiResource('resources', ResourceController::class);
 
-    // Events
-    Route::apiResource('events', EventController::class);
-    Route::post('events/{id}/register', [EventRegistrationController::class, 'store']);
+        // Events
+        Route::apiResource('events', EventController::class);
 
-    // Billing
-    Route::apiResource('invoices', InvoiceController::class);
-    Route::post('invoices/{id}/pay', [PaymentController::class, 'process']);
-    Route::get('invoices/{id}/pdf', [InvoiceController::class, 'pdf']);
+        // Billing
+        Route::apiResource('invoices', InvoiceController::class);
+        Route::post('invoices/{id}/pay', [InvoiceController::class, 'pay']);
 
-    // Support
-    Route::apiResource('tickets', SupportController::class);
-    Route::post('tickets/{id}/reply', [TicketReplyController::class, 'store']);
-    Route::post('tickets/{id}/close', [SupportController::class, 'close']);
+        // Support
+        Route::apiResource('tickets', SupportController::class);
+        Route::post('tickets/{id}/reply', [SupportController::class, 'reply']);
 
-    // Reports
-    Route::get('reports/daily', [ReportController::class, 'daily']);
-    Route::get('reports/monthly', [ReportController::class, 'monthly']);
-    Route::get('reports/revenue', [ReportController::class, 'revenue']);
+        // Reports
+        Route::apiResource('reports', ReportController::class);
 
-    // Synergy (Hub ↔ Studio)
-    Route::get('synergy/talent-pool', [SynergyController::class, 'talentPool']);
-    Route::get('synergy/revenue-split', [SynergyController::class, 'revenueSplit']);
-    Route::post('synergy/idea-submit', [SynergyController::class, 'submitIdea']);
+        // Synergy
+        Route::apiResource('synergy/logs', SynergyController::class);
 
-    // Admin only routes
-    Route::middleware(['admin'])->group(function () {
-        Route::apiResource('admin/users', UserManageController::class);
-        Route::get('admin/stats', [AdminController::class, 'stats']);
-        Route::put('admin/settings', [SettingController::class, 'update']);
-        Route::get('admin/audit-logs', [AuditLogController::class, 'index']);
+        // Admin only routes (kept for reference or future use)
+        Route::middleware(['admin'])->group(function () {
+            Route::apiResource('admin/users', UserManageController::class);
+            Route::get('admin/stats', [AdminController::class, 'stats']);
+            Route::put('admin/settings', [SettingController::class, 'update']);
+            Route::get('admin/audit-logs', [AuditLogController::class, 'index']);
+        });
     });
-});
 
 // Products API Routes (kept from existing code)
 Route::get('/products', [ProductController::class, 'index']);
