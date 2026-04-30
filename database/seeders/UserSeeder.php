@@ -21,8 +21,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Director',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'hub_director',
-                'status' => 'active',
-                'email_verified_at' => now(),
+                'status' => 'active'
             ]
         );
         $hubDirector->assignRole('hub_director');
@@ -35,8 +34,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Director',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'studio_director',
-                'status' => 'active',
-                'email_verified_at' => now(),
+                'status' => 'active'
             ]
         );
         $studioDirector->assignRole('studio_director');
@@ -49,8 +47,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Founder',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'startup_founder',
-                'status' => 'active',
-                'email_verified_at' => now(),
+                'status' => 'active'
             ]
         );
         $founder->assignRole('startup_founder');
@@ -63,8 +60,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Mentor',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'mentor',
-                'status' => 'active',
-                'email_verified_at' => now(),
+                'status' => 'active'
             ]
         );
         $mentor->assignRole('mentor');
@@ -77,8 +73,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Investor',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'investor',
-                'status' => 'active',
-                'email_verified_at' => now(),
+                'status' => 'active'
             ]
         );
         $investor->assignRole('investor');
@@ -91,8 +86,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Student',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'student',
-                'status' => 'active',
-                'email_verified_at' => now(),
+                'status' => 'active'
             ]
         );
         $student->assignRole('student');
