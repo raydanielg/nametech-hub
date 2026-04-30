@@ -398,6 +398,28 @@
         transform: rotate(180deg);
     }
 
+    .mobile-accordion .accordion-body {
+        background: #ffffff;
+        border-top: 1px solid #e5e7eb;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .mobile-accordion .list-group {
+        background: #ffffff;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .mobile-accordion .accordion-item {
+        border: none;
+        border-bottom: 1px solid #f3f4f6;
+        background: #ffffff;
+    }
+
+    .mobile-accordion .accordion-item:last-child {
+        border-bottom: none;
+    }
+
     .mobile-accordion .list-group-item {
         border: none;
         border-left: 3px solid transparent;
@@ -407,6 +429,9 @@
         min-height: 48px;
         display: flex;
         align-items: center;
+        background: #ffffff;
+        color: #374151;
+        text-decoration: none;
     }
 
     .mobile-accordion .list-group-item:hover {
