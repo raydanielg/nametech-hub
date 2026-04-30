@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', 'NAMTECH-HUB - Where Innovators Build the Future | Startup Incubator & Accelerator in Namibia')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -15,6 +15,60 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- SEO Meta -->
+    <meta name="description" content="NAMTECH-HUB - Where Innovators Build the Future. Premier startup incubator, accelerator, and innovation hub in Namibia. Transform your ideas into successful businesses with our comprehensive programs, mentorship, and funding opportunities.">
+    <meta name="keywords" content="NAMTECH-HUB, startup incubator, startup accelerator, innovation hub, entrepreneurship, tech hub, Namibia, Windhoek, startup funding, business incubation, venture capital, mentorship programs, startup ecosystem, African startups, technology entrepreneurship, business development, startup programs, academy, launchpad, scale studio">
+    <meta name="author" content="NAMTECH-HUB">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="NAMTECH-HUB - Where Innovators Build the Future | Startup Incubator & Accelerator in Namibia">
+    <meta property="og:description" content="🚀 Transform your startup idea into reality at NAMTECH-HUB! Premier incubator & accelerator in Namibia offering mentorship, funding, and comprehensive programs for entrepreneurs. Join our innovation ecosystem today!">
+    <meta property="og:image" content="{{ asset('icons/logo.svg') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="NAMTECH-HUB Logo - Where Innovators Build the Future">
+    <meta property="og:site_name" content="NAMTECH-HUB">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="NAMTECH-HUB - Where Innovators Build the Future | Startup Incubator & Accelerator">
+    <meta property="twitter:description" content="🚀 Transform your startup idea into reality at NAMTECH-HUB! Premier incubator & accelerator in Namibia offering mentorship, funding, and comprehensive programs. Join our innovation ecosystem!">
+    <meta property="twitter:image" content="{{ asset('icons/logo.svg') }}">
+    <meta property="twitter:image:alt" content="NAMTECH-HUB Logo - Where Innovators Build the Future">
+    <meta property="twitter:site" content="@namtechhub">
+    <meta property="twitter:creator" content="@namtechhub">
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('icons/logo.svg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('icons/logo.svg') }}">
+
+    <!-- Social Media Icons (for structured data) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NAMTECH-HUB",
+      "url": "{{ url('/') }}",
+      "logo": "{{ asset('icons/logo.svg') }}",
+      "sameAs": [
+        "https://facebook.com/namtechhub",
+        "https://twitter.com/namtechhub",
+        "https://linkedin.com/company/namtechhub",
+        "https://instagram.com/namtechhub",
+        "https://youtube.com/@namtechhub",
+        "https://github.com/namtechhub"
+      ]
+    }
+    </script>
 
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>

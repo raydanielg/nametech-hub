@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
+Route::get('/sitemap.xml', function () {
+    return response()->view('sitemap')->header('Content-Type', 'text/xml');
+});
+
 Route::group(['prefix' => 'pricing', 'as' => 'pricing.'], function () {
     Route::view('/membership', 'pricing.membership')->name('membership');
     Route::view('/launchpad', 'pricing.launchpad')->name('launchpad');

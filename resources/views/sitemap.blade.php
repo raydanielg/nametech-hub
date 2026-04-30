@@ -1,0 +1,129 @@
+<?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>{{ url('/') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>{{ url('/pricing/membership') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/pricing/launchpad') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/pricing/scale') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/pricing/academy') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/pricing/studio') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/pricing/compare') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/enterprise/solutions') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/latest') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/startup-stories') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/tutorials') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/insights') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/announcements') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ url('/company/about') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/company/leadership') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/company/partners') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/company/careers') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/company/contact') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/company/become-partner') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/login') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>{{ url('/register') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+</urlset>

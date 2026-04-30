@@ -2,10 +2,7 @@
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
-            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 5L35 30H5L20 5Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20 15L28 28H12L20 15Z" fill="black"/>
-            </svg>
+            <img src="{{ asset('icons/logo.svg') }}" alt="" aria-hidden="true" class="brand-logo">
             <div class="d-flex flex-column">
                 <span class="fw-bold fs-4 leading-none text-dark">NAMTECH-HUB</span>
                 <span class="text-muted x-small d-none d-md-block" style="font-size: 0.65rem; margin-top: -4px;">Where Innovators Build the Future</span>
@@ -154,12 +151,12 @@
             </ul>
 
             <div class="d-flex align-items-center gap-3">
-                <a href="#" class="text-dark p-0" title="Search" data-bs-toggle="modal" data-bs-target="#searchModal">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <a href="#" class="nav-icon-btn" title="Search" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+                    <img src="{{ asset('icons/search.svg') }}" alt="" aria-hidden="true">
                 </a>
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-link text-dark text-decoration-none fw-bold p-0 border-end pe-3 rounded-0" title="Login">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <a href="{{ route('login') }}" class="nav-icon-btn" title="Login" aria-label="Login">
+                        <img src="{{ asset('icons/user.svg') }}" alt="" aria-hidden="true">
                     </a>
                     <a href="{{ route('register') }}" class="btn btn-success fw-bold px-4 py-2 text-uppercase tracking-wider small" style="background-color: #10b981; border-color: #10b981;">
                         Get Started
@@ -254,6 +251,45 @@
     .navbar {
         font-family: var(--bs-body-font-family);
     }
+
+    .nav-icon-btn {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        color: #111827;
+        background: transparent;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+        text-decoration: none;
+        flex: 0 0 auto;
+    }
+    .nav-icon-btn img {
+        width: 20px;
+        height: 20px;
+        display: block;
+        flex: 0 0 auto;
+    }
+    .nav-icon-btn:hover {
+        background-color: #f3f4f6;
+        border-color: rgba(17, 24, 39, 0.16);
+        transform: translateY(-1px);
+    }
+    .nav-icon-btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+        border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .brand-logo {
+        width: 32px;
+        height: 32px;
+        display: block;
+        flex: 0 0 auto;
+    }
+
     .has-mega-menu { position: static; }
     .mega-menu {
         left: 50% !important;
