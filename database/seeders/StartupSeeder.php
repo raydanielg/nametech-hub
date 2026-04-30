@@ -99,11 +99,14 @@ class StartupSeeder extends Seeder
 
         foreach ($startups as $startupData) {
             // Create or get founder user
+            $nameParts = explode('@', $startupData['founder_email'])[0];
             $founder = User::updateOrCreate(['email' => $startupData['founder_email']], [
-                'name' => explode('@', $startupData['founder_email'])[0],
+                'id' => Str::uuid(),
+                'first_name' => ucfirst($nameParts),
+                'last_name' => 'Founder',
                 'password' => bcrypt('password'),
-                'email_verified_at' => now(),
-                'role' => 'founder'
+                'role' => 'founder',
+                'status' => 'active',
             ]);
 
             // Create startup
