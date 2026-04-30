@@ -204,7 +204,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#m-enterprise">
-                        Enterprise <span class="badge bg-success bg-opacity-10 text-success ms-2" style="font-size: 0.65rem;">VZR</span>
+                        Enterprise <span class="badge bg-success bg-opacity-10 text-success ms-2" style="font-size: 0.65rem;">PRO</span>
                     </button>
                 </h2>
                 <div id="m-enterprise" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
@@ -264,7 +264,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#m-resources">
-                        Resources <span class="badge bg-warning bg-opacity-10 text-warning ms-2" style="font-size: 0.65rem;">VZR</span>
+                        Resources <span class="badge bg-warning bg-opacity-10 text-warning ms-2" style="font-size: 0.65rem;">POPULAR</span>
                     </button>
                 </h2>
                 <div id="m-resources" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
