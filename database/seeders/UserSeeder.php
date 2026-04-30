@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
         $hubDirector = \App\Models\User::updateOrCreate(
             ['email' => 'hub@namtech.io'],
             [
-                'name' => 'Hub Director',
                 'first_name' => 'Hub',
                 'last_name' => 'Director',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
@@ -32,7 +31,6 @@ class UserSeeder extends Seeder
         $studioDirector = \App\Models\User::updateOrCreate(
             ['email' => 'studio@namtech.io'],
             [
-                'name' => 'Studio Director',
                 'first_name' => 'Studio',
                 'last_name' => 'Director',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
@@ -47,7 +45,6 @@ class UserSeeder extends Seeder
         $founder = \App\Models\User::updateOrCreate(
             ['email' => 'founder@example.com'],
             [
-                'name' => 'John Founder',
                 'first_name' => 'John',
                 'last_name' => 'Founder',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
@@ -62,7 +59,6 @@ class UserSeeder extends Seeder
         $mentor = \App\Models\User::updateOrCreate(
             ['email' => 'mentor@example.com'],
             [
-                'name' => 'Jane Mentor',
                 'first_name' => 'Jane',
                 'last_name' => 'Mentor',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
@@ -77,7 +73,6 @@ class UserSeeder extends Seeder
         $investor = \App\Models\User::updateOrCreate(
             ['email' => 'investor@example.com'],
             [
-                'name' => 'Rich Investor',
                 'first_name' => 'Rich',
                 'last_name' => 'Investor',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
@@ -92,7 +87,6 @@ class UserSeeder extends Seeder
         $student = \App\Models\User::updateOrCreate(
             ['email' => 'student@example.com'],
             [
-                'name' => 'Sam Student',
                 'first_name' => 'Sam',
                 'last_name' => 'Student',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
