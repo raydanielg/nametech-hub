@@ -16,6 +16,8 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
         require('autoprefixer'),
     ])
+    .copy('public/css/app.css', 'css/app.css')
+    .copy('public/js/app.js', 'js/app.js')
     .sourceMaps();
 
 // Disable WebpackBar to avoid ProgressPlugin validation error
