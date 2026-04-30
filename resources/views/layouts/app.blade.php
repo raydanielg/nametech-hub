@@ -81,7 +81,75 @@
 
     @stack('styles')
     <style>
-        body { padding-top: 90px; }
+        body { 
+            padding-top: 90px; 
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        /* Consistent font weights and sizes */
+        .display-1 { font-size: 5rem; font-weight: 800; }
+        .display-2 { font-size: 4.5rem; font-weight: 800; }
+        .display-3 { font-size: 4rem; font-weight: 700; }
+        .display-4 { font-size: 3.5rem; font-weight: 700; }
+        .display-5 { font-size: 3rem; font-weight: 600; }
+        .display-6 { font-size: 2.5rem; font-weight: 600; }
+        
+        /* Enhanced text styling */
+        .lead { font-weight: 500; font-size: 1.25rem; }
+        .text-muted { opacity: 0.8; }
+        
+        /* Button styling consistency */
+        .btn { 
+            font-weight: 600; 
+            font-family: 'Nunito', sans-serif;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-lg { font-size: 1.125rem; padding: 0.75rem 2rem; }
+        .btn-sm { font-size: 0.875rem; padding: 0.5rem 1rem; }
+        
+        /* Card styling */
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            transition: all 0.2s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        /* Custom color utilities */
+        .text-success { color: #10b981 !important; }
+        .bg-success { background-color: #10b981 !important; }
+        .btn-success { background-color: #10b981; border-color: #10b981; }
+        .btn-success:hover { background-color: #059669; border-color: #059669; }
+        
+        /* Gradient backgrounds */
+        .bg-gradient-to-br {
+            background: linear-gradient(135deg, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%);
+        }
+        
+        /* Custom animations */
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Responsive typography */
+        @media (max-width: 768px) {
+            .display-1 { font-size: 3rem; }
+            .display-2 { font-size: 2.5rem; }
+            .display-3 { font-size: 2rem; }
+            .display-4 { font-size: 1.75rem; }
+            .display-5 { font-size: 1.5rem; }
+            .display-6 { font-size: 1.25rem; }
+        }
     </style>
 </head>
 <body>
