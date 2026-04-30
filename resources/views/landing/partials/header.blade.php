@@ -1,14 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom py-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom py-3" style="z-index: 1050;">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
             <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 5L35 30H5L20 5Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20 15L28 28H12L20 15Z" fill="black"/>
+                <path d="M20 5L35 30H5L20 5Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 15L28 28H12L20 15Z" fill="white"/>
             </svg>
             <div class="d-flex flex-column">
-                <span class="fw-bold fs-4 leading-none">NAMTECH-HUB</span>
-                <span class="text-muted x-small d-none d-md-block" style="font-size: 0.65rem; margin-top: -4px;">Where Innovators Build the Future</span>
+                <span class="fw-bold fs-4 leading-none text-white">NAMTECH-HUB</span>
+                <span class="text-light x-small d-none d-md-block" style="font-size: 0.65rem; margin-top: -4px;">Where Innovators Build the Future</span>
             </div>
         </a>
 
@@ -20,7 +20,7 @@
             <ul class="navbar-nav mx-auto gap-1 gap-xl-3">
                 <!-- PRODUCTS -->
                 <li class="nav-item dropdown has-mega-menu">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Products</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Products</a>
                     <div class="dropdown-menu mega-menu border-0 shadow-lg p-4 mt-3 rounded-4">
                         <div class="container p-0">
                             <div class="row g-4" style="min-width: 700px;">
@@ -61,7 +61,7 @@
 
                 <!-- ENTERPRISE -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Enterprise </a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Enterprise </a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#training"><strong>Corporate Training</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#digital-transformation"><strong>Digital Transformation</strong></a></li>
@@ -75,7 +75,7 @@
 
                 <!-- PRICING -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Pricing</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Pricing</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/pricing/membership"><strong>Hub Membership</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/pricing/launchpad"><strong>Launchpad Program</strong></a></li>
@@ -88,7 +88,7 @@
 
                 <!-- BLOG -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Blog</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Blog</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.latest') }}"><strong>Latest Posts</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.stories') }}"><strong>Startup Stories</strong></a></li>
@@ -102,7 +102,7 @@
 
                 <!-- RESOURCES -->
                 <li class="nav-item dropdown has-mega-menu">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Resources</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Resources</a>
                     <div class="dropdown-menu mega-menu border-0 shadow-lg p-4 mt-3 rounded-4">
                         <div class="container p-0">
                             <div class="row g-4" style="min-width: 700px;">
@@ -140,7 +140,7 @@
 
                 <!-- COMPANY -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Company</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Company</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3 dropdown-menu-end">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.about') }}"><strong>About Us</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.leadership') }}"><strong>Leadership Team</strong></a></li>
@@ -154,11 +154,11 @@
             </ul>
 
             <div class="d-flex align-items-center gap-3">
-                <a href="#" class="text-dark p-0" title="Search" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <a href="#" class="text-white p-0" title="Search" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                 </a>
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-link text-dark text-decoration-none fw-bold p-0 border-end pe-3 rounded-0" title="Login">
+                    <a href="{{ route('login') }}" class="btn btn-link text-white text-decoration-none fw-bold p-0 border-end pe-3 rounded-0" title="Login">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </a>
                     <a href="{{ route('register') }}" class="btn btn-success fw-bold px-4 py-2 text-uppercase tracking-wider small" style="background-color: #10b981; border-color: #10b981;">
