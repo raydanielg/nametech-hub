@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('landing.partials.header')
     @include('landing.partials.hero')
     @include('landing.partials.partners')
     @include('landing.partials.pillars')

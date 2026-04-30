@@ -1,26 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom py-3" style="z-index: 1050;">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top border-bottom py-3" style="z-index: 1050; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
             <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 5L35 30H5L20 5Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20 15L28 28H12L20 15Z" fill="white"/>
+                <path d="M20 5L35 30H5L20 5Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 15L28 28H12L20 15Z" fill="black"/>
             </svg>
             <div class="d-flex flex-column">
-                <span class="fw-bold fs-4 leading-none text-white">NAMTECH-HUB</span>
-                <span class="text-light x-small d-none d-md-block" style="font-size: 0.65rem; margin-top: -4px;">Where Innovators Build the Future</span>
+                <span class="fw-bold fs-4 leading-none text-dark">NAMTECH-HUB</span>
+                <span class="text-muted x-small d-none d-md-block" style="font-size: 0.65rem; margin-top: -4px;">Where Innovators Build the Future</span>
             </div>
         </a>
 
-        <button class="navbar-toggler border-0 shadow-none text-white d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-            <span class="navbar-toggler-icon" style="filter: invert(1); width: 30px; height: 30px;"></span>
+        <button class="navbar-toggler border-0 shadow-none d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="landingNavbar">
-            <ul class="navbar-nav mx-auto gap-1 gap-xl-3">
+        <div class="navbar-collapse justify-content-between d-none d-lg-flex">
+            <ul class="navbar-nav ms-lg-5 gap-1 gap-xl-3">
                 <!-- PRODUCTS -->
                 <li class="nav-item dropdown has-mega-menu">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Products</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Products</a>
                     <div class="dropdown-menu mega-menu border-0 shadow-lg p-4 mt-3 rounded-4">
                         <div class="container p-0">
                             <div class="row g-4" style="min-width: 700px;">
@@ -61,7 +61,7 @@
 
                 <!-- ENTERPRISE -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Enterprise </a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Enterprise </a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#training"><strong>Corporate Training</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#digital-transformation"><strong>Digital Transformation</strong></a></li>
@@ -75,7 +75,7 @@
 
                 <!-- PRICING -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Pricing</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Pricing</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/pricing/membership"><strong>Hub Membership</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/pricing/launchpad"><strong>Launchpad Program</strong></a></li>
@@ -88,7 +88,7 @@
 
                 <!-- BLOG -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Blog</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Blog</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.latest') }}"><strong>Latest Posts</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.stories') }}"><strong>Startup Stories</strong></a></li>
@@ -102,7 +102,7 @@
 
                 <!-- RESOURCES -->
                 <li class="nav-item dropdown has-mega-menu">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Resources</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Resources</a>
                     <div class="dropdown-menu mega-menu border-0 shadow-lg p-4 mt-3 rounded-4">
                         <div class="container p-0">
                             <div class="row g-4" style="min-width: 700px;">
@@ -140,7 +140,7 @@
 
                 <!-- COMPANY -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider text-white" href="#" data-bs-toggle="dropdown">Company</a>
+                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Company</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3 dropdown-menu-end">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.about') }}"><strong>About Us</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.leadership') }}"><strong>Leadership Team</strong></a></li>
@@ -154,11 +154,11 @@
             </ul>
 
             <div class="d-flex align-items-center gap-3">
-                <a href="#" class="text-white p-0" title="Search" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <a href="#" class="text-dark p-0" title="Search" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                 </a>
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-link text-white text-decoration-none fw-bold p-0 border-end pe-3 rounded-0" title="Login">
+                    <a href="{{ route('login') }}" class="btn btn-link text-dark text-decoration-none fw-bold p-0 border-end pe-3 rounded-0" title="Login">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </a>
                     <a href="{{ route('register') }}" class="btn btn-success fw-bold px-4 py-2 text-uppercase tracking-wider small" style="background-color: #10b981; border-color: #10b981;">
@@ -173,13 +173,13 @@
 </nav>
 
 <!-- Mobile Menu (Offcanvas) -->
-<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileMenu">
-    <div class="offcanvas-header border-bottom border-secondary">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header border-bottom">
         <h5 class="offcanvas-title fw-bold text-success">NAMTECH-HUB</h5>
-        <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas"></button>
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body p-0">
-        <div class="accordion accordion-flush accordion-dark" id="mobileAccordion">
+        <div class="accordion accordion-flush" id="mobileAccordion">
             <!-- Mobile Products -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -251,20 +251,12 @@
 </div>
 
 <style>
-    /* Custom styles for mobile menu */
-    .offcanvas.bg-dark .accordion-item { background-color: transparent; border-color: #374151; }
-    .offcanvas.bg-dark .accordion-button { background-color: transparent; color: white; }
-    .offcanvas.bg-dark .accordion-button:not(.collapsed) { color: #10b981; }
-    .offcanvas.bg-dark .accordion-button::after { filter: invert(1); }
-    .offcanvas.bg-dark .list-group-item { background-color: transparent; color: #d1d5db; border-color: #374151; }
-    .offcanvas.bg-dark .list-group-item:hover { background-color: #1f2937; color: white; }
-    
     .has-mega-menu { position: static; }
     .mega-menu {
-        left: 0 !important;
-        right: 0 !important;
-        width: 100vw !important;
-        max-width: 100vw !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90vw !important;
+        max-width: 1200px !important;
         margin-top: 0 !important;
         border-radius: 0 0 1.5rem 1.5rem !important;
     }
@@ -280,9 +272,8 @@
     .mega-list li a span { display: block; font-size: 0.75rem; color: #6b7280; }
     .dropdown-item strong { color: #111827; display: block; }
     .nav-link { 
-        color: #4b5563 !important; 
-        padding-top: 1.5rem !important; 
-        padding-bottom: 1.5rem !important;
+        color: #1a1a1a !important; 
+        padding: 0.8rem 0.6rem !important;
         transition: color 0.2s;
     }
     .nav-link:hover { color: #10b981 !important; }
@@ -291,6 +282,10 @@
     }
     
     @media (min-width: 992px) {
+        .navbar-collapse {
+            display: flex !important;
+            flex-basis: auto;
+        }
         .dropdown:hover > .dropdown-menu { display: block; }
         .mega-menu {
             left: 50% !important;
@@ -308,6 +303,11 @@
     #searchResults .list-group-item:hover {
         background-color: #f8fafc;
         border-left: 3px solid #10b981;
+    }
+    .offcanvas-body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 </style>
 

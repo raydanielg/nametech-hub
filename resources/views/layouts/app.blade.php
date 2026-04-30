@@ -26,8 +26,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @stack('styles')
+    <style>
+        body { padding-top: 90px; }
+    </style>
 </head>
 <body>
+    @include('landing.partials.header')
+
     <!-- Preloader -->
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
         <img src="{{ asset('Spinner@1x-3.0s-136px-136px.svg') }}" alt="Loading..." style="width: 80px; height: 80px;">
