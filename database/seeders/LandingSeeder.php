@@ -59,16 +59,30 @@ class LandingSeeder extends Seeder
                 'duration' => '12 Weeks'
             ],
         ];
-        // 4. Testimonials
+        // 4. Programs (Core Offerings)
+        foreach ($programs as $p) {
+            Program::updateOrCreate(['title' => $p['title']], [
+                'description' => $p['desc'],
+                'price' => $p['price'],
+                'duration' => $p['duration'],
+                'is_active' => true
+            ]);
+        }
+
+        // 5. Testimonials - Enhanced with Powerful Success Stories
         $testimonials = [
-            ['name' => 'Andrew Brown', 'handle' => '@andrewbrown', 'content' => 'I think @namtechhub will win the tech ecosystem wars. What leads me to believe this is beyond the product itself and how the team executes.'],
-            ['name' => 'Alex Finn', 'handle' => '@AlexFinnX', 'content' => 'Unreal. I just built an entire MVP in NAMTECH Digital Studio with 1 prompt and expert guidance.'],
-            ['name' => 'The Jack Forge', 'handle' => '@TheJackForge', 'content' => 'I\'ve been exclusively using NIDOS for the past 3 weeks. They are not paying me to say this. It\'s really good. Really really good.'],
-            ['name' => 'Alvaro Cintas', 'handle' => '@dr_cintas', 'content' => 'NAMTECH Academy is one of the best technical training grounds I have ever used. High quality and direct.'],
-            ['name' => 'The Bodega Man', 'handle' => '@TheBodegaMan1', 'content' => 'The reason I chose NAMTECH is because you guys are on a constant mission of streamlining, improving and generally making the experience better for your users.'],
-            ['name' => 'elvis', 'handle' => '@omarsar0', 'content' => 'NAMTECH makes innovation insanely fun and fast! Build faster, scale better.'],
-            ['name' => 'Catalin', 'handle' => '@catalinmpit', 'content' => 'One of the many cool features of the NIDOS platform is the Synergy Model that connects talent directly to jobs.'],
-            ['name' => 'Tom Blomfield', 'handle' => '@t_blom', 'content' => 'I\'ve been building a new thing with NAMTECH Studio and I spent the last hour in almost hysterical laughter because the responses are just so good.'],
+            ['name' => 'John Smith', 'handle' => '@johnsmith', 'content' => 'NAMTECH-HUB transformed our startup from just an idea to a thriving business. The mentorship and funding we received were game-changers. We couldn\'t have done it without their support. Raised $2.5M Series A!'],
+            ['name' => 'Sarah Johnson', 'handle' => '@sarahj', 'content' => 'The Digital Studio team built our MVP in record time. Their expertise and dedication helped us launch 3 months ahead of schedule. Now we have 10K+ active users and growing!'],
+            ['name' => 'Michael Chen', 'handle' => '@mchen', 'content' => 'The Scale program helped us grow from 5 to 50 employees in just 6 months. The network and resources provided are invaluable for any serious entrepreneur. Series B ready!'],
+            ['name' => 'Emma Wilson', 'handle' => '@emmaw', 'content' => 'Amazing community and incredible mentorship! NAMTECH-HUB changed my entrepreneurial journey forever. Launchpad graduate with a thriving EdTech startup.'],
+            ['name' => 'David Kim', 'handle' => '@davidk', 'content' => 'Best decision I made for my startup! The resources and network are unmatched. From idea to revenue in 4 months thanks to NAMTECH Academy.'],
+            ['name' => 'Lisa Anderson', 'handle' => '@lisaa', 'content' => 'Transformative experience for our team. The innovation hub provided the perfect environment to collaborate and grow. Highly recommend to all entrepreneurs!'],
+            ['name' => 'James Taylor', 'handle' => '@jamest', 'content' => 'NAMTECH makes innovation insanely fun and fast! Built our entire fintech platform with their digital studio. The support is incredible!'],
+            ['name' => 'Maria Garcia', 'handle' => '@mariag', 'content' => 'The mentorship program connected us with investors who believed in our vision. Now we\'re expanding to 3 new markets. Thank you NAMTECH-HUB!'],
+            ['name' => 'Robert Brown', 'handle' => '@robertb', 'content' => 'I\'ve been building startups for 10 years, and NAMTECH-HUB is by far the best ecosystem I\'ve experienced. The quality of programs and people is unmatched.'],
+            ['name' => 'Jennifer Lee', 'handle' => '@jennl', 'content' => 'From a solo founder to a team of 25 in 8 months! The Scale program gave us the tools and connections needed for rapid growth. Game-changing!'],
+            ['name' => 'Alex Thompson', 'handle' => '@alext', 'content' => 'The Academy courses are top-notch! Learned full-stack development and landed my dream job at a unicorn startup. NAMTECH delivers real results!'],
+            ['name' => 'Patricia Davis', 'handle' => '@patriciad', 'content' => 'Innovation Hub is more than just a workspace - it\'s a community that pushes you to be better. Made lifelong connections and partnerships here!'],
         ];
 
         foreach ($testimonials as $t) {
