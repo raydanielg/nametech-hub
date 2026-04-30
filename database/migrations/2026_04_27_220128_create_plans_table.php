@@ -14,7 +14,13 @@ class CreatePlansTable extends Migration
     public function up()
     {
         Schema::create('plans', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->decimal('price', 10, 2);
+            $table->string('billing_period')->default('monthly'); // monthly, yearly
+            $table->json('features')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

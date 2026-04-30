@@ -14,7 +14,12 @@ class CreateSuccessStoriesTable extends Migration
     public function up()
     {
         Schema::create('success_stories', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->text('content');
+            $table->string('image_url')->nullable();
+            $table->string('author_name')->nullable();
             $table->timestamps();
         });
     }
