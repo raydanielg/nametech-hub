@@ -170,13 +170,16 @@
 </nav>
 
 <!-- Mobile Menu (Offcanvas) -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
-    <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title fw-bold text-success">NAMTECH-HUB</h5>
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"></button>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" style="width: 320px;">
+    <div class="offcanvas-header border-bottom bg-light">
+        <div class="d-flex align-items-center gap-2">
+            <img src="{{ asset('icons/logo.svg') }}" alt="" aria-hidden="true" class="brand-logo">
+            <h5 class="offcanvas-title fw-bold text-success mb-0">NAMTECH-HUB</h5>
+        </div>
+        <button type="button" class="btn-close shadow-none btn-close-lg" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
-        <div class="accordion accordion-flush" id="mobileAccordion">
+        <div class="accordion accordion-flush mobile-accordion" id="mobileAccordion">
             <!-- Mobile Products -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -221,7 +224,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#m-pricing">
-                        Pricing
+                        Pricing <span class="badge bg-success bg-opacity-10 text-success ms-2" style="font-size: 0.65rem;">HOT</span>
                     </button>
                 </h2>
                 <div id="m-pricing" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
@@ -231,6 +234,68 @@
                             <a href="/pricing/launchpad" class="list-group-item list-group-item-action py-3 px-4">• Launchpad</a>
                             <a href="/pricing/scale" class="list-group-item list-group-item-action py-3 px-4">• Scale</a>
                             <a href="/pricing/academy" class="list-group-item list-group-item-action py-3 px-4">• Academy</a>
+                            <a href="/pricing/studio" class="list-group-item list-group-item-action py-3 px-4">• Studio</a>
+                            <a href="/pricing/compare" class="list-group-item list-group-item-action py-3 px-4 fw-bold text-success">• Compare Plans</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Blog -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#m-blog">
+                        Blog <span class="badge bg-primary bg-opacity-10 text-primary ms-2" style="font-size: 0.65rem;">NEW</span>
+                    </button>
+                </h2>
+                <div id="m-blog" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-group list-group-flush small">
+                            <a href="{{ route('blog.latest') }}" class="list-group-item list-group-item-action py-3 px-4">• Latest Posts</a>
+                            <a href="{{ route('blog.stories') }}" class="list-group-item list-group-item-action py-3 px-4">• Startup Stories</a>
+                            <a href="{{ route('blog.tutorials') }}" class="list-group-item list-group-item-action py-3 px-4">• Tech Tutorials</a>
+                            <a href="{{ route('blog.insights') }}" class="list-group-item list-group-item-action py-3 px-4">• Industry Insights</a>
+                            <a href="{{ route('blog.announcements') }}" class="list-group-item list-group-item-action py-3 px-4">• Announcements</a>
+                            <a href="#" class="list-group-item list-group-item-action py-3 px-4 fw-bold text-primary">• Subscribe</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Resources -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#m-resources">
+                        Resources <span class="badge bg-warning bg-opacity-10 text-warning ms-2" style="font-size: 0.65rem;">VZR</span>
+                    </button>
+                </h2>
+                <div id="m-resources" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-group list-group-flush small">
+                            <a href="/resources/library" class="list-group-item list-group-item-action py-3 px-4">• Resource Library</a>
+                            <a href="/resources/webinars" class="list-group-item list-group-item-action py-3 px-4">• Webinars</a>
+                            <a href="/resources/startup-toolkit" class="list-group-item list-group-item-action py-3 px-4">• Startup Toolkit</a>
+                            <a href="/resources/events" class="list-group-item list-group-item-action py-3 px-4">• Events Calendar</a>
+                            <a href="/resources/mentors" class="list-group-item list-group-item-action py-3 px-4">• Mentor Directory</a>
+                            <a href="/resources/faq" class="list-group-item list-group-item-action py-3 px-4">• Help Center</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Company -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#m-company">
+                        Company
+                    </button>
+                </h2>
+                <div id="m-company" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-group list-group-flush small">
+                            <a href="{{ route('company.about') }}" class="list-group-item list-group-item-action py-3 px-4">• About Us</a>
+                            <a href="{{ route('company.leadership') }}" class="list-group-item list-group-item-action py-3 px-4">• Leadership Team</a>
+                            <a href="{{ route('company.partners') }}" class="list-group-item list-group-item-action py-3 px-4">• Our Partners</a>
+                            <a href="{{ route('company.careers') }}" class="list-group-item list-group-item-action py-3 px-4">• Careers</a>
+                            <a href="{{ route('company.contact') }}" class="list-group-item list-group-item-action py-3 px-4">• Contact Us</a>
+                            <a href="{{ route('company.become-partner') }}" class="list-group-item list-group-item-action py-3 px-4 fw-bold text-success">• Become a Partner</a>
                         </ul>
                     </div>
                 </div>
@@ -297,6 +362,188 @@
         width: 90vw !important;
         max-width: 1200px !important;
         margin-top: 0 !important;
+        animation: megaMenuFadeIn 0.3s ease-out;
+    }
+
+    /* Mobile Menu VZR Styling */
+    .mobile-accordion .accordion-button {
+        font-size: 0.9rem;
+        padding: 1rem 1.25rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border: none;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        min-height: 56px;
+        touch-action: manipulation;
+    }
+
+    .mobile-accordion .accordion-button:not(.collapsed) {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        transform: translateX(4px);
+    }
+
+    .mobile-accordion .accordion-button:hover:not(.collapsed) {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        transform: translateX(6px);
+    }
+
+    .mobile-accordion .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-accordion .accordion-button:not(.collapsed)::after {
+        transform: rotate(180deg);
+    }
+
+    .mobile-accordion .list-group-item {
+        border: none;
+        border-left: 3px solid transparent;
+        padding: 1rem 1.25rem;
+        transition: all 0.2s ease;
+        touch-action: manipulation;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-accordion .list-group-item:hover {
+        background: linear-gradient(90deg, #f0fdf4 0%, #dcfce7 100%);
+        border-left-color: #10b981;
+        transform: translateX(8px);
+        padding-left: 1.75rem;
+    }
+
+    .mobile-accordion .list-group-item:active {
+        transform: translateX(4px);
+        background: #dcfce7;
+    }
+
+    .mobile-accordion .list-group-item.fw-bold {
+        background: linear-gradient(90deg, #f0fdf4 0%, #bbf7d0 100%);
+        border-left-color: #059669;
+    }
+
+    /* Enhanced Dropdown Styling */
+    .dropdown-menu {
+        animation: dropdownFadeIn 0.25s ease-out;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .dropdown-item {
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8fafc 0%, #f1f5f9 100%);
+        border-left-color: #10b981;
+        transform: translateX(4px);
+        color: #059669;
+    }
+
+    .dropdown-item:active {
+        background: #dcfce7;
+        transform: translateX(2px);
+    }
+
+    /* Mega Menu Enhanced */
+    .mega-list li {
+        margin-bottom: 0.5rem;
+    }
+
+    .mega-list a {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: #374151;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .mega-list a:hover {
+        background: linear-gradient(90deg, #f0fdf4 0%, #dcfce7 100%);
+        border-left-color: #10b981;
+        transform: translateX(4px);
+        color: #059669;
+    }
+
+    .mega-list a strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: #111827;
+    }
+
+    .mega-list a span {
+        font-size: 0.875rem;
+        color: #6b7280;
+    }
+
+    .mega-list a:hover span {
+        color: #059669;
+    }
+
+    /* Animations */
+    @keyframes megaMenuFadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+
+    @keyframes dropdownFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Touch Optimizations */
+    .navbar-toggler {
+        touch-action: manipulation;
+        transition: all 0.2s ease;
+    }
+
+    .navbar-toggler:active {
+        transform: scale(0.95);
+    }
+
+    .btn-close-lg {
+        font-size: 1.5rem;
+        touch-action: manipulation;
+        transition: all 0.2s ease;
+    }
+
+    .btn-close-lg:active {
+        transform: scale(0.9);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .mobile-accordion .accordion-button {
+            font-size: 0.85rem;
+            padding: 0.875rem 1rem;
+        }
+        
+        .mobile-accordion .list-group-item {
+            font-size: 0.8rem;
+            padding: 0.875rem 1rem;
+        }
+    }
         border-radius: 0 0 1.5rem 1.5rem !important;
     }
     .mega-list li a {
