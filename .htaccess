@@ -1,7 +1,14 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine on
-    RewriteCond %{REQUEST_URI} !^public
+    RewriteEngine On
+    
+    # Handle assets (CSS, JS, Images)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} ^/(css|js|images|storage|vendor)/ [NC]
     RewriteRule ^(.*)$ public/$1 [L]
+
+    # Handle the rest of the application
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/index.php [L]
 </IfModule>
 
 # Disable directory browsing
