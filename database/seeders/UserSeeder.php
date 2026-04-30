@@ -17,12 +17,13 @@ class UserSeeder extends Seeder
         $hubDirector = \App\Models\User::updateOrCreate(
             ['email' => 'hub@namtech.io'],
             [
-                'id' => \Illuminate\Support\Str::uuid(),
+                'name' => 'Hub Director',
                 'first_name' => 'Hub',
                 'last_name' => 'Director',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'hub_director',
                 'status' => 'active',
+                'email_verified_at' => now(),
             ]
         );
         $hubDirector->assignRole('hub_director');
@@ -31,12 +32,13 @@ class UserSeeder extends Seeder
         $studioDirector = \App\Models\User::updateOrCreate(
             ['email' => 'studio@namtech.io'],
             [
-                'id' => \Illuminate\Support\Str::uuid(),
+                'name' => 'Studio Director',
                 'first_name' => 'Studio',
                 'last_name' => 'Director',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'studio_director',
                 'status' => 'active',
+                'email_verified_at' => now(),
             ]
         );
         $studioDirector->assignRole('studio_director');
@@ -45,12 +47,13 @@ class UserSeeder extends Seeder
         $founder = \App\Models\User::updateOrCreate(
             ['email' => 'founder@example.com'],
             [
-                'id' => \Illuminate\Support\Str::uuid(),
+                'name' => 'John Founder',
                 'first_name' => 'John',
                 'last_name' => 'Founder',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'startup_founder',
                 'status' => 'active',
+                'email_verified_at' => now(),
             ]
         );
         $founder->assignRole('startup_founder');
@@ -59,12 +62,13 @@ class UserSeeder extends Seeder
         $mentor = \App\Models\User::updateOrCreate(
             ['email' => 'mentor@example.com'],
             [
-                'id' => \Illuminate\Support\Str::uuid(),
+                'name' => 'Jane Mentor',
                 'first_name' => 'Jane',
                 'last_name' => 'Mentor',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'mentor',
                 'status' => 'active',
+                'email_verified_at' => now(),
             ]
         );
         $mentor->assignRole('mentor');
@@ -73,12 +77,13 @@ class UserSeeder extends Seeder
         $investor = \App\Models\User::updateOrCreate(
             ['email' => 'investor@example.com'],
             [
-                'id' => \Illuminate\Support\Str::uuid(),
+                'name' => 'Rich Investor',
                 'first_name' => 'Rich',
                 'last_name' => 'Investor',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'investor',
                 'status' => 'active',
+                'email_verified_at' => now(),
             ]
         );
         $investor->assignRole('investor');
@@ -87,12 +92,13 @@ class UserSeeder extends Seeder
         $student = \App\Models\User::updateOrCreate(
             ['email' => 'student@example.com'],
             [
-                'id' => \Illuminate\Support\Str::uuid(),
+                'name' => 'Sam Student',
                 'first_name' => 'Sam',
                 'last_name' => 'Student',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'student',
                 'status' => 'active',
+                'email_verified_at' => now(),
             ]
         );
         $student->assignRole('student');
