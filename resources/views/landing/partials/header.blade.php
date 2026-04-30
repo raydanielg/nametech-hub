@@ -20,7 +20,7 @@
             <ul class="navbar-nav ms-lg-5 gap-1 gap-xl-3">
                 <!-- PRODUCTS -->
                 <li class="nav-item dropdown has-mega-menu">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Products</a>
+                    <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Products</a>
                     <div class="dropdown-menu mega-menu border-0 shadow-lg p-4 mt-3 rounded-4">
                         <div class="container p-0">
                             <div class="row g-4" style="min-width: 700px;">
@@ -61,7 +61,7 @@
 
                 <!-- ENTERPRISE -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Enterprise </a>
+                    <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Enterprise </a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#training"><strong>Corporate Training</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/enterprise/solutions#digital-transformation"><strong>Digital Transformation</strong></a></li>
@@ -75,7 +75,7 @@
 
                 <!-- PRICING -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Pricing</a>
+                    <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Pricing</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/pricing/membership"><strong>Hub Membership</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="/pricing/launchpad"><strong>Launchpad Program</strong></a></li>
@@ -88,7 +88,7 @@
 
                 <!-- BLOG -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Blog</a>
+                    <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Blog</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.latest') }}"><strong>Latest Posts</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('blog.stories') }}"><strong>Startup Stories</strong></a></li>
@@ -102,7 +102,7 @@
 
                 <!-- RESOURCES -->
                 <li class="nav-item dropdown has-mega-menu">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Resources</a>
+                    <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Resources</a>
                     <div class="dropdown-menu mega-menu border-0 shadow-lg p-4 mt-3 rounded-4">
                         <div class="container p-0">
                             <div class="row g-4" style="min-width: 700px;">
@@ -140,7 +140,7 @@
 
                 <!-- COMPANY -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-uppercase small tracking-wider" href="#" data-bs-toggle="dropdown">Company</a>
+                    <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Company</a>
                     <ul class="dropdown-menu border-0 shadow-lg rounded-3 p-2 mt-3 dropdown-menu-end">
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.about') }}"><strong>About Us</strong></a></li>
                         <li><a class="dropdown-item py-2 px-3 rounded-2" href="{{ route('company.leadership') }}"><strong>Leadership Team</strong></a></li>
@@ -251,6 +251,9 @@
 </div>
 
 <style>
+    .navbar {
+        font-family: var(--bs-body-font-family);
+    }
     .has-mega-menu { position: static; }
     .mega-menu {
         left: 50% !important;
@@ -271,9 +274,11 @@
     .mega-list li a strong { display: block; color: #111827; }
     .mega-list li a span { display: block; font-size: 0.75rem; color: #6b7280; }
     .dropdown-item strong { color: #111827; display: block; }
-    .nav-link { 
-        color: #1a1a1a !important; 
-        padding: 0.8rem 0.6rem !important;
+    .nav-link {
+        color: #111827 !important;
+        font-weight: 600 !important;
+        font-size: 0.95rem;
+        padding: 0.75rem 0.6rem !important;
         transition: color 0.2s;
     }
     .nav-link:hover { color: #10b981 !important; }
