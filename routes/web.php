@@ -35,6 +35,34 @@ Route::group(['prefix' => 'enterprise', 'as' => 'enterprise.'], function () {
     Route::view('/solutions', 'enterprise.solutions')->name('solutions');
 });
 
+Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
+    Route::view('/innovation-hub', 'products.innovation-hub')->name('innovation-hub');
+    Route::view('/digital-studio', 'products.digital-studio')->name('digital-studio');
+    Route::view('/launchpad', 'products.launchpad')->name('launchpad');
+    Route::view('/scale', 'products.scale')->name('scale');
+    Route::view('/academy', 'products.academy')->name('academy');
+    Route::view('/bootcamps', 'products.bootcamps')->name('bootcamps');
+    Route::view('/certifications', 'products.certifications')->name('certifications');
+    Route::view('/hackathons', 'products.hackathons')->name('hackathons');
+    Route::view('/saas', 'products.saas')->name('saas');
+    Route::view('/all', 'products.all')->name('all');
+});
+
+Route::group(['prefix' => 'resources', 'as' => 'resources.'], function () {
+    Route::view('/library', 'resources.library')->name('library');
+    Route::view('/webinars', 'resources.webinars')->name('webinars');
+    Route::view('/startup-toolkit', 'resources.startup-toolkit')->name('startup-toolkit');
+    Route::view('/pitch-deck', 'resources.pitch-deck')->name('pitch-deck');
+    Route::view('/legal-finance', 'resources.legal-finance')->name('legal-finance');
+    Route::view('/investor-deck', 'resources.investor-deck')->name('investor-deck');
+    Route::view('/events', 'resources.events')->name('events');
+    Route::view('/forum', 'resources.forum')->name('forum');
+    Route::view('/mentors', 'resources.mentors')->name('mentors');
+    Route::view('/faq', 'resources.faq')->name('faq');
+    Route::view('/glossary', 'resources.glossary')->name('glossary');
+    Route::view('/investors', 'resources.investors')->name('investors');
+});
+
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
     Route::get('/latest', [BlogController::class, 'latest'])->name('latest');
     Route::get('/startup-stories', [BlogController::class, 'stories'])->name('stories');
