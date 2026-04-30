@@ -11,14 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.setPublicPath('/')
-    .js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss'),
         require('autoprefixer'),
     ])
-    .copy('public/css/app.css', 'css/app.css')
-    .copy('public/js/app.js', 'js/app.js')
     .sourceMaps();
 
 // Disable WebpackBar to avoid ProgressPlugin validation error
