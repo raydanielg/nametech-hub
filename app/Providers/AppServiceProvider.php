@@ -23,8 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!app()->runningInConsole()) {
-            config(['app.asset_url' => '/public']);
-        }
+        //
     }
 }
