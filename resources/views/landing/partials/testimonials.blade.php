@@ -228,7 +228,7 @@
             <!-- Track 2: Moving Left -->
             <div class="testimonial-track track-left">
                 <div class="track-content">
-                    @foreach($staticTestimonials->reverse() as $t)
+                    @foreach(array_reverse($staticTestimonials) as $t)
                     <div class="testimonial-card-scroll border-0 shadow-sm bg-white rounded-4 p-4 mx-3">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <img src="https://i.pravatar.cc/100?u={{ $t->handle }}3" alt="{{ $t->name }}" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #3b82f6;">
@@ -248,7 +248,7 @@
                     </div>
                     @endforeach
                     <!-- Duplicate for seamless scroll -->
-                    @foreach($staticTestimonials->reverse() as $t)
+                    @foreach(array_reverse($staticTestimonials) as $t)
                     <div class="testimonial-card-scroll border-0 shadow-sm bg-white rounded-4 p-4 mx-3">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <img src="https://i.pravatar.cc/100?u={{ $t->handle }}4" alt="{{ $t->name }}" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #3b82f6;">
