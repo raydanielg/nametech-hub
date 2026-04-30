@@ -14,7 +14,13 @@ class CreateCohortsTable extends Migration
     public function up()
     {
         Schema::create('cohorts', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->string('status', 50)->default('active');
             $table->timestamps();
         });
     }
