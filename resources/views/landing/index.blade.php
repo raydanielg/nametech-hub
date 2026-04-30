@@ -9,7 +9,7 @@
     
     @include('landing.partials.how-it-works')
     
-    @include('landing\partials\testimonials')
+    @include('landing.partials.testimonials')
     
     @include('landing.partials.footer')
 
