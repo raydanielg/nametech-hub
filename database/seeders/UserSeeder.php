@@ -86,7 +86,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Student',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'student',
-                'status' => 'active'
+                'status' => 'active',
             ]
         );
         $student->assignRole('student');
