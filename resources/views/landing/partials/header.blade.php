@@ -12,8 +12,8 @@
             </div>
         </a>
 
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler border-0 shadow-none text-white d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+            <span class="navbar-toggler-icon" style="filter: invert(1); width: 30px; height: 30px;"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="landingNavbar">
@@ -173,13 +173,13 @@
 </nav>
 
 <!-- Mobile Menu (Offcanvas) -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
-    <div class="offcanvas-header border-bottom">
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header border-bottom border-secondary">
         <h5 class="offcanvas-title fw-bold text-success">NAMTECH-HUB</h5>
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"></button>
+        <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body p-0">
-        <div class="accordion accordion-flush" id="mobileAccordion">
+        <div class="accordion accordion-flush accordion-dark" id="mobileAccordion">
             <!-- Mobile Products -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -251,6 +251,14 @@
 </div>
 
 <style>
+    /* Custom styles for mobile menu */
+    .offcanvas.bg-dark .accordion-item { background-color: transparent; border-color: #374151; }
+    .offcanvas.bg-dark .accordion-button { background-color: transparent; color: white; }
+    .offcanvas.bg-dark .accordion-button:not(.collapsed) { color: #10b981; }
+    .offcanvas.bg-dark .accordion-button::after { filter: invert(1); }
+    .offcanvas.bg-dark .list-group-item { background-color: transparent; color: #d1d5db; border-color: #374151; }
+    .offcanvas.bg-dark .list-group-item:hover { background-color: #1f2937; color: white; }
+    
     .has-mega-menu { position: static; }
     .mega-menu {
         left: 0 !important;
