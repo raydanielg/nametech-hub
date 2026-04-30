@@ -183,7 +183,7 @@
                             (object)['name' => 'Robert Brown', 'handle' => '@robert', 'content' => 'Highly recommend to all entrepreneurs!'],
                         ];
                     @endphp
-                    @foreach($staticTestimonials as $t)
+                    @foreach(array_reverse($staticTestimonials) as $t)
                     <div class="testimonial-card-scroll border-0 shadow-sm bg-white rounded-4 p-4 mx-3">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <img src="https://i.pravatar.cc/100?u={{ $t->handle }}" alt="{{ $t->name }}" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #10b981;">
@@ -203,7 +203,7 @@
                     </div>
                     @endforeach
                     <!-- Duplicate for seamless scroll -->
-                    @foreach($staticTestimonials as $t)
+                    @foreach(array_reverse($staticTestimonials) as $t)
                     <div class="testimonial-card-scroll border-0 shadow-sm bg-white rounded-4 p-4 mx-3">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <img src="https://i.pravatar.cc/100?u={{ $t->handle }}2" alt="{{ $t->name }}" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #10b981;">
