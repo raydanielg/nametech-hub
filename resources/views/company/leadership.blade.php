@@ -20,65 +20,200 @@
     </div>
 </section>
 
-<!-- Executive Team -->
-<section class="py-5">
+<!-- Organization Structure -->
+
+<!-- TIER 1 — BOARD OF DIRECTORS -->
+<section class="py-5 bg-white">
     <div class="container py-4">
         <div class="text-center mb-5">
-            <span class="text-success fw-bold text-uppercase tracking-wider small">Executive Team</span>
-            <h2 class="h1 fw-bold text-dark mt-2">The Visionaries</h2>
+            <span class="text-primary fw-bold text-uppercase tracking-wider small">Tier 1</span>
+            <h2 class="h1 fw-bold text-dark mt-2">Board of Directors</h2>
+            <div class="mx-auto mt-2" style="width: 60px; height: 4px; background: #007bff;"></div>
         </div>
+
+        <!-- Board President -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-5">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-primary border-4">
+                    <div class="card-body p-5">
+                        <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width: 120px; height: 120px; background: #007bff10; border: 2px solid #007bff;">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3 class="fw-bold text-dark mb-1">Amro Al-Fayyi</h3>
+                        <p class="text-primary fw-bold text-uppercase small tracking-widest mb-0">Board President</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Board Members -->
         <div class="row g-4 justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden text-center h-100 hover-lift">
-                    <div style="height: 300px; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <div class="h-100 d-flex align-items-center justify-content-center">
-                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        </div>
-                    </div>
+            <div class="col-md-5">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-primary border-4">
                     <div class="card-body p-4">
-                        <h4 class="fw-bold mb-1">Dr. Sarah Chen</h4>
-                        <p class="text-success fw-medium mb-3">Chief Executive Officer</p>
-                        <p class="text-muted small mb-3">Former VP at Google with 20+ years in tech. PhD in Computer Science from MIT.</p>
-                        <div class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle" style="width: 36px; height: 36px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle" style="width: 36px; height: 36px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #007bff10; border: 2px solid #007bff;">
+                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
+                        <h4 class="fw-bold text-dark mb-1">Sarah Ibrahim</h4>
+                        <p class="text-primary fw-bold text-uppercase small tracking-widest mb-0">Board Member</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden text-center h-100 hover-lift">
-                    <div style="height: 300px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
-                        <div class="h-100 d-flex align-items-center justify-content-center">
-                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        </div>
-                    </div>
+            <div class="col-md-5">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-primary border-4">
                     <div class="card-body p-4">
-                        <h4 class="fw-bold mb-1">Michael Okonkwo</h4>
-                        <p class="text-success fw-medium mb-3">Chief Operations Officer</p>
-                        <p class="text-muted small mb-3">Ex-McKinsey consultant with expertise in scaling operations across Africa.</p>
-                        <div class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle" style="width: 36px; height: 36px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle" style="width: 36px; height: 36px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #007bff10; border: 2px solid #007bff;">
+                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
+                        <h4 class="fw-bold text-dark mb-1">Leodgar Kachebonaho</h4>
+                        <p class="text-primary fw-bold text-uppercase small tracking-widest mb-0">Board Member</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden text-center h-100 hover-lift">
-                    <div style="height: 300px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
-                        <div class="h-100 d-flex align-items-center justify-content-center">
-                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+    </div>
+</section>
+
+<!-- TIER 2 — DIRECTOR -->
+<section class="py-5 bg-light">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="text-info fw-bold text-uppercase tracking-wider small">Tier 2</span>
+            <h2 class="h1 fw-bold text-dark mt-2">Director</h2>
+            <div class="mx-auto mt-2" style="width: 60px; height: 4px; background: #0dcaf0;"></div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-info border-4">
+                    <div class="card-body p-5">
+                        <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width: 110px; height: 110px; background: #0dcaf010; border: 2px solid #0dcaf0;">
+                            <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="#0dcaf0" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
+                        <h3 class="fw-bold text-dark mb-1">Nafidh Ally</h3>
+                        <p class="text-info fw-bold text-uppercase small tracking-widest mb-0">Director</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIER 3 — EXECUTIVE LEADERSHIP (C-SUITE) -->
+<section class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="text-dark fw-bold text-uppercase tracking-wider small" style="color: #6f42c1 !important;">Tier 3</span>
+            <h2 class="h1 fw-bold text-dark mt-2">Executive Leadership (C-Suite)</h2>
+            <div class="mx-auto mt-2" style="width: 60px; height: 4px; background: #6f42c1;"></div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-4" style="border-top-color: #6f42c1 !important;">
                     <div class="card-body p-4">
-                        <h4 class="fw-bold mb-1">Amara Diallo</h4>
-                        <p class="text-success fw-medium mb-3">Chief Innovation Officer</p>
-                        <p class="text-muted small mb-3">Tech entrepreneur with 3 exits. Former CTO at multiple unicorns.</p>
-                        <div class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle" style="width: 36px; height: 36px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle" style="width: 36px; height: 36px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #6f42c110; border: 2px solid #6f42c1;">
+                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
+                        <h4 class="fw-bold text-dark mb-1">Asia Mtonga</h4>
+                        <p class="fw-bold text-uppercase small tracking-widest mb-0" style="color: #6f42c1;">Chief Executive Officer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-4" style="border-top-color: #6f42c1 !important;">
+                    <div class="card-body p-4">
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #6f42c110; border: 2px solid #6f42c1;">
+                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">AbdulRahman</h4>
+                        <p class="fw-bold text-uppercase small tracking-widest mb-0" style="color: #6f42c1;">Chief Operating Officer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-4" style="border-top-color: #6f42c1 !important;">
+                    <div class="card-body p-4">
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #6f42c110; border: 2px solid #6f42c1;">
+                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Yusra Abdulbastwa</h4>
+                        <p class="fw-bold text-uppercase small tracking-widest mb-0" style="color: #6f42c1;">Chief Financial Officer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIER 4 — TECHNOLOGY LEADERSHIP (CTOS) -->
+<section class="py-5 bg-light">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="text-danger fw-bold text-uppercase tracking-wider small">Tier 4</span>
+            <h2 class="h1 fw-bold text-dark mt-2">Technology Leadership (CTOs)</h2>
+            <p class="text-muted small">Reporting to the Chief Executive Officer</p>
+            <div class="mx-auto mt-2" style="width: 60px; height: 4px; background: #dc3545;"></div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-danger border-4">
+                    <div class="card-body p-4">
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 85px; height: 85px; background: #dc354510; border: 2px solid #dc3545;">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Annuary Kivruga</h4>
+                        <p class="text-danger fw-bold text-uppercase small tracking-widest mb-0">Chief Technology Officer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-danger border-4">
+                    <div class="card-body p-4">
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 85px; height: 85px; background: #dc354510; border: 2px solid #dc3545;">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Ezra Daniel</h4>
+                        <p class="text-danger fw-bold text-uppercase small tracking-widest mb-0">Chief Technology Officer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-danger border-4">
+                    <div class="card-body p-4">
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 85px; height: 85px; background: #dc354510; border: 2px solid #dc3545;">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">Sharif Muhumba</h4>
+                        <p class="text-danger fw-bold text-uppercase small tracking-widest mb-0">Chief Technology Officer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIER 5 — PROGRAMS & COMMUNITY -->
+<section class="py-5 bg-white mb-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="text-success fw-bold text-uppercase tracking-wider small">Tier 5</span>
+            <h2 class="h1 fw-bold text-dark mt-2">Programs & Community</h2>
+            <p class="text-muted small">Reporting to the Chief Operating Officer</p>
+            <div class="mx-auto mt-2" style="width: 60px; height: 4px; background: #198754;"></div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-success border-4">
+                    <div class="card-body p-5">
+                        <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width: 100px; height: 100px; background: #19875410; border: 2px solid #198754;">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#198754" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3 class="fw-bold text-dark mb-1">Godfrey Shora</h3>
+                        <p class="text-success fw-bold text-uppercase small tracking-widest mb-2">Community & Programs Lead</p>
+                        <p class="text-muted small mb-0">Hub Ecosystem | Member Engagement | Program Delivery</p>
                     </div>
                 </div>
             </div>
