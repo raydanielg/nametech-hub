@@ -4,21 +4,136 @@
 @include('landing.partials.header')
 
 <!-- Hero Section -->
-<section class="py-5 bg-light">
-    <div class="container py-5">
-        <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/" class="text-success text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('company.about') }}" class="text-success text-decoration-none">Company</a></li>
-                <li class="breadcrumb-item active">Leadership</li>
+<section class="py-5 position-relative overflow-hidden" style="background: #0f172a; min-height: 400px; display: flex; align-items: center;">
+    <!-- Canvas for Particles Network -->
+    <canvas id="networkCanvas" class="position-absolute top-0 start-0 w-100 h-100" style="opacity: 0.4; z-index: 1;"></canvas>
+    
+    <div class="container position-relative py-5" style="z-index: 2;">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="/" class="text-success text-decoration-none fw-bold">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('company.about') }}" class="text-success text-decoration-none fw-bold">Company</a></li>
+                <li class="breadcrumb-item active text-white opacity-75">Leadership</li>
             </ol>
         </nav>
         <div class="text-center">
-            <h1 class="display-4 fw-bold text-dark mb-3">Meet Our Leadership</h1>
-            <p class="lead text-muted mx-auto" style="max-width: 700px;">Visionaries, innovators, and industry experts dedicated to building the future of entrepreneurship.</p>
+            <h1 class="display-3 fw-bold text-white mb-3">Meet Our Leadership</h1>
+            <p class="lead text-white opacity-75 mx-auto" style="max-width: 700px;">Visionaries, innovators, and industry experts dedicated to building the future of entrepreneurship.</p>
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        const particleCount = 80;
+        const connectionDistance = 150;
+        const mouseRadius = 150;
+        
+        let mouse = { x: null, y: null };
+
+        function init() {
+            resize();
+            createParticles();
+            animate();
+        }
+
+        function resize() {
+            width = canvas.width = canvas.offsetWidth;
+            height = canvas.height = canvas.offsetHeight;
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            
+            ctx.fillStyle = '#10b981';
+            ctx.strokeStyle = '#10b981';
+            
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                
+                // Move
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                // Bounce
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+                
+                // Draw particle
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Connections
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    
+                    if (dist < connectionDistance) {
+                        ctx.globalAlpha = 1 - (dist / connectionDistance);
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Mouse interaction
+                if (mouse.x !== null) {
+                    let distMouse = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+                    if (distMouse < mouseRadius) {
+                        ctx.globalAlpha = 1 - (distMouse / mouseRadius);
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                    }
+                }
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function animate() {
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        
+        window.addEventListener('mousemove', function(e) {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        window.addEventListener('mouseleave', function() {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        init();
+    });
+</script>
 
 <!-- Organization Structure -->
 
