@@ -229,27 +229,17 @@
             <h2 class="h1 fw-bold text-dark mt-2">Our Experts</h2>
         </div>
         <div class="row g-4">
-            @php
-            $heads = [
-                ['name' => 'James Mwangi', 'role' => 'Head of Startups', 'color' => '#f59e0b'],
-                ['name' => 'Fatima Al-Rashid', 'role' => 'Head of Academy', 'color' => '#ec4899'],
-                ['name' => 'David Osei', 'role' => 'Head of Partnerships', 'color' => '#14b8a6'],
-                ['name' => 'Priya Sharma', 'role' => 'Head of Technology', 'color' => '#6366f1'],
-                ['name' => 'Jean-Pierre Dubois', 'role' => 'Head of Investment', 'color' => '#f97316'],
-                ['name' => 'Nia Johnson', 'role' => 'Head of Marketing', 'color' => '#84cc16'],
-            ];
-            @endphp
-            @foreach ($heads as $head)
+            @for ($i = 0; $i < 6; $i++)
             <div class="col-6 col-md-4 col-lg-2">
                 <div class="card border-0 shadow-sm rounded-4 text-center h-100 p-3 hover-lift">
-                    <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; background: {{ $head['color'] }}20;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="{{ $head['color'] }}" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <div class="skeleton-avatar mx-auto mb-3 shadow-sm" style="width: 80px; height: 80px; border-color: #10b981;">
+                        <div class="skeleton-pulse rounded-circle w-100 h-100" style="background: #10b98115;"></div>
                     </div>
-                    <h6 class="fw-bold mb-1">{{ $head['name'] }}</h6>
-                    <p class="text-success small mb-0">{{ $head['role'] }}</p>
+                    <div class="skeleton-line mx-auto mb-2" style="width: 80%; height: 12px; background: #e5e7eb; border-radius: 4px;"></div>
+                    <div class="skeleton-line mx-auto" style="width: 60%; height: 10px; background: #f3f4f6; border-radius: 4px;"></div>
                 </div>
             </div>
-            @endforeach
+            @endfor
         </div>
     </div>
 </section>
@@ -262,26 +252,18 @@
             <h2 class="h1 fw-bold text-dark mt-2">Advisory Board</h2>
         </div>
         <div class="row g-4">
-            @php
-            $advisors = [
-                ['name' => 'Prof. Wangari Maathai Jr.', 'role' => 'Environmental Innovation', 'org' => 'Green Earth Initiative'],
-                ['name' => 'Elon Musa', 'role' => 'Technology Strategy', 'org' => 'Future Tech Labs'],
-                ['name' => 'Oprah Winfred', 'role' => 'Community Building', 'org' => 'OW Network'],
-                ['name' => 'Aliko Dangote', 'role' => 'Business Growth', 'org' => 'Dangote Group'],
-            ];
-            @endphp
-            @foreach ($advisors as $advisor)
+            @for ($i = 0; $i < 4; $i++)
             <div class="col-md-6 col-lg-3">
                 <div class="card border-0 bg-dark text-white rounded-4 h-100 p-4 hover-lift shadow-lg">
                     <div class="skeleton-avatar mb-3" style="width: 60px; height: 60px; border-color: rgba(255,255,255,0.2);">
                         <div class="skeleton-pulse rounded-circle w-100 h-100" style="background: rgba(255,255,255,0.1);"></div>
                     </div>
-                    <h5 class="fw-bold mb-1">{{ $advisor['name'] }}</h5>
-                    <p class="text-success small mb-2">{{ $advisor['role'] }}</p>
-                    <p class="small opacity-75">{{ $advisor['org'] }}</p>
+                    <div class="skeleton-line mb-2" style="width: 70%; height: 14px; background: rgba(255,255,255,0.1); border-radius: 4px;"></div>
+                    <div class="skeleton-line mb-2" style="width: 50%; height: 10px; background: rgba(16, 185, 129, 0.2); border-radius: 4px;"></div>
+                    <div class="skeleton-line" style="width: 40%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 4px;"></div>
                 </div>
             </div>
-            @endforeach
+            @endfor
         </div>
     </div>
 </section>
@@ -326,6 +308,10 @@
     
     .skeleton-pulse {
         background: #007bff15;
+        animation: skeleton-pulse 1.5s infinite ease-in-out;
+    }
+
+    .skeleton-line {
         animation: skeleton-pulse 1.5s infinite ease-in-out;
     }
 
