@@ -123,8 +123,8 @@ class StartupSeeder extends Seeder
                 'website' => $startupData['website'],
                 'funding_status' => $startupData['funding_status'],
                 'team_size' => $startupData['team_size'],
-                'funding_raised' => $startupData['funding_raised'],
-                'revenue_mrr' => $startupData['funding_raised'] * 0.01, // 1% of funding as MRR
+                'total_funding_raised' => $startupData['funding_raised'],
+                'mrr' => $startupData['funding_raised'] * 0.01, // 1% of funding as MRR
                 'active_users' => rand(1000, 50000),
                 'monthly_growth_rate' => rand(10, 30) / 100
             ]);

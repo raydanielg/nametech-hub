@@ -25,5 +25,10 @@ class Startup extends Model
         'progress',
         'website',
         'funding_status',
+        'team_size',
+        'total_funding_raised',
+        'mrr',
+        'active_users',
+        'monthly_growth_rate',
     ];
 }
