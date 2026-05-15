@@ -97,7 +97,6 @@ class MentorSeeder extends Seeder
                 'first_name' => $firstName,
                 'last_name' => $lastName,
                 'password' => bcrypt('password'),
-                'email_verified_at' => now(),
                 'role' => 'mentor',
                 'status' => 'active'
             ]);
