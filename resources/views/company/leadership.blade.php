@@ -51,8 +51,8 @@
             <div class="col-md-5">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-primary border-4">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #007bff10; border: 2px solid #007bff;">
-                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="skeleton-avatar mx-auto mb-3 shadow-sm">
+                            <div class="skeleton-pulse rounded-circle w-100 h-100"></div>
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Sarah Ibrahim</h4>
                         <p class="text-primary fw-bold text-uppercase small tracking-widest mb-0">Board Member</p>
@@ -62,8 +62,8 @@
             <div class="col-md-5">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-primary border-4">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #007bff10; border: 2px solid #007bff;">
-                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="skeleton-avatar mx-auto mb-3 shadow-sm">
+                            <div class="skeleton-pulse rounded-circle w-100 h-100"></div>
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Leodgar Kachebonaho</h4>
                         <p class="text-primary fw-bold text-uppercase small tracking-widest mb-0">Board Member</p>
@@ -123,8 +123,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-4" style="border-top-color: #6f42c1 !important;">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 120px; height: 120px; background: #6f42c110; border: 2px solid #6f42c1;">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="skeleton-avatar mx-auto mb-3 shadow-sm" style="border-color: #6f42c1;">
+                            <div class="skeleton-pulse rounded-circle w-100 h-100" style="background: #6f42c115;"></div>
                         </div>
                         <h4 class="fw-bold text-dark mb-1">AbdulRahman</h4>
                         <p class="fw-bold text-uppercase small tracking-widest mb-0" style="color: #6f42c1;">Chief Operating Officer</p>
@@ -160,8 +160,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-danger border-4">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 85px; height: 85px; background: #dc354510; border: 2px solid #dc3545;">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="skeleton-avatar mx-auto mb-3 shadow-sm" style="border-color: #dc3545; width: 100px; height: 100px;">
+                            <div class="skeleton-pulse rounded-circle w-100 h-100" style="background: #dc354515;"></div>
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Annuary Kivruga</h4>
                         <p class="text-danger fw-bold text-uppercase small tracking-widest mb-0">Chief Technology Officer</p>
@@ -171,8 +171,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-danger border-4">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 85px; height: 85px; background: #dc354510; border: 2px solid #dc3545;">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="skeleton-avatar mx-auto mb-3 shadow-sm" style="border-color: #dc3545; width: 100px; height: 100px;">
+                            <div class="skeleton-pulse rounded-circle w-100 h-100" style="background: #dc354515;"></div>
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Ezra Daniel</h4>
                         <p class="text-danger fw-bold text-uppercase small tracking-widest mb-0">Chief Technology Officer</p>
@@ -272,9 +272,9 @@
             @endphp
             @foreach ($advisors as $advisor)
             <div class="col-md-6 col-lg-3">
-                <div class="card border-0 bg-dark text-white rounded-4 h-100 p-4 hover-lift">
-                    <div class="rounded-circle bg-white bg-opacity-10 mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div class="card border-0 bg-dark text-white rounded-4 h-100 p-4 hover-lift shadow-lg">
+                    <div class="skeleton-avatar mb-3" style="width: 60px; height: 60px; border-color: rgba(255,255,255,0.2);">
+                        <div class="skeleton-pulse rounded-circle w-100 h-100" style="background: rgba(255,255,255,0.1);"></div>
                     </div>
                     <h5 class="fw-bold mb-1">{{ $advisor['name'] }}</h5>
                     <p class="text-success small mb-2">{{ $advisor['role'] }}</p>
@@ -312,6 +312,27 @@
     }
     .tracking-wider {
         letter-spacing: 0.1em;
+    }
+
+    /* Skeleton Loading Effect */
+    .skeleton-avatar {
+        width: 90px;
+        height: 90px;
+        border: 2px solid #007bff;
+        border-radius: 50%;
+        padding: 3px;
+        overflow: hidden;
+    }
+    
+    .skeleton-pulse {
+        background: #007bff15;
+        animation: skeleton-pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes skeleton-pulse {
+        0% { opacity: 0.5; }
+        50% { opacity: 1; }
+        100% { opacity: 0.5; }
     }
 </style>
 
