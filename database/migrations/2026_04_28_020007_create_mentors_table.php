@@ -15,6 +15,9 @@ class CreateMentorsTable extends Migration
             $table->integer('years_of_experience')->nullable();
             $table->string('current_role')->nullable();
             $table->string('company')->nullable();
+            $table->string('avatar')->nullable();
+            $table->decimal('rating', 3, 2)->default(0);
+            $table->integer('sessions_completed')->default(0);
             $table->decimal('hourly_rate', 10, 2)->nullable();
             $table->jsonb('availability')->nullable();
             $table->integer('max_startups')->default(3);
