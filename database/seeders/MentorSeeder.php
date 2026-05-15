@@ -88,11 +88,18 @@ class MentorSeeder extends Seeder
 
         foreach ($mentors as $mentorData) {
             // Create or get user for mentor
+            $nameParts = explode(' ', $mentorData['name']);
+            $firstName = $nameParts[0];
+            $lastName = count($nameParts) > 1 ? implode(' ', array_slice($nameParts, 1)) : 'Mentor';
+
             $user = User::updateOrCreate(['email' => $mentorData['email']], [
-                'name' => $mentorData['name'],
+                'id' => Str::uuid(),
+                'first_name' => $firstName,
+                'last_name' => $lastName,
                 'password' => bcrypt('password'),
                 'email_verified_at' => now(),
-                'role' => 'mentor'
+                'role' => 'mentor',
+                'status' => 'active'
             ]);
 
             // Create mentor record
