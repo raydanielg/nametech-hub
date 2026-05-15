@@ -25,6 +25,8 @@ class CreateStartupsTable extends Migration
             $table->decimal('total_funding_raised', 12, 2)->default(0);
             $table->integer('progress')->default(0);
             $table->string('funding_status', 50)->nullable();
+            $table->integer('active_users')->default(0);
+            $table->decimal('monthly_growth_rate', 5, 2)->default(0);
             $table->foreignUuid('founder_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignUuid('cohort_id')->nullable()->constrained('cohorts')->onDelete('set null');
             $table->foreignUuid('primary_contact_user_id')->nullable()->constrained('users')->onDelete('set null');
