@@ -36,8 +36,8 @@
             <div class="col-md-5">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-primary border-4">
                     <div class="card-body p-5">
-                        <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width: 120px; height: 120px; background: #007bff10; border: 2px solid #007bff;">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm overflow-hidden" style="width: 150px; height: 150px; border: 3px solid #007bff;">
+                            <img src="{{ asset('team/WhatsApp Image 2026-05-16 at 01.46.25.jpeg') }}" alt="Amro Al-Fayyi" class="w-100 h-100 object-fit-cover">
                         </div>
                         <h3 class="fw-bold text-dark mb-1">Amro Al-Fayyi</h3>
                         <p class="text-primary fw-bold text-uppercase small tracking-widest mb-0">Board President</p>
