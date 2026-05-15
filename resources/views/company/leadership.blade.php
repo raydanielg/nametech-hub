@@ -87,8 +87,8 @@
             <div class="col-md-5">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-info border-4">
                     <div class="card-body p-5">
-                        <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width: 110px; height: 110px; background: #0dcaf010; border: 2px solid #0dcaf0;">
-                            <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="#0dcaf0" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm overflow-hidden" style="width: 150px; height: 150px; border: 3px solid #0dcaf0;">
+                            <img src="{{ asset('team/20b500e7-6844-4267-bc7d-5e9caa6e0521.jfif') }}" alt="Nafidh Ally" class="w-100 h-100 object-fit-cover">
                         </div>
                         <h3 class="fw-bold text-dark mb-1">Nafidh Ally</h3>
                         <p class="text-info fw-bold text-uppercase small tracking-widest mb-0">Director</p>
@@ -112,8 +112,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-4" style="border-top-color: #6f42c1 !important;">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #6f42c110; border: 2px solid #6f42c1;">
-                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm overflow-hidden" style="width: 120px; height: 120px; border: 3px solid #6f42c1;">
+                            <img src="{{ asset('team/WhatsApp Image 2026-05-13 at 14.52.44.jpeg') }}" alt="Asia Mtonga" class="w-100 h-100 object-fit-cover">
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Asia Mtonga</h4>
                         <p class="fw-bold text-uppercase small tracking-widest mb-0" style="color: #6f42c1;">Chief Executive Officer</p>
@@ -123,8 +123,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-4" style="border-top-color: #6f42c1 !important;">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #6f42c110; border: 2px solid #6f42c1;">
-                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 120px; height: 120px; background: #6f42c110; border: 2px solid #6f42c1;">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
                         <h4 class="fw-bold text-dark mb-1">AbdulRahman</h4>
                         <p class="fw-bold text-uppercase small tracking-widest mb-0" style="color: #6f42c1;">Chief Operating Officer</p>
@@ -134,8 +134,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-4" style="border-top-color: #6f42c1 !important;">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px; background: #6f42c110; border: 2px solid #6f42c1;">
-                            <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm overflow-hidden" style="width: 120px; height: 120px; border: 3px solid #6f42c1;">
+                            <img src="{{ asset('team/Yusra.jpeg') }}" alt="Yusra Abdulbastwa" class="w-100 h-100 object-fit-cover">
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Yusra Abdulbastwa</h4>
                         <p class="fw-bold text-uppercase small tracking-widest mb-0" style="color: #6f42c1;">Chief Financial Officer</p>
@@ -182,8 +182,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-danger border-4">
                     <div class="card-body p-4">
-                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 85px; height: 85px; background: #dc354510; border: 2px solid #dc3545;">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm overflow-hidden" style="width: 120px; height: 120px; border: 3px solid #dc3545;">
+                            <img src="{{ asset('team/Sharifu Ally Muumba.jpeg') }}" alt="Sharif Muhumba" class="w-100 h-100 object-fit-cover">
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Sharif Muhumba</h4>
                         <p class="text-danger fw-bold text-uppercase small tracking-widest mb-0">Chief Technology Officer</p>
