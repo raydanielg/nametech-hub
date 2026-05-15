@@ -171,8 +171,8 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-center hover-lift border-top border-danger border-4">
                     <div class="card-body p-4">
-                        <div class="skeleton-avatar mx-auto mb-3 shadow-sm" style="border-color: #dc3545; width: 100px; height: 100px;">
-                            <div class="skeleton-pulse rounded-circle w-100 h-100" style="background: #dc354515;"></div>
+                        <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center shadow-sm overflow-hidden" style="width: 100px; height: 100px; border: 3px solid #dc3545;">
+                            <img src="https://github.com/raydanielg.png" alt="Ezra Daniel" class="w-100 h-100 object-fit-cover">
                         </div>
                         <h4 class="fw-bold text-dark mb-1">Ezra Daniel</h4>
                         <p class="text-danger fw-bold text-uppercase small tracking-widest mb-0">Chief Technology Officer</p>
